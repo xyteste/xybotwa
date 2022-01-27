@@ -1,0 +1,58 @@
+adicione os buildpacks:
+
+-------------------------------
+
+https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest
+
+https://github.com/clhuang/heroku-buildpack-webp-binaries.git
+
+https://github.com/pathwaysmedical/heroku-buildpack-tesseract
+
+-------------------------------
+
+termux-setup-storage
+
+ls
+
+cd /sdcard/pasta onde está o seu bot
+
+npm i -g npm@6 && npm i heroku -g
+
+heroku login
+
+git config --global user.email "seuemail@gmail.com" 
+
+git config --global user.name "seu nome"
+
+rm -rf .git
+
+git init
+
+heroku git:remote -a nome-do-APP
+
+git add . 
+
+git commit -am "momonga lindo" 
+
+git checkout -b main
+
+git push heroku main
+
+-------------------------------
+
+quando vc editar o bot e quiser atualizar no Heroku:
+
+cd /sdcard/pasta onde está o seu bot
+
+git add .
+
+git commit -am "momonga lindo" 
+
+git push heroku main
+
+
+******
+créditos: Aleatory bot
+******
+
+
