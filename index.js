@@ -652,6 +652,7 @@ const goSticker = './edit/media/sticker/';
 const goImage = './edit/media/image/';
 const goVideo = './edit/media/video/';
 const hx = require('hxz-api');
+const isAntiAudio = isGroup ? antiaudio.includes(from) : false
 
 // enviar mídia (foto, vídeo, áudio, etc)
 function sendMedia (id, arquivo, tipo, options = {}){
@@ -911,6 +912,14 @@ await sleep(1500);
 }
 
 
+
+if(isAntiAudio && isBotGroupAdmins && type == MessageType.audio) {
+if(isGroupAdmins) return conn.sendMessage(from,'*mensagem proibida detectada, porém é admin logo a punição será anulada*', MessageType.text, {quoted: info})
+await zero.sendMessage(from, '*mensagem proibida detectada, banindo...*', MessageType.text, {quoted: info})
+setTimeout(async function () {
+zero.groupRemove(from, [sender])
+}, 1000)
+}
 
 // #console
 if (isImage) tipoMsg = ' 🖼️ Imagem ';
@@ -3663,26 +3672,22 @@ try {
 
 			break
 
-case 'celular':
-if (args.lenght == 0) return reply(`Qual celular você está procurando?`)
-teks = args.join(' ')
-anu = await fetchJson(`https://api-yogipw.herokuapp.com/api/search/gsmarena?query=${teks}`)
-const busca_celular = 
-`
-📝 Titulo: ${anu.judul}
-❗Última atualização: ${anu.rilis}
-📱 Tamanho do celular: ${anu.ukuran}
-⚡ Tipo: ${anu.type}
-🗃️ Armazenamento: ${anu.storage}
-📴 Tela: ${anu.display}
-📳 Polegada: ${anu.inchi}
-🔰 Resolução da câmera: ${anu.pixel}
-📲 Resolução do video: ${anu.videoPixel}
-💭 Ram do celular: ${anu.ram}
-👤 Hardware do celular: ${anu.chipset}
-⚠️ Bateria: ${anu.batrai}
-🔋 Tipo da bateria: ${anu.merek_batre}`
-await zero.sendMessage(from, image, {quoted: info, thumbnail:null, caption: `${busca_celular}`})
+case 'antiaudio':
+if (!isOwner) return reply(`${say.only.owner}`)
+if (!isGroupAdmins) return reply(`n so adm`)
+if (args.length < 1) return reply('Hmmmm')
+if (Number(args[0]) === 1) {
+if (isAntiAudio) return reply('Ja esta ativo')
+antiaudio.push(from)
+fs.writeFileSync('./docs/ants/antiaudio.json', JSON.stringify(antiaudio))
+reply('Ativou com sucesso o recurso de anti audio neste grupo✔️')
+} else if (Number(args[0]) === 0) {
+antiaudio.splice(from, 1)
+fs.writeFileSync('./docs/ants/antiaudio.json', JSON.stringify(antiaudio))
+reply('Desativou com sucesso o recurso de anti audio neste grupo✔️')
+} else {
+reply('1 para ativar, 0 para desativar')
+}
 break
 
 case 'recado':
