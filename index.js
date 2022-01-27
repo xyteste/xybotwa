@@ -1204,7 +1204,7 @@ sendEphemeral: true,
 function listaMenus () {
  listMsg = {
 
- buttonText: 'ver lista',
+ buttonText: 'selecione seu menu',
 
  footerText: `Lista com os comandos do bot separados por categorias\n${readmore}`,
 
@@ -4064,6 +4064,8 @@ break
 
 case 'menuesp': case 'menuespanol': case 'menuespañol':
 reply (`${menuesp}`)
+await sleep(2000)
+sendDono('');
 break
 		
 // #admins	#adms
@@ -5892,9 +5894,9 @@ resultMath = valorMath
  }
 mathHelp(29, 1);
                buttons = [{buttonId:`kkkkkk`, 
-               buttonText:{displayText: `🤒 F chat`},type:1},
+               buttonText:{displayText: `F chat 🤡`},type:1},
 {buttonId:`kkkkjjjjjkk`, 
-               buttonText:{displayText: `🌿 Vai tarde kkk`},type:1},
+               buttonText:{displayText: `Vai tarde 😎`},type:1},
                ]
                imageMsg = (await zero.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${mathResult}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage				
 				

@@ -655,8 +655,7 @@ exports.menuesp = `▰▰▰▰▰▰▰▰
 
 ۞ ${prefix}zettai 
 
-si he escrito algo mal y quieres avisarme puedes llamarme por whatsapp
-https://wa.me/558897321488
+si he escrito algo mal y quieres avisarme puedes llamarme por whatsapp en el enlace abajo.
 `
 
 
