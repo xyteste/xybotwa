@@ -3666,7 +3666,7 @@ try {
 case 'jooxplay':
 if (args.length == 0) return reply(`Exemplo: ${prefix + command} Musica Sad`)
 query = args.join(" ")
-get_result = await fetchJson(`https://pencarikode.xyz/download/joox?search=${query}&apikey=pais`)
+get_result = await fetchJson(`https://pencarikode.xyz/download/joox?search=${query}`)
 get_result = get_result.result
 ini_mn1k = `Titulo : ${get_result.judul}\n`
 ini_mn1k += `Duração : ${get_result.duration}\n`
