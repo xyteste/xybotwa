@@ -653,6 +653,12 @@ const goImage = './edit/media/image/';
 const goVideo = './edit/media/video/';
 const hx = require('hxz-api');
 
+//api
+ZeksApi = settings.ZeksApi
+
+const appi = ['cf650a9b7f','eda19b89d5','843aeb2d47dd','e9ef6f24d7','3de1a9c746f0']
+ const zenapi = appi[Math.floor(Math.random() * appi.length)]
+
 // enviar mídia (foto, vídeo, áudio, etc)
 function sendMedia (id, arquivo, tipo, options = {}){
 if (tipo === 'audio') {
@@ -3539,13 +3545,192 @@ case 'idiomas':
                     'cy': 'Welsh'`)
                   break    
                   
-case 'pokemon': 
-                    if (args.length < 1) return reply(`*Exemplo :*\n${prefix}${command} Xy`)
-					makell = args.join(" ")
-					anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/textmaker/pokemon?q=${makell}&apikey=MIMINGANZ`)
-					buffer1 = await getBuffer(anu.result.url)
-					zero.sendMessage(from, buffer1, image, {quoted: mek})
-					break
+case 'padoru':
+data = await fetchJson(`https://raw.githubusercontent.com/shadow578/Project-Padoru/master/padoru.json`, {
+method: 'get'
+})
+n = JSON.parse(JSON.stringify(data.Entries));
+nimek = n[Math.floor(Math.random() * n.length)];
+owo = (`${nimek.Image}`)
+ccf = ('https://raw.githubusercontent.com/shadow578/Project-Padoru/master/')
+pok = await getBuffer(`${ccf}${owo}`)
+zero.sendMessage(from, pok, image, {
+quoted: mek, caption: `Nome : ${nimek.Name}`
+})
+
+break
+
+case 'stickcum':
+case 'scum':
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/cum')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})	
+          break
+
+case 'stickhentai':		  
+case 'shentai':
+try {
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await getBuffer(`https://api.lolhuman.xyz/api/random2/classic?apikey=${lolh}`)			
+            resi = await upload(anu)            
+			exec(`wget ${resi} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)			
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+			 } catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }
+          break
+
+case 'stickfeetg':
+case 'sfeetg':
+case 'stickfeet':
+case 'feetg':
+try {
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/feetg')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+	       } catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }
+			break
+case 'stickbj':
+case 'stickblowbjob':
+case 'sbj':
+try {
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/bj')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+			} catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }
+			break
+case 'stickpussy':
+case 'spussy':
+case 'pussysticker':
+case 'stickerpussy':
+try {
+       ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/pussy')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+			 } catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }			
+			break
+case 'stickneko':
+case 'sneko':
+case 'nekostick':
+try {
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/nsfw_neko_gif')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+			} catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }
+
+			break
+
+case 'top5anime':
+case 'top5animes':
+anu = await fetchJson(`https://x-restapi.herokuapp.com/api/topanime?apikey=BETA`, {
+method: 'get'
+})
+n = JSON.parse(JSON.stringify(anu.data));
+top = n[Math.floor(Math.random() * n.length)];
+topp = n[Math.floor(Math.random() * n.length)];
+toppp = n[Math.floor(Math.random() * n.length)];
+topppp = n[Math.floor(Math.random() * n.length)];
+toppppp = n[Math.floor(Math.random() * n.length)];
+topi = (top.Judul)
+topis = (top.Score)
+
+topii = (topp.Judul)
+topiss = (topp.Score)
+
+topiii = (toppp.Judul)
+topisss = (toppp.Score)
+
+topiiii = (topppp.Judul)
+topissss = (topppp.Score)
+
+topiiiii = (toppppp.Judul)
+topisssss = (toppppp.Score)
+const topanune = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
+zero.sendMessage(from, topanune, image, {
+quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
+${topi}
+Pontuação : ${topis} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+${topii}
+Pontuação : ${topiss} / 10
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+${topiii}
+Pontuação : ${topisss} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+${topiiii}
+Pontuação : ${topissss} / 10
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+${topiiiii}
+Pontuação : ${topisssss} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_`
+})
+
+break
+
+case 'cosplayers':
+case 'cosplayer':
+case 'cosplay':
+case 'um':
+if (!isGroup) return reply('esta función es solo para grupos')
+yoiz = await getBuffer(`https://zenzapi.xyz/api/random/cosplay?apikey=${zenapi}`)
+buttons = [{buttonId: `cosplay`,buttonText:{displayText: `➡️Next`},type:1}]
+              imageMsg = (await zero.prepareMessageMedia(yoiz, "imageMessage", { thumbnail: yoiz, })).imageMessage
+              buttonsMessage = {footerText:'𝚲𝐋𝐂𝚫𝐓𝐑𝚲𝐙『 𖡗 』𝐁𝚯𝐓', imageMessage: imageMsg,
+              contentText:`Nota: No hacer spam`,buttons,headerType:4}
+              prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: ftrol})
+              zero.relayWAMessage(prep)
+break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
