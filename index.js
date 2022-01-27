@@ -1180,10 +1180,11 @@ reply (`olá!`)
 }
 
 if (budY.includes("bdia") || budY.includes("aa")) {
-uke = `teste`
-six = fs.readFileSync(`./edit/media/image/bdia.jpg`)
-zero.sendMessage(from, six, MessageType.image, {quoted: selocont, mimetype: 'image/jpg', caption: uke})
-}
+await sendMedia(from, 
+goImage + 'bdia.jpg', /*nome do arquivo*/  'image', /*formato do arquivo*/ {
+quoted: mek,
+caption: 'brabo', /*legenda da sua foto*/
+});
 
 if (budY.includes("yyyyyyyyy") || budY.includes("hhhhhhhhhhh")) {
 audior = fs.readFileSync(`./edit/media/audio/barra dono.mp3`)
