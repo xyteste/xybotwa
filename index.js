@@ -3664,7 +3664,7 @@ try {
 			break
 
 case 'celular':
-if (args.lenght < 1) return reply(`Qual celular você está procurando?`)
+if (args.lenght == 0) return reply(`Qual celular você está procurando?`)
 teks = args.join(' ')
 anu = await fetchJson(`https://api-yogipw.herokuapp.com/api/search/gsmarena?query=${teks}`)
 const busca_celular = 
