@@ -1068,9 +1068,9 @@ if (budY.includes("bom dia")){
 if (isFiltered2(sender)) return
 await addFilter2(sender);
 mathHelp(14, 1);
-await sendMedia(from, goSticker + 'b' + valorMath + '.webp', 'sticker', {
-mimetype: Mimetype.sticker,
- quoted: mek,});
+image = fs.readFileSync(`./edit/media/image/bdia.jpg`)
+await zero.sendMessage(from, image, MessageType.image, {quoted: selocont, mimetype: 'image/jpg', ptt: true})
+};
 
 await sleep(1500);
 await sendMedia(from, goAudio + 'bom dia.mp3', 'audio', {
