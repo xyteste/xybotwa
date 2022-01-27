@@ -3663,6 +3663,19 @@ try {
 
 			break
 
+case 'jooxplay':
+if (args.length == 0) return reply(`Exemplo: ${prefix + command} Musica Sad`)
+query = args.join(" ")
+get_result = await fetchJson(`https://pencarikode.xyz/download/joox?search=${query}&apikey=pais`)
+get_result = get_result.result
+ini_mn1k = `Titulo : ${get_result.judul}\n`
+ini_mn1k += `Duração : ${get_result.duration}\n`
+thumbnail = await getBuffer(get_result.img_url)
+await zero.sendMessage(from, thumbnail, image, {quoted: info, caption: ini_mn1k })
+get_audio = await getBuffer(get_result.mp3_url)
+await zero.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', filename: `${get_result.judul}.mp3`, quoted: info, thumbnail: null})
+break
+
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
 try {
@@ -4509,7 +4522,7 @@ if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 try {
 let cucu = body.slice(6) + '@s.whatsapp.net';
 let kkk = mek.message.extendedTextMessage.contextInfo.participant
-await reply (`até mais baka kkk`)
+await reply (`banido 😎`)
 await sleep(1000);
 if (kkk) {
 if (kkk === zero.user.jid) return reply (`Eu não vou me banir cara de cu`)
@@ -4589,7 +4602,7 @@ if (!isGroup) return reply (`${say.only.group}`)
 if (!isGroupAdmins) if (!isOwner) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 const dl = body.slice(5)
-if (dl.length > 13)return reply(`Exemplo : ${prefix}add 554999979631`) 
+if (dl.length > 13)return reply(`Exemplo : ${prefix}add 5588997321488`) 
 if (args[0].startsWith('08')) return reply('Use o código do país, man')
 try {
 num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`

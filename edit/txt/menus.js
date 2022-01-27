@@ -237,6 +237,20 @@ exports.menufigu = `▰▰▰▰▰▰▰▰
 
 ۞ ${prefix}attp
 
+〘࿙ +18 ࿚〙
+
+۞ ${prefix}scum
+
+۞ ${prefix}shentai
+
+۞ ${prefix}sfeetg
+
+۞ ${prefix}sbj
+
+۞ ${prefix}spussy
+
+۞ ${prefix}sneko
+
 • - - - - - - ☆- - - - - - •
 
 `
@@ -310,6 +324,10 @@ exports.menuent = `▰▰▰▰▰▰▰▰
 ۞ ${prefix}carinho
 
 ۞ ${prefix}piada
+
+۞ ${prefix}voz
+
+۞ ${prefix}padoru
 
 xy
 `
@@ -485,6 +503,22 @@ exports.menuesp = `▰▰▰▰▰▰▰▰
 ۞ ${prefix}attp
 (convierte tu texto en sticker. Ejemplo: ${prefix}attp xy hermoso)
 
+〘࿙ +18 ࿚〙
+
+(~ ͡° ͜ʖ ͡°) ~ ☆
+
+۞ ${prefix}scum
+
+۞ ${prefix}shentai
+
+۞ ${prefix}sfeetg
+
+۞ ${prefix}sbj
+
+۞ ${prefix}spussy
+
+۞ ${prefix}sneko
+
 ▰▰▰▰▰▰▰▰
 𝐆𝐀𝐋𝐄𝐑𝐈́𝐀
 ▰▰▰▰▰▰▰▰
@@ -587,6 +621,8 @@ exports.menuesp = `▰▰▰▰▰▰▰▰
 
 ۞ ${prefix}idiomas
 (para ver los idiomas soportados)
+
+۞ ${prefix}padoru
 
 ▰▰▰▰▰▰▰▰
 𝐍𝐒𝐅𝐖
@@ -808,6 +844,20 @@ exports.allmenu = `
 ۞ ${prefix}togif
 
 ۞ ${prefix}attp
+
+〘࿙ +18 ࿚〙
+
+۞ ${prefix}scum
+
+۞ ${prefix}shentai
+
+۞ ${prefix}sfeetg
+
+۞ ${prefix}sbj
+
+۞ ${prefix}spussy
+
+۞ ${prefix}sneko
 
 • - - - - - - ☆- - - - - - •
 
