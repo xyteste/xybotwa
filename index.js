@@ -3726,7 +3726,7 @@ buttons = [{buttonId: `cosplay`,buttonText:{displayText: `➡️Next`},type:1}]
               imageMsg = (await zero.prepareMessageMedia(yoiz, "imageMessage", { thumbnail: yoiz, })).imageMessage
               buttonsMessage = {footerText:'𝚲𝐋𝐂𝚫𝐓𝐑𝚲𝐙『 𖡗 』𝐁𝚯𝐓', imageMessage: imageMsg,
               contentText:`Nota: No hacer spam`,buttons,headerType:4}
-              prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: ftrol})
+              prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
               zero.relayWAMessage(prep)
 break
 
