@@ -1068,9 +1068,9 @@ if (budY.includes("bom dia")){
 if (isFiltered2(sender)) return
 await addFilter2(sender);
 mathHelp(14, 1);
-image = fs.readFileSync(`./edit/media/image/bdia.jpg`)
-await zero.sendMessage(from, image, MessageType.image, {quoted: selocont, mimetype: 'image/jpg', ptt: true})
-};
+await sendMedia(from, goSticker + 'b' + valorMath + '.webp', 'sticker', {
+mimetype: Mimetype.sticker,
+ quoted: mek,});
 
 await sleep(1500);
 await sendMedia(from, goAudio + 'bom dia.mp3', 'audio', {
@@ -1177,6 +1177,12 @@ reply (`aoba!`)
 
 if (budy.includes("hola") || (budy.includes("hola!") || (budy.includes("hola.") || (budy.includes("hola?"))) )){
 reply (`olá!`)
+}
+
+if (budY.includes("bdia") || budY.includes("aa")) {
+uke = `teste`
+six = fs.readFileSync(`./edit/media/image/bdia.jpg`)
+zero.sendMessage(from, six, MessageType.image, {quoted: selocont, mimetype: 'image/jpg', caption: uke})
 }
 
 if (budY.includes("yyyyyyyyy") || budY.includes("hhhhhhhhhhh")) {
