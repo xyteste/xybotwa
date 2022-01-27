@@ -3538,7 +3538,14 @@ case 'idiomas':
                     'vi': 'Vietnamese',
                     'cy': 'Welsh'`)
                   break    
-
+                  
+case 'pokemon': 
+                    if (args.length < 1) return reply(`*Exemplo :*\n${prefix}${command} Xy`)
+					makell = args.join(" ")
+					anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/textmaker/pokemon?q=${makell}&apikey=MIMINGANZ`)
+					buffer1 = await getBuffer(anu.result.url)
+					zero.sendMessage(from, buffer1, image, {quoted: mek})
+					break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
