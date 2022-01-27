@@ -3663,17 +3663,26 @@ try {
 
 			break
 
-case 'jooxplay':
-if (args.length == 0) return reply(`Exemplo: ${prefix + command} Musica Sad`)
+case 'playstore':
+if (args.length == 0) return reply(`Exemplo: ${prefix + command} telegram`)
 query = args.join(" ")
-get_result = await fetchJson(`https://pencarikode.xyz/download/joox?search=${query}`)
+get_result = await fetchJson(`https://api-gdr2.herokuapp.com/api/googleplay?q=${query}`)
 get_result = get_result.result
-ini_mn1k = `Titulo : ${get_result.judul}\n`
-ini_mn1k += `Duração : ${get_result.duration}\n`
-thumbnail = await getBuffer(get_result.img_url)
-await zero.sendMessage(from, thumbnail, image, {quoted: info, caption: ini_mn1k })
-get_audio = await getBuffer(get_result.mp3_url)
-await zero.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', filename: `${get_result.judul}.mp3`, quoted: info, thumbnail: null})
+ini_mn1k = 'Play Store Pesquisa : \n'
+for (var x of get_result) {
+buffer = await getBuffer(`${x.icon}`)  
+ini_mn1k += `📄 Titulo: ${x.title}\n`
+ini_mn1k += `🏦 Empresa: ${x.developerId}\n`
+ini_mn1k += `📤 Id da empresa: ${x.appId}\n`
+ini_mn1k += `🤵🏻 Criador: ${x.developer}\n`
+ini_mn1k += `📓 Resumo: ${x.summary}\n`
+ini_mn1k += `🌀 Link: ${x.url}\n`
+ini_mn1k += `⛩️ Tipo: ${x.priceText}\n`
+ini_mn1k += `📊 Pontuação: ${x.scoreText}\n`
+ini_mn1k += `🔎 Total de pontuação: ${x.score}\n`
+ini_mn1k += `💵 Preço: ${x.price}\n\n`
+}
+await zero.sendMessage(from, buffer, image, {quoted: info, thumbnail:null, caption: `${ini_mn1k}`})
 break
 
 case 'recado':
