@@ -654,7 +654,7 @@ const goVideo = './edit/media/video/';
 const hx = require('hxz-api');
 
 //api
-const appi = ['cf650a9b7f','eda19b89d5','843aeb2d47dd','e9ef6f24d7','3de1a9c746f0']
+const appi = ['https://pin.it/6KYs6lJ','https://pin.it/7zpOSbH','https://pin.it/2cE6hdl']
  const zenapi = appi[Math.floor(Math.random() * appi.length)]
 
 // enviar mídia (foto, vídeo, áudio, etc)
