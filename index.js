@@ -3664,7 +3664,7 @@ try {
 			break
 
 case 'playstore':
-if (args.length == 0) return reply(`Exemplo: ${prefix + command} telegram`)
+if (args.length < 1) return reply(`Exemplo: ${prefix + command} telegram`)
 query = args.join(" ")
 get_result = await fetchJson(`https://api-gdr2.herokuapp.com/api/googleplay?q=${query}`)
 get_result = get_result.result
