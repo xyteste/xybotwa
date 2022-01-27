@@ -5535,8 +5535,8 @@ reply('botão 1 pressionado');
 if (selectedButton === 'XXX2'){
 reply('botão 2 pressionado');
 };
-if (selectedButton === 'menú en español'){
-reply(`${menuesp}`);
+if (selectedButton === 'XXX3'){
+reply('botão 3 pressionado');
 };
 
 
@@ -5604,6 +5604,10 @@ reply('erro inesperado')
 
 if (selectedButton == 'help'){
 reply (`${help}`)
+}
+
+if (selectedButton == 'menú en español'){
+reply(`${menuesp}`)
 }
 
 if (selectedButton == `antifake on`) {
