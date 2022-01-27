@@ -510,7 +510,7 @@ isMultiPrefix ? t5 = ' ✓ ': t5 = ' X ';
                buttonText:{displayText: '𝙻𝙸𝚂𝚃𝙰 𝙳𝙴 𝙼𝙴𝙽𝚄𝚂'},type:1},
                {buttonId:`help`,buttonText:{displayText:'𝙷𝙴𝙻𝙿' },type:1},
                 {buttonId:`outros`,buttonText:{displayText:'𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1},
-                {buttonId:`menuesp`,buttonText:{displayText:'𝙼𝙴𝙽𝚄́ 𝙴𝙽 𝙴𝚂𝙿𝙰𝙽̃𝙾𝙻' },type:1},
+                {buttonId:`menuesp`,buttonText:{displayText:'𝙼𝙴𝙽𝚄́ 𝙴𝙽 𝙴𝚂𝙿𝙰𝙽̃𝙾𝙻' },type:1}
                ]
 
 mathHelp(29, 1);
@@ -5606,7 +5606,7 @@ if (selectedButton == 'help'){
 reply (`${help}`)
 }
 
-if (selectedButton == 'menú en español'){
+if (selectedButton == 'menuesp'){
 reply(`${menuesp}`)
 }
 
