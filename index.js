@@ -653,10 +653,6 @@ const goImage = './edit/media/image/';
 const goVideo = './edit/media/video/';
 const hx = require('hxz-api');
 
-//api
-const appi = ['https://pin.it/6KYs6lJ','https://pin.it/7zpOSbH','https://pin.it/2cE6hdl']
- const zenapi = appi[Math.floor(Math.random() * appi.length)]
-
 // enviar mídia (foto, vídeo, áudio, etc)
 function sendMedia (id, arquivo, tipo, options = {}){
 if (tipo === 'audio') {
@@ -1210,9 +1206,9 @@ function listaMenus () {
 
  buttonText: 'selecione seu menu',
 
- footerText: `Lista com os comandos do bot separados por categorias\n${readmore}`,
+ footerText: `Lista De Menus Separados Por Categorias\n${readmore}`,
 
- description: `*LISTA DE COMANDOS*`,
+ description: ``,
 
  sections: [
 
@@ -3666,69 +3662,6 @@ try {
 			 }
 
 			break
-
-case 'top5anime':
-case 'top5animes':
-anu = await fetchJson(`https://x-restapi.herokuapp.com/api/topanime?apikey=BETA`, {
-method: 'get'
-})
-n = JSON.parse(JSON.stringify(anu.data));
-top = n[Math.floor(Math.random() * n.length)];
-topp = n[Math.floor(Math.random() * n.length)];
-toppp = n[Math.floor(Math.random() * n.length)];
-topppp = n[Math.floor(Math.random() * n.length)];
-toppppp = n[Math.floor(Math.random() * n.length)];
-topi = (top.Judul)
-topis = (top.Score)
-
-topii = (topp.Judul)
-topiss = (topp.Score)
-
-topiii = (toppp.Judul)
-topisss = (toppp.Score)
-
-topiiii = (topppp.Judul)
-topissss = (topppp.Score)
-
-topiiiii = (toppppp.Judul)
-topisssss = (toppppp.Score)
-const topanune = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
-zero.sendMessage(from, topanune, image, {
-quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
-${topi}
-Pontuação : ${topis} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
-${topii}
-Pontuação : ${topiss} / 10
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
-${topiii}
-Pontuação : ${topisss} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
-${topiiii}
-Pontuação : ${topissss} / 10
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
-${topiiiii}
-Pontuação : ${topisssss} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
-           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_`
-})
-
-break
-
-case 'cosplayers':
-case 'cosplayer':
-case 'cosplay':
-case 'um':
-if (!isGroup) return reply('esta función es solo para grupos')
-yoiz = await getBuffer(`https://zenzapi.xyz/api/random/cosplay?apikey=${zenapi}`)
-buttons = [{buttonId: `cosplay`,buttonText:{displayText: `➡️Next`},type:1}]
-              imageMsg = (await zero.prepareMessageMedia(yoiz, "imageMessage", { thumbnail: yoiz, })).imageMessage
-              buttonsMessage = {footerText:'𝚲𝐋𝐂𝚫𝐓𝐑𝚲𝐙『 𖡗 』𝐁𝚯𝐓', imageMessage: imageMsg,
-              contentText:`Nota: No hacer spam`,buttons,headerType:4}
-              prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-              zero.relayWAMessage(prep)
-break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
