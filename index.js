@@ -3663,26 +3663,26 @@ try {
 
 			break
 
-case 'playstore':
-if (args.length < 1) return reply(`Exemplo: ${prefix + command} telegram`)
-query = args.join(" ")
-get_result = await fetchJson(`https://api-gdr2.herokuapp.com/api/googleplay?${query}`)
-get_result = get_result.result
-ini_mn1k = 'Play Store Pesquisa : \n'
-for (var x of get_result) {
-buffer = await getBuffer(`${x.icon}`)  
-ini_mn1k += `📄 Titulo: ${x.title}\n`
-ini_mn1k += `🏦 Empresa: ${x.developerId}\n`
-ini_mn1k += `📤 Id da empresa: ${x.appId}\n`
-ini_mn1k += `🤵🏻 Criador: ${x.developer}\n`
-ini_mn1k += `📓 Resumo: ${x.summary}\n`
-ini_mn1k += `🌀 Link: ${x.url}\n`
-ini_mn1k += `⛩️ Tipo: ${x.priceText}\n`
-ini_mn1k += `📊 Pontuação: ${x.scoreText}\n`
-ini_mn1k += `🔎 Total de pontuação: ${x.score}\n`
-ini_mn1k += `💵 Preço: ${x.price}\n\n`
-}
-await zero.sendMessage(from, buffer, image, {quoted: info, thumbnail:null, caption: `${ini_mn1k}`})
+case 'celular':
+if (args.lenght < 1) return reply(`Qual celular você está procurando?`)
+teks = args.join(' ')
+anu = await fetchJson(`https://api-yogipw.herokuapp.com/api/search/gsmarena?query=${teks}`)
+const busca_celular = 
+`
+📝 Titulo: ${anu.judul}
+❗Última atualização: ${anu.rilis}
+📱 Tamanho do celular: ${anu.ukuran}
+⚡ Tipo: ${anu.type}
+🗃️ Armazenamento: ${anu.storage}
+📴 Tela: ${anu.display}
+📳 Polegada: ${anu.inchi}
+🔰 Resolução da câmera: ${anu.pixel}
+📲 Resolução do video: ${anu.videoPixel}
+💭 Ram do celular: ${anu.ram}
+👤 Hardware do celular: ${anu.chipset}
+⚠️ Bateria: ${anu.batrai}
+🔋 Tipo da bateria: ${anu.merek_batre}`
+await zero.sendMessage(from, image, {quoted: info, thumbnail:null, caption: `${busca_celular}`})
 break
 
 case 'recado':
