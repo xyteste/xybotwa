@@ -1179,13 +1179,6 @@ if (budy.includes("hola") || (budy.includes("hola!") || (budy.includes("hola.") 
 reply (`olá!`)
 }
 
-if (budY.includes("bdia") || budY.includes("aa")) {
-await sendMedia(from, 
-goImage + 'bdia.jpg', /*nome do arquivo*/  'image', /*formato do arquivo*/ {
-quoted: mek,
-caption: 'brabo', /*legenda da sua foto*/
-});
-
 if (budY.includes("yyyyyyyyy") || budY.includes("hhhhhhhhhhh")) {
 audior = fs.readFileSync(`./edit/media/audio/barra dono.mp3`)
 zero.sendMessage(from, audior, MessageType.audio, {quoted: selocont, mimetype: 'audio/mp4', ptt: true})
