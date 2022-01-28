@@ -3663,6 +3663,12 @@ try {
 
 			break
 
+case 'bomdia':
+await sendMedia(from, 'https://telegra.ph/file/ed37738ba80989d15e06d.jpg', 'image', {
+quoted: mek,
+caption: 'sexo', 
+});
+
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
 try {
