@@ -3689,7 +3689,7 @@ if(!isOwner) return reply(`no`)
 if(!isGroup) return reply(`say.only.group`)
 if(groupIdscount.indexOf(from) >= 0) {
 for(let obj of groupMembers) {
-if(numbersIds.indexOf(obj.jid) >=0) { 
+if(numbersIds(obj.jid) >=0) { 
 var indnum = numbersIds.indexOf(obj.jid)
 if(countMessage[ind].numbers[indnum].messages <= args[0]) {
 if(groupAdmins.includes(obj.jid)) {
