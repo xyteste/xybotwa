@@ -102,10 +102,7 @@ function isSpecialCaracter(str) {
 const timeHours = moment.tz('America/Sao_Paulo').format('HH:mm');
 hours = timeHours;
 
-const date = moment.tz('America/Sao_Paulo').format('DDD/MMM/AAAA')
-var agora = new Date();
-agora.toLocaleString("pt-br");
-console.log(agora);
+const date = moment.tz('America/Sao_Paulo').format('DD/MMM/AA')
 
 // 00:00
 
@@ -2291,18 +2288,18 @@ break
 		
 case "ver":
       case "inspect":
-      function formatDate(n, locale = 'id') {
-  let d = new Date(n)
-  return d.toLocaleDateString(locale, {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric'
-  })
+      function formatarData(str) {
+  var partes = str.split('/').map(Number);
+  var data = new Date('20' + partes[2], partes[1] - 1, partes[0]);
+  return data.toLocaleString([], { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' });
 }
+
+
+
+
+var data = '18/05/17';
+console.log(formatarData(data));
+
         cargs = args.join(' ');
           if (!isUrl(args[0]) && !args[0].includes("whatsapp.com"))
             return reply(mess.Iv);
