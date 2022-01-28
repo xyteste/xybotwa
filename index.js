@@ -872,23 +872,6 @@ reply('_[ ! ] Erro ao baixar e enviar mídia_')
 })
 }
 
-const isCmd = body.startsWith(prefix)
-const sender = isGroup ? info.participant : info.key.remoteJid
-let senderr = info.key.fromMe ? conn.user.jid : info.key.remoteJid.endsWith('@g.us') ? info.participant : info.key.remoteJid
-
-const issupre = supre.includes(sender)
-
-banChats = true
-
-//=========(ANTIPV-QUE-SÓ-FALA)==========\\
-
-if(isCmd && !isGroup && !isOwner && !issupre && !info.key.fromMe && banChats === true) return reply(`Somente pode ser utilizado em Grupo`)
-const atibot = info.isBaileys
-if (atibot === true) return 
-
-
-//======================================\\
-
 //#lista
 const listmsg = (from, title, desc, list) => { 
 try {
