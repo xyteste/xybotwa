@@ -102,7 +102,10 @@ function isSpecialCaracter(str) {
 const timeHours = moment.tz('America/Sao_Paulo').format('HH:mm');
 hours = timeHours;
 
-const date = moment.tz('America/Sao_Paulo').format('DD/MM/YY');
+const date = moment.tz('America/Sao_Paulo').format('DDD/MMM/AAAA')
+var agora = new Date();
+agora.toLocaleString("pt-br");
+console.log(agora);
 
 // 00:00
 
@@ -1193,7 +1196,7 @@ reply (`aoba!`)
 }
 
 if (budy.includes("hola") || (budy.includes("hola!") || (budy.includes("hola.") || (budy.includes("hola?"))) )){
-reply (`olá, hoje é ${time}!`)
+reply (`olá, hoje é ${date}!`)
 }
 
 if (budy.includes("bdia")){
