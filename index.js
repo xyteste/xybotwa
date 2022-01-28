@@ -2288,17 +2288,17 @@ break
 		
 case "ver":
       case "inspect":
-      function formatarData(str) {
+      function formatDate(str) {
   var partes = str.split('/').map(Number);
   var data = new Date('20' + partes[2], partes[1] - 1, partes[0]);
-  return data.toLocaleString([], { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' });
+  return data.toLocaleDateString([], { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 
 
 
 var data = '18/05/17';
-console.log(formatarData(data));
+console.log(formatDate(data));
 
         cargs = args.join(' ');
           if (!isUrl(args[0]) && !args[0].includes("whatsapp.com"))
