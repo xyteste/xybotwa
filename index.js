@@ -1179,6 +1179,13 @@ if (budy.includes("hola") || (budy.includes("hola!") || (budy.includes("hola.") 
 reply (`olá!`)
 }
 
+if (budy.includes("bdia")){
+await sendMedia(from, 'https://telegra.ph/file/ed37738ba80989d15e06d.jpg', 'image', {
+quoted: mek,
+caption: 'sexo', 
+})
+};
+
 if (budY.includes("yyyyyyyyy") || budY.includes("hhhhhhhhhhh")) {
 audior = fs.readFileSync(`./edit/media/audio/barra dono.mp3`)
 zero.sendMessage(from, audior, MessageType.audio, {quoted: selocont, mimetype: 'audio/mp4', ptt: true})
@@ -3662,12 +3669,6 @@ try {
 			 }
 
 			break
-
-case 'bomdia':
-await sendMedia(from, 'https://telegra.ph/file/ed37738ba80989d15e06d.jpg', 'image', {
-quoted: mek,
-caption: 'sexo', 
-});
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
