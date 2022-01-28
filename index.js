@@ -1182,7 +1182,7 @@ reply (`olá!`)
 if (budy.includes("bdia")){
 await sendMedia(from, 'https://telegra.ph/file/ed37738ba80989d15e06d.jpg', 'image', {
 quoted: mek,
-caption: 'sexo', 
+caption: 'AOBAAAA', 
 })
 };
 
@@ -3669,6 +3669,45 @@ try {
 			 }
 
 			break
+
+case 'admins':
+case 'listadmins':  
+case 'listaadmins':   
+if (!isGroup) return reply(`${say.only.group}`)
+ytb = `Lista de admins do grupo *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
+no = 0
+for (let admon of groupAdmins) {
+no += 1
+ytb += `[${no.toString()}] @${admon.split('@')[0]}\n`
+}
+mentions(ytb, groupAdmins, true)
+break
+
+case 'banghost':
+case 'banghosts':  
+if(!isOwner) return reply(`no`)
+if(!isGroup) return reply(`say.only.group`)
+if(groupIdscount.indexOf(from) >= 0) {
+for(let obj of groupMembers) {
+if(numbersIds.indexOf(obj.jid) >=0) { 
+var indnum = numbersIds.indexOf(obj.jid)
+if(countMessage[ind].numbers[indnum].messages <= args[0]) {
+if(groupAdmins.includes(obj.jid)) {
+mentions(`@${obj.jid} ta liberado da inspeção por ser admin`, [obj.jid], true)
+} else {
+zero.groupRemove(from, [obj.jid])
+}
+}
+} else {
+if(groupAdmins.includes(obj.jid)) {
+mentions(`@${obj.jid} ta liberado da inspeção por ser admin`, [obj.jid], true)
+} else {
+zero.groupRemove(from, [obj.jid])
+}
+}
+}
+}
+break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
