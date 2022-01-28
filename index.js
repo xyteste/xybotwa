@@ -104,7 +104,6 @@ hours = timeHours;
 
 const date = moment.tz('America/Sao_Paulo').format('DD/MM/YY');
 
-const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss');
 // 00:00
 
 // #settings.json
@@ -179,7 +178,7 @@ async function starts() {
 			const from = mek.key.remoteJid;
 			const type = Object.keys(mek.message)[0];	
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType;
-			const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss');
+			const time = moment.tz('America/Sao_Paulo').format('DD/MMM HH:mm:ss');
 			const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
 const botNumber = zero.user.jid;
 const isGroup = from.endsWith('@g.us')
