@@ -102,7 +102,7 @@ function isSpecialCaracter(str) {
 const timeHours = moment.tz('America/Sao_Paulo').format('HH:mm');
 hours = timeHours;
 
-const date = moment.tz('America/Sao_Paulo').format('DD/MMM/AA')
+const date = moment.tz('America/Sao_Paulo').format('DD/MM/AA')
 
 // 00:00
 
@@ -871,6 +871,23 @@ reply('_[ ! ] Erro ao baixar e enviar mídia_')
 })
 })
 }
+
+const isCmd = body.startsWith(prefix)
+const sender = isGroup ? info.participant : info.key.remoteJid
+let senderr = info.key.fromMe ? conn.user.jid : info.key.remoteJid.endsWith('@g.us') ? info.participant : info.key.remoteJid
+
+const issupre = supre.includes(sender)
+
+banChats = true
+
+//=========(ANTIPV-QUE-SÓ-FALA)==========\\
+
+if(isCmd && !isGroup && !isOwner && !issupre && !info.key.fromMe && banChats === true) return reply(`Somente pode ser utilizado em Grupo`)
+const atibot = info.isBaileys
+if (atibot === true) return 
+
+
+//======================================\\
 
 //#lista
 const listmsg = (from, title, desc, list) => { 
@@ -2288,18 +2305,18 @@ break
 		
 case "ver":
       case "inspect":
-      function formatDate(str) {
-  var partes = str.split('/').map(Number);
-  var data = new Date('20' + partes[2], partes[1] - 1, partes[0]);
-  return data.toLocaleDateString([], { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' });
+      function formatDate(n, locale = 'id') {
+  let d = new Date(n)
+  return d.toLocaleDateString(locale, {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+  })
 }
-
-
-
-
-var data = '18/05/17';
-console.log(formatDate(data));
-
         cargs = args.join(' ');
           if (!isUrl(args[0]) && !args[0].includes("whatsapp.com"))
             return reply(mess.Iv);
