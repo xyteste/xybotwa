@@ -55,6 +55,20 @@ const sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+const time2 = moment().tz('America/Sao_Paulo').format('HH:mm:ss')
+if(time2 > "00:00:00"){
+var tempo = 'Boa madrugada'
+                                        } 
+if(time2 > "05:30:00"){
+var tempo = 'Bom dia'
+                                        }
+if(time2 > "12:00:00"){
+var tempo = 'Boa tarde'
+                                        }
+if(time2 > "19:00:00"){
+var tempo = 'Boa noite'
+                                        }
+
 // #texto #txt
 const { menuhentai, allmenu, menufigu, menuadms, menudono, menuutils, galeria, menuesp } = require('./edit/txt/menus.js');
 const { help } = require('./edit/txt/help.js');
@@ -87,6 +101,10 @@ function isSpecialCaracter(str) {
 
 const timeHours = moment.tz('America/Sao_Paulo').format('HH:mm');
 hours = timeHours;
+
+const date = moment.tz('America/Sao_Paulo').format('DD/MM/YY');
+
+const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss');
 // 00:00
 
 // #settings.json
@@ -1176,7 +1194,7 @@ reply (`aoba!`)
 }
 
 if (budy.includes("hola") || (budy.includes("hola!") || (budy.includes("hola.") || (budy.includes("hola?"))) )){
-reply (`olá!`)
+reply (`olá, hoje é ${time}!`)
 }
 
 if (budy.includes("bdia")){
@@ -3681,32 +3699,6 @@ no += 1
 ytb += `[${no.toString()}] @${admon.split('@')[0]}\n`
 }
 mentions(ytb, groupAdmins, true)
-break
-
-case 'banghost':
-case 'banghosts':  
-if(!isOwner) return reply(`no`)
-if(!isGroup) return reply(`say.only.group`)
-if(groupIdscount.indexOf(from) >= 0) {
-for(let obj of groupMembers) {
-if(numbersIds.indexOf(obj.jid) >=0) { 
-var indnum = numbersIds.indexOf(obj.jid)
-if(countMessage[ind].numberslds[indnum].messages <= args[0]) {
-if(groupAdmins.includes(obj.jid)) {
-mentions(`@${obj.jid} ta liberado da inspeção por ser admin`, [obj.jid], true)
-} else {
-zero.groupRemove(from, [obj.jid])
-}
-}
-} else {
-if(groupAdmins.includes(obj.jid)) {
-mentions(`@${obj.jid} ta liberado da inspeção por ser admin`, [obj.jid], true)
-} else {
-zero.groupRemove(from, [obj.jid])
-}
-}
-}
-}
 break
 
 case 'recado':
