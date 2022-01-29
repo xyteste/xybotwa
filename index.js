@@ -3105,6 +3105,11 @@ await sleep(2000)
 sendDono('');
 break
 
+case 'simi': 
+query = args.join('')
+buiu = (`https://akame-api.herokuapp.com/api/simi?msg={query}&apikey=FK7njbTR`)
+reply(`${buiu}`)
+
 case 'creador':
 await reply(`
 
