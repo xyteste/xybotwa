@@ -3092,18 +3092,6 @@ case 'piada':
             reply(answer)
             addFilter(from)
             break
-
-case 'pinterest': 
-try {
-if(args.lenght < 1) return reply(`Digite o nome da imagem que vc quer buscar\nExemplo: ${prefix + command} azul`)
-query = body.slice(5)
-pin = await sendMedia(from, 'https://akame-api.herokuapp.com/api/pinterest?nome=${query}&apikey=FK7njbTR', 'image', {
-quoted: mek,
-caption: 'zenitsu',
-})
-ac = pin[Math.floor(Math.random() * pin.length)]
-};
-break
 					
 case 'dono': case 'criador':
 await reply(`
