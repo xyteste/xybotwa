@@ -3700,7 +3700,7 @@ ytb += `[${no.toString()}] @${admon.split('@')[0]}\n`
 mentions(ytb, groupAdmins, true)
 break
 
-case 'sites +18': //by: yuki
+case 'sites18': //by: yuki
 		reply (`\nhehehe :\n\nhttp://xvideos.com
 
 http://xhamster.com
