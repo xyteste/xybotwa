@@ -3095,7 +3095,7 @@ case 'piada':
 
 case 'play2': 
 if (args.length === 0) return reply(`Use assim *${prefix + command}* _O título da música a ser pesquisada_`)
-aramas = await yts(q);
+aramas = await yts(query);
 aramat = aramas.all 
 var mulaikahp = aramat[0].url							
 console.log(color('[YT PLAY MÚSICA]', 'magenta'), color(`PROCURANDO A MÚSICA NO YT`, 'yellow')) 
