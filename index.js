@@ -3092,6 +3092,29 @@ case 'piada':
             reply(answer)
             addFilter(from)
             break
+
+case 'play2': 
+if (args.length === 0) return reply(`Use assim *${prefix + command}* _O título da música a ser pesquisada_`)
+aramas = await yts(q);
+aramat = aramas.all 
+var mulaikahp = aramat[0].url							
+console.log(color('[YT PLAY MÚSICA]', 'magenta'), color(`PROCURANDO A MÚSICA NO YT`, 'yellow')) 
+ try {
+ yta(mulaikahp)
+ .then((res) => {
+ const { dl_link, thumb, title, filesizeF, filesize } = res
+ axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+ .then(async (a) => {
+ if (Number(filesize) >= 100000) return sendMediaURL(from, thumb, `*「 TOCAR MÚSICA 」*\n\n*Titulo* : ${title}\n*Extração* : mp3\n*Tamanho do arquivo* : ${filesizeF}\n*Link para dowload* : ${a.data}\n\n_Aguarde o envio do arquivo; isso pode levar alguns minutos_`)
+const captions = `*「 TOCAR MÚSICA 」*\n\n*Titulo* : ${title}\n*Extração* : mp3\n*Tamanho* : ${filesizeF}\n*Link para dowload* : ${a.data}\n\n_Aguarde o envio do arquivo; isso pode levar alguns minutos_`
+sendMediaURL(from, thumb, captions, {thumbnail: null})
+await sendMediaURL(from, dl_link).catch(() => reply('error'))
+})                
+})
+} catch (err) {
+reply(err)
+}
+break
 					
 case 'dono': case 'criador':
 await reply(`
