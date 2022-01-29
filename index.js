@@ -3097,8 +3097,7 @@ case 'pinterest':
 if(args.lenght < 1) return reply(`Digite o nome da imagem que vc quer buscar\nExemplo: ${prefix + command} azul`)
 query = body.slice(5)
 pin = await fetchJson('https://akame-api.herokuapp.com/api/pinterest?nome=${query}&apikey=FK7njbTR')
-ac = pin[Math.floor(Math.random() * pin.length)]
-buffer = await getBuffer(ac)
+ac = pin[Math.floor(Math.random() * pin.length)].url
 sendFileFromUrl(ac, image, {quoted: mek, caption: query})
 break
 					
