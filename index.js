@@ -4153,7 +4153,7 @@ break
 case 'play':
 try {
 				play = body.slice(5)
-				anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}}&apikey=apivinz`)
+				anu = await fetchJson(`https://akame-api.herokuapp.com/api/ytplay?nome=${play}&apikey=FK7njbTR`)
 				if (anu.error) return reply(anu.error)
 				buffer = await getBuffer(anu.result.thumbnail)
         sendButImage(
@@ -4223,7 +4223,7 @@ try {
 case 'playwithaudio':   
 try {
 				play = cArgs
-				anu = await fetchJson(`https://akame-api.herokuapp.com/api/ytplayv2?nome=${play}&apikey=FK7njbTR`)
+				anu = await fetchJson(`https://akame-api.herokuapp.com/api/ytplay?nome=${play}&apikey=FK7njbTR`)
 				if (anu.error) return reply(anu.error)		
 				lagu = await getBuffer(anu.result.url_audio)
 				zero.sendMessage(from, lagu, audio, {filename: `${play}.mp3`, quoted: seloaud});
