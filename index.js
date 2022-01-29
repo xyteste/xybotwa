@@ -3876,6 +3876,13 @@ http://dmm.com
 http://juicyads.com`)
 		break
 
+case 'hentaialea':
+ if (!isNsfw) return reply(`${say.only.nsfw}`)
+const henta = Math.floor(Math.random() * 48) + 1;
+ xy = fs.readFileSync(`./edit/media/image/hentai/${henta}.jpg`);
+zero.sendMessage(from, xy, image, {quoted:mek, caption: 'ihh'})
+break
+
 case 'metadinha':
 await sendMedia(from, 'https://telegra.ph/file/1693f0a7ecb9f51a2187a.jpg',  'image', {
 quoted: mek,
