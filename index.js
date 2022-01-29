@@ -3094,7 +3094,7 @@ case 'piada':
             break
 
 case 'pinterest': 
-if(args.lenght < 1) return reply(`Digite o nome da imagem que vc quer buscar\nExemplo: ${prefix + command} azul`)
+if(args.lenght == 0) return reply(`Digite o nome da imagem que vc quer buscar\nExemplo: ${prefix + command} azul`)
 query = args.join('')
 pin = await hx.pinterest(query)
 ac = pin[Math.floor(Math.random() * pin.length)]
