@@ -3877,16 +3877,17 @@ http://juicyads.com`)
 		break
 
 case 'metadinha':
-{
-    "resultado": {
-        "criador": "@breno",
-        mfe = (`"https://telegra.ph/file/1693f0a7ecb9f51a2187a.jpg"`),
-        mma = (` "https://telegra.ph/file/97b6a68d832278bdb8d6e.jpg"`),
-        "anime": "sem resultados",
-        reply(`${mfe}`)
-        await reply(`${mma}`)
-    }
-}
+await sendMedia(from, 'https://telegra.ph/file/1693f0a7ecb9f51a2187a.jpg',  'image', {
+quoted: mek,
+caption: 'feminina', 
+});
+
+await sleep(1500);
+await sendMedia(from, 'https://telegra.ph/file/97b6a68d832278bdb8d6e.jpg',  'image', {
+quoted: mek,
+caption: 'masculina', 
+});
+break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
