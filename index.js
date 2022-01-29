@@ -3107,8 +3107,22 @@ break
 
 case 'simi': 
 query = args.join('')
-buiu = (`https://akame-api.herokuapp.com/api/simi?msg={query}&apikey=FK7njbTR`)
-reply(`${buiu}`)
+anu = await fetchJson(`https://akame-api.herokuapp.com/api/simi?msg={query}&apikey=FK7njbTR`)
+pica = await getBuffer(anu.result.resposta)
+reply(`${pica}`);
+break
+
+case 'play2':  
+play2 = args.join(" ")
+anu = await fetchJson(`https://akame-api.herokuapp.com/api/ytplayv2?nome=${play2}&apikey=FK7njbTR`)
+if (anu.error) return reply(anu.error) 
+zero.sendMessage(from, 'Enviando sua música, aguarde 🎬',MessageType.text, {quoted: info} )
+infomp3 = `*Título:* ${anu.result.title}\n*Fonte:* ${anu.result.source}\n*Tamanho:* ${anu.result.size}`
+buffer = await getBuffer(anu.result.thumbnail) 
+lagu = await getBuffer(anu.result.url_audio)
+zero.sendMessage(from, buffer, image, {quoted: info, caption: infomp3})
+zero.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: info, thumbnail: null})
+break
 
 case 'creador':
 await reply(`
