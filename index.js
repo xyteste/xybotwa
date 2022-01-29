@@ -3094,8 +3094,9 @@ case 'piada':
             break
 
 case 'pinterest': 
-if(!q) return reply(`Digite o nome da imagem que vc quer buscar\nExemplo: ${prefix + command} azul`)
-pin = await hx.pinterest(q)
+if(args.lenght < 1) return reply(`Digite o nome da imagem que vc quer buscar\nExemplo: ${prefix + command} azul`)
+query = args.join('')
+pin = (`https://akame-api.herokuapp.com/api/pinterest?nome=query&apikey=FK7njbTR`)
 ac = pin[Math.floor(Math.random() * pin.length)]
 buffer = await getBuffer(ac)
 await zero.sendMessage(from, buffer, image, {quoted: info, thumbnail: null})
