@@ -4223,7 +4223,7 @@ try {
 case 'playwithaudio':   
 try {
 				play = cArgs
-				anu = await fetchJson(`https://akame-api.herokuapp.com/api/ytplayv2?nome=${play2}&apikey=FK7njbTR`)
+				anu = await fetchJson(`https://akame-api.herokuapp.com/api/ytplayv2?nome=${play}&apikey=FK7njbTR`)
 				if (anu.error) return reply(anu.error)		
 				lagu = await getBuffer(anu.result.url_audio)
 				zero.sendMessage(from, lagu, audio, {filename: `${play}.mp3`, quoted: seloaud});
