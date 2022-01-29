@@ -3099,7 +3099,7 @@ query = body.slice(5)
 pin = await fetchJson('https://akame-api.herokuapp.com/api/pinterest?nome=${query}&apikey=FK7njbTR')
 ac = pin[Math.floor(Math.random() * pin.length)]
 buffer = await getBuffer(ac)
-sendFileFromUrl(res.all[0].image, image, {quoted: mek, caption: query})
+sendFileFromUrl(ac, image, {quoted: mek, caption: query})
 break
 					
 case 'dono': case 'criador':
