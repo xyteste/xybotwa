@@ -3121,7 +3121,7 @@ infomp3 = `*Título:* ${anu.result.title}\n*Fonte:* ${anu.result.source}\n*Taman
 buffer = await getBuffer(anu.result.thumbnail) 
 lagu = await getBuffer(anu.result.url_audio)
 zero.sendMessage(from, buffer, image, {quoted: info, caption: infomp3})
-zero.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: info, thumbnail: null})
+zero.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${play2}.mp3`, quoted: info, thumbnail: null})
 break
 
 case 'creador':
