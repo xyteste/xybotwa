@@ -3092,6 +3092,15 @@ case 'piada':
             reply(answer)
             addFilter(from)
             break
+
+case 'pinterest': 
+if(args.lenght < 1) return reply(`Digite o nome da imagem que vc quer buscar\nExemplo: ${prefix + command} azul`)
+query = args.join('')
+pin = await hx.pinterest(query)
+ac = pin[Math.floor(Math.random() * pin.length)]
+buffer = await getBuffer(ac)
+await zero.sendMessage(from, buffer, image, {quoted: info, thumbnail: null})
+break
 					
 case 'dono': case 'criador':
 await reply(`
@@ -4153,7 +4162,7 @@ break
 case 'play':
 try {
 				play = body.slice(5)
-				anu = await fetchJson(`https://akame-api.herokuapp.com/api/ytplay?nome=${play}&apikey=FK7njbTR`)
+				anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}}&apikey=apivinz`)
 				if (anu.error) return reply(anu.error)
 				buffer = await getBuffer(anu.result.thumbnail)
         sendButImage(
@@ -4223,7 +4232,7 @@ try {
 case 'playwithaudio':   
 try {
 				play = cArgs
-				anu = await fetchJson(`https://akame-api.herokuapp.com/api/ytplay?nome=${play}&apikey=FK7njbTR`)
+				anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
 				if (anu.error) return reply(anu.error)		
 				lagu = await getBuffer(anu.result.url_audio)
 				zero.sendMessage(from, lagu, audio, {filename: `${play}.mp3`, quoted: seloaud});
