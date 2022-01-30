@@ -3894,16 +3894,17 @@ zero.sendMessage(from, xy, image, {quoted:mek, caption: 'ihh'})
 break
 
 case 'metadinha':
-await sendMedia(from, 'https://telegra.ph/file/1693f0a7ecb9f51a2187a.jpg',  'image', {
-quoted: mek,
-caption: 'feminina', 
-});
+try {
+let sex = await fetchJson('https://api.xteam.xyz/randomimage/ppcouple?APIKEY=55341fd29facd829')
+let xes = await getBuffer(sex.xes);
 
-await sleep(1500);
-await sendMedia(from, 'https://telegra.ph/file/97b6a68d832278bdb8d6e.jpg',  'image', {
+await zero.sendMessage(from, xes, image, {
+thumbnail: null,
 quoted: mek,
-caption: 'masculina', 
-});
+})
+} catch(e) {
+reply(e); console.log(e)
+}
 break
 
 case 'comandos':
