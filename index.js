@@ -3608,12 +3608,11 @@ case 'shentai':
 try {
       ranp = getRandom('.gif')
       rano = getRandom('.webp')
-			anu = await getBuffer(`https://nekos.life/api/v2/img/hentai`)			
-            resi = await upload(anu)            
-			exec(`wget ${resi} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			anu = await axios.get(`https://nekos.life/api/v2/img/hentai`)			
+            exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
 			  fs.unlinkSync(ranp)
 				if (err) return reply('error')
-				buffer = fs.readFileSync(rano)			
+				buffer = fs.readFileSync(rano)
 				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
 				fs.unlinkSync(rano)
 			})
