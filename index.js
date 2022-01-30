@@ -3893,19 +3893,15 @@ const henta = Math.floor(Math.random() * 48) + 1;
 zero.sendMessage(from, xy, image, {quoted:mek, caption: 'ihh'})
 break
 
-case 'metadinha':
+case 'play90':   
 try {
-let sex = await fetchJson('https://api.xteam.xyz/randomimage/ppcouple?APIKEY=55341fd29facd829')
-let xes = await getBuffer(sex.xes);
-
-await zero.sendMessage(from, xes, image, {
-thumbnail: null,
-quoted: mek,
-})
-} catch(e) {
-reply(e); console.log(e)
-}
-break
+				play = cArgs
+				anu = await fetchJson(`https://api.xteam.xyz/dl/play?lagu=${play}&APIKEY=55341fd29facd829`)
+				if (anu.error) return reply(anu.error)		
+				uke = await getBuffer(anu.result.url_audio)
+				zero.sendMessage(from, uke, audio, {filename: `${play}.mp3`, quoted: seloaud});
+        }
+				break        
 
 case 'comandos':
 reply(`${comandoxy}`)
