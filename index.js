@@ -530,6 +530,7 @@ isMultiPrefix ? t5 = ' ✓ ': t5 = ' X ';
                buttons = [{buttonId:`menu lista`, 
                buttonText:{displayText: '𝙻𝙸𝚂𝚃𝙰 𝙳𝙴 𝙼𝙴𝙽𝚄𝚂'},type:1},
                {buttonId:`help`,buttonText:{displayText:'𝙷𝙴𝙻𝙿' },type:1},
+               {buttonId:`novidades`,buttonText:{displayText:'novidades'},type:1},
                 {buttonId:`outros`,buttonText:{displayText:'𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1}
                ]
 
@@ -3909,6 +3910,7 @@ break
 
 case 'comandos':
 reply(`${comandoxy}`)
+break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
