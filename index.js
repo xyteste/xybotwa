@@ -3893,12 +3893,12 @@ const henta = Math.floor(Math.random() * 48) + 1;
 zero.sendMessage(from, xy, image, {quoted:mek, caption: 'ihh'})
 break
 
-case 'metadinha':
+case 'wpmobile':
 try {
-let sex = await fetchJson('https://api.xteam.xyz/randomimage/ppcouple?APIKEY=55341fd29facd829')
-let xes = await getBuffer(sex.xes);
+let blow = await fetchJson('https://api.xteam.xyz/randomimage/wpmobile?APIKEY=55341fd29facd829')
+let blowjob = await getBuffer(blow.blowjob);
 
-await zero.sendMessage(from, xes, image, {
+await zero.sendMessage(from, blowjob, image, {
 thumbnail: null,
 quoted: mek,
 })
