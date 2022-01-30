@@ -5152,8 +5152,18 @@ break
 
 
 case 'blowjob':
-if (!isNsfw) return reply(`${say.only.nsfw}`)
-blowjob();
+try {
+	if (!isNsfw) return reply(`${say.only.nsfw}`)
+let blow = await fetchJson('https://momonga-api.herokuapp.com/hentai/blowjob')
+let blowjob = await getBuffer(blow.blowjob);
+
+await zero.sendMessage(from, blowjob, image, {
+thumbnail: null,
+quoted: mek,
+})
+} catch(e) {
+reply(e); console.log(e)
+}
 break
 
 
