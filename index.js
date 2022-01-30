@@ -477,6 +477,10 @@ message: {
 
 ////// fim dos verificados
 
+//mais consts
+
+const comandoxy = require('./edit/txt/comandos.js');
+
 // #functions //#home
 
 //#antipv
@@ -3168,7 +3172,7 @@ pru += `@${_.split('@')[0]}\n`
 }
 blocked.push(`${mentioned}`)
 fs.writeFileSync('./docs/json/blocked.json', JSON.stringify(blocked))
-susp = `🚫@${mentioned[0].split('@')[0]} foi bloqueado e não poderá mais usar os comandos do bot🚫`
+susp = `🚫@${mentioned[0].split('@')[0]} foi bloqueado e não poderá mais usar os comandos do bot??`
 mentions(`${susp}`, mentioned, true)   
 
 break
@@ -3604,7 +3608,7 @@ case 'shentai':
 try {
       ranp = getRandom('.gif')
       rano = getRandom('.webp')
-			anu = await getBuffer(`https://akame-api.herokuapp.com/api/hentaigif?nome=hentai&apikey=FK7njbTR`)			
+			anu = await getBuffer(`https://api.lolhuman.xyz/api/random2/classic?apikey=${lolh}`)			
             resi = await upload(anu)            
 			exec(`wget ${resi} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
 			  fs.unlinkSync(ranp)
@@ -3902,6 +3906,9 @@ quoted: mek,
 caption: 'masculina', 
 });
 break
+
+case 'comandos':
+reply(`${comandoxy}`)
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
