@@ -27,8 +27,6 @@ const {
 } = require('@adiwajshing/baileys');
 ///
 
-const { pinterest } = require('./docs/lib/pinterest')!
-const c = args.join(' ');
 const { upload } = require("./docs/lib/ytdl");
 const axios = require('axios').default;
 const { isFiltered, addFilter } = require('./docs/lib/antispam')
@@ -3910,11 +3908,9 @@ caption: 'masculina',
 break
 
 case 'pinterest':
-if (!c) return reply('qué estás buscando?')
-reply(mess.wait)
-
-
-pinterest(`${c}`).then( data => {
+if (args.length === 0) return reply('qué estás buscando?')
+sexo = args.join('')
+await axios.get('https://api.dapuhy.xyz/api/search/pinterest?query=${sexo}&apikey=DDGh42lBqY')
 const amsulah = data.result
 const pimterest = amsulah[Math.floor(Math.random() * amsulah.length)]
 sendMediaURL (from ,pimterest)
