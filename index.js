@@ -3907,14 +3907,8 @@ caption: 'masculina',
 });
 break
 
-case 'pinterest':
-if (args.length === 0) return reply('qué estás buscando?')
-sexo = args.join('')
-await axios.get('https://api.dapuhy.xyz/api/search/pinterest?query=${sexo}&apikey=DDGh42lBqY')
-const amsulah = data.result
-const pimterest = amsulah[Math.floor(Math.random() * amsulah.length)]
-sendMediaURL (from ,pimterest)
-})
+case 'comandos':
+reply(`${comandoxy}`)
 break
 
 case 'recado':
