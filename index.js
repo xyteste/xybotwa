@@ -3608,7 +3608,7 @@ case 'shentai':
 try {
       ranp = getRandom('.gif')
       rano = getRandom('.webp')
-			anu = await getBuffer(`https://api.lolhuman.xyz/api/random2/classic?apikey=${lolh}`)			
+			anu = await getBuffer(`https://api.lolhuman.xyz/api/random2/classic?apikey=KurrXd`)			
             resi = await upload(anu)            
 			exec(`wget ${resi} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
 			  fs.unlinkSync(ranp)
