@@ -3894,7 +3894,6 @@ zero.sendMessage(from, xy, image, {quoted:mek, caption: 'ihh'})
 break
 
 case 'wpmobile':
-try {
 let blow = await fetchJson('https://api.xteam.xyz/randomimage/wpmobile?APIKEY=55341fd29facd829')
 let blowjob = await getBuffer(blow.blowjob);
 
@@ -3902,13 +3901,25 @@ await zero.sendMessage(from, blowjob, image, {
 thumbnail: null,
 quoted: mek,
 })
-} catch(e) {
-reply(e); console.log(e)
-}
 break
 
 case 'comandos':
 reply(`${comandoxy}`)
+break
+
+case 'cosplay':
+try {
+let cos = await fetchJson('https://momonga-api.herokuapp.com/cosplay')
+let cosplayy = await getBuffer(cos.cosplay);
+
+await zero.sendMessage(from, cosplayy, image, {
+thumbnail: null,
+quoted: mek,
+})
+} catch(e) {
+console.log(e)
+reply('Erro ao enviar imagem');
+}
 break
 
 case 'recado':
@@ -5153,6 +5164,7 @@ break
 
 
 case 'blowjob':
+for (let i =0; i < 10; i++){
 try {
 	if (!isNsfw) return reply(`${say.only.nsfw}`)
 let blow = await fetchJson('https://momonga-api.herokuapp.com/hentai/blowjob')
@@ -5164,6 +5176,7 @@ quoted: mek,
 })
 } catch(e) {
 reply(e); console.log(e)
+}
 }
 break
 
