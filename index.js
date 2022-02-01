@@ -4007,44 +4007,44 @@ case 'top5mangas':
 anu = await fetchJson(`http://x-restapi.herokuapp.com/api/topmanga?apikey=BETA`, {
 method: 'get'
 })
-n = JSON.parse(JSON.stringify(anu.data));
-top = n[Math.floor(Math.random() * n.length)];
-topp = n[Math.floor(Math.random() * n.length)];
-toppp = n[Math.floor(Math.random() * n.length)];
-topppp = n[Math.floor(Math.random() * n.length)];
-toppppp = n[Math.floor(Math.random() * n.length)];
-topi = (top.Judul)
-topis = (top.Score)
+n1 = JSON.parse(JSON.stringify(anu.data));
+top1 = n1[Math.floor(Math.random() * n1.length)];
+topp1 = n1[Math.floor(Math.random() * n1.length)];
+toppp1 = n1[Math.floor(Math.random() * n1.length)];
+topppp1 = n1[Math.floor(Math.random() * n1.length)];
+toppppp1 = n1[Math.floor(Math.random() * n1.length)];
+topi1 = (top1.Judul)
+topis1 = (top1.Score)
 
-topii = (topp.Judul)
-topiss = (topp.Score)
+topii1 = (topp1.Judul)
+topiss1 = (topp1.Score)
 
-topiii = (toppp.Judul)
-topisss = (toppp.Score)
+topiii1 = (toppp1.Judul)
+topisss1 = (toppp1.Score)
 
-topiiii = (topppp.Judul)
-topissss = (topppp.Score)
+topiiii1 = (topppp1.Judul)
+topissss1 = (topppp1.Score)
 
-topiiiii = (toppppp.Judul)
-topisssss = (toppppp.Score)
-const topanune = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
-zero.sendMessage(from, topanune, image, {
+topiiiii1 = (toppppp1.Judul)
+topisssss1 = (toppppp1.Score)
+const topanune1 = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
+zero.sendMessage(from, topanune1, image, {
 quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
 ◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
-${topi}
-Puntaje : ${topis} / 10
+${topi1}
+Puntaje : ${topis1} / 10
 ◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
-${topii}
-Puntaje : ${topiss} / 10
+${topii1}
+Puntaje : ${topiss1} / 10
 ◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
-${topiii}
-Puntaje : ${topisss} / 10
+${topiii1}
+Puntaje : ${topisss1} / 10
 ◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
-${topiiii}
-Puntaje : ${topissss} / 10
+${topiiii1}
+Puntaje : ${topissss1} / 10
 ◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
-${topiiiii}
-Puntaje : ${topisssss} / 10
+${topiiiii1}
+Puntaje : ${topisssss1} / 10
 ◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
            _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_`
 })
