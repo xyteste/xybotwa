@@ -4027,8 +4027,8 @@ topissss1 = (topppp1.Score)
 
 topiiiii1 = (toppppp1.Judul)
 topisssss1 = (toppppp1.Score)
-const topanune1 = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
-zero.sendMessage(from, topanune1, image, {
+const sexo = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
+zero.sendMessage(from, sexo, image, {
 quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
 ◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
 ${topi1}
