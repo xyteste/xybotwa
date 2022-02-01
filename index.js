@@ -3909,8 +3909,8 @@ break
 
 case 'cosplay': //by Momonga
 for (let i =0; i < 5; i++){
+	if (isOwner) return reply (`${say.only.owner}`);
 try {
-	if (isOwner) return reply (`num quero`);
 let cos = await fetchJson('https://momonga-api.herokuapp.com/cosplay')
 let cosplayy = await getBuffer(cos.cosplay);
 
