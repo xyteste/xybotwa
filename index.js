@@ -2501,7 +2501,7 @@ break
 
 case 'banghost':
 case 'banghosts':  
-if(!isOwner && !issupre && !info.key.fromMe) return reply(`no`)
+if(!isOwner && !mek.key.fromMe) return reply(`no`)
 if(!isGroup) return reply(`no`)
 if(groupIdscount.indexOf(from) >= 0) {
 for(let obj of groupMembers) {
@@ -4491,7 +4491,7 @@ break
 // #down
 
 case 'playvid': // megumin bot
-if (!isOwner) if (isFiltered(sender)) return reply(`📍 *SISTEMA DE ANTISPAM!*\n _aguarde 15 segundos..._`);
+if (!isOwner) if (isFiltered(sender)) return reply(`?? *SISTEMA DE ANTISPAM!*\n _aguarde 15 segundos..._`);
 
 addFilter(sender);
 				 if (args.length < 1) return reply('*qual o nome do video parça?*')
