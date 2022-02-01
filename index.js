@@ -3908,7 +3908,7 @@ reply(`${comandoxy}`)
 break
 
 case 'cosplay': //by Momonga
-if (!isOwner) return reply (`${say.only.owner}`)
+if (!isOwner) return reply (`num quero`)
 for (let i =0; i < 5; i++){
 try {
 let cos = await fetchJson('https://momonga-api.herokuapp.com/cosplay')
