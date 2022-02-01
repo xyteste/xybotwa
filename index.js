@@ -3953,8 +3953,8 @@ sendFileFromUrl(res[0].link, audio, {quoted: mek, mimetype: 'audio/mp4', filenam
 }
 break
 
-case 'topanime':
-case 'topanimes':
+case 'top5anime':
+case 'top5animes':
 anu = await fetchJson(`https://x-restapi.herokuapp.com/api/topanime?apikey=BETA`, {
 method: 'get'
 })
@@ -3978,7 +3978,7 @@ topissss = (topppp.Score)
 
 topiiiii = (toppppp.Judul)
 topisssss = (toppppp.Score)
-const topanune = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
+const topanune = await getBuffer('https://telegra.ph/file/5c6429abd461d868b4f49.jpg')
 zero.sendMessage(from, topanune, image, {
 quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙰𝙽𝙸𝙼𝙴𝚂_
 ◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈  
@@ -4050,41 +4050,6 @@ Pontuação : ${topisssss1} / 10
 })
 
 break
-
-case 'playboy':		  
-  if (args.length < 1) return reply('Escribe el nombre')
-  reply(`indo`)
-
-
-  play = body.slice(6)
-  
-  anu = await fetchJson(`http://x-restapi.herokuapp.com/api/play?q=${play}&apikey=BETA`)
-  if (anu.error) return reply(anu.error)
-  infomp3 = `❒═════❬ *𝐏𝐋𝐀𝐘* ❭═════╾❒
-├‣ *Nombre* : 
-┴
-${anu.result.title}
-┬
-├‣ *Fuente* : 
-┴
-${anu.result.source}
-┬
-├‣ *Tamaño* : 
-┴
-${anu.result.size}
-┬
-├‣ *Link* :
-┴
-*${anu.result.url_audio}
-┬
-❒═════════════════╾❒`
-  buffer = await getBuffer(anu.result.thumbnail)
-  lagu = await getBuffer(anu.result.url_audio)
-  zero.sendMessage(from, buffer, image, {
-quoted: mek, caption: infomp3 })
-  zero.sendMessage(from, lagu, audio, {
-mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek})
-          break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
