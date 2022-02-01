@@ -88,6 +88,7 @@ const antifake = JSON.parse(fs.readFileSync('./docs/json/antifake.json'));
 const whitelist = JSON.parse(fs.readFileSync('./docs/json/whitelist.json'));
 const globalmute = JSON.parse(fs.readFileSync('./docs/json/globalmute.json'));
 const blacklist = JSON.parse(fs.readFileSync('./docs/json/blacklist.json'));
+const antidoc = JSON.parse(fs.readFileSync('./docs/json/antidoc.json'))
 
 
 function isSpecialCaracter(str) { 
@@ -186,6 +187,7 @@ const isGroup = from.endsWith('@g.us')
 var sender = isGroup ? mek.participant : mek.key.remoteJid;
 
 //#is
+const Antidoc = isGroup ? antidoc.includes(from) : false;
 const isMultiPrefix = isGroup ? multiprefix.includes(from) : false
 const isAntiPv = antipv.includes('online');
 const isWelkom = isGroup ? welkom.includes(from) : false;		
@@ -2473,6 +2475,27 @@ if (args.length < 1) return reply(`?`);
 blockcmd.splice(cArgs);
 fs.writeFileSync('./docs/json/blockcmd.json', JSON.stringify(blockcmd))
 reply(`comando ${cArgs} foi desbloqueado`)
+break
+
+case 'antidocumento':
+if (!isGroup) return reply(` SOMENTE EM GRUPOS`)
+if (!isBotGroupAdmins) return reply(` O BOT PRECISA SER ADMIN`)
+try {														 
+if (args.length < 1) return reply('1 pra ativar, 0 pra desligar')
+if (Number(args[0]) === 1) {
+antidoc.push(from)
+fs.writeFileSync('./docs/json/antidoc.json', JSON.stringify(antidoc))
+reply('Ativou com sucesso o recurso de anti documento neste grupo✔️')
+} else if (Number(args[0]) === 0) {
+antidoc.splice(from, 1)
+fs.writeFileSync('./docs/json/antidoc.json', JSON.stringify(antidoc))
+reply('Desativou com sucesso o recurso de antidocumento neste grupo✔️')
+ } else {
+reply('1 para ativar, 0 para desativar')
+}
+} catch {
+reply('Deu erro, tente novamente :/')
+}
 break
 		
 case 'antipv':
@@ -6250,6 +6273,22 @@ reply(`${groupDesc}`);
 	}	
 
 // antilink
+
+if (document.includes(type)){
+if (!Antidoc) return
+if (!botNumber) return
+if (isGroupAdmins) return reply(`hummmm documento`)     
+reply(`Não permitimos envio de documentos no grupo, por questões de segurança de travas e etc..., então por conta disso, terei que te remover, qualquer dúvida,entre em contato com algum adm.`)
+zero.groupSettingChange(from, GroupSettingChange.messageSend, true)		
+setTimeout(() =>{
+zero.groupRemove(from, [sender])
+}, 1000)
+setTimeout( () => {
+zero.groupSettingChange(from, GroupSettingChange.messageSend, false)
+}, 2000)
+clear = `🗑️\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🗑️\n❲❗❳ *Lɪᴍᴘᴇᴢᴀ ᴅᴇ Cʜᴀᴛ Cᴏɴᴄʟᴜɪ́ᴅᴀ* ✅`
+zero.sendMessage(from, clear , MessageType.text, {quoted: selo, contextInfo : { forwardingScore: 500, isForwarded:true}})
+}
 
 if (isAntiPalavrão) if (budY.includes("piroca") ||(budY.includes("filho da puta") || (budY.includes("toma no cu") || (budY.includes("no seu cu") || (budY.includes("toma no seu cú") || (budY.includes("teu cú") ||  (budY.includes("teu cu") || (budY.includes("no seu cú") || (budY.includes("tmnc") || (budY.includes("arrombado") || (budY.includes("fudid") || (budY.includes(" gore") || (budY.includes("bosta") || (budY.includes("fdp") || (budY.includes("merda") || (budY.includes("buceta") || (budY.includes("do seu cu") || (budY.includes("do seu cú") || (budY.includes("puta")))))))))))))))))))){
 if (isOwner) if (isGroupAdmins) {
