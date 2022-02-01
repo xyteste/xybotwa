@@ -3980,24 +3980,24 @@ topiiiii = (toppppp.Judul)
 topisssss = (toppppp.Score)
 const topanune = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
 zero.sendMessage(from, topanune, image, {
-quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
+quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙰𝙽𝙸𝙼𝙴𝚂_
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈  
 ${topi}
-Puntaje : ${topis} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+Pontuação : ${topis} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
 ${topii}
-Puntaje : ${topiss} / 10
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+Pontuação : ${topiss} / 10
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈
 ${topiii}
-Puntaje : ${topisss} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+Pontuação : ${topisss} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
 ${topiiii}
-Puntaje : ${topissss} / 10
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+Pontuação : ${topissss} / 10
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈
 ${topiiiii}
-Puntaje : ${topisssss} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
-           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_`
+Pontuação : ${topisssss} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
+           _𝚃𝙾𝙿 5 𝙰𝙽𝙸𝙼𝙴𝚂_`
 })
 
 break
@@ -4030,26 +4030,61 @@ topisssss1 = (toppppp1.Score)
 const sexo = await getBuffer('https://telegra.ph/file/2df433596a0e6f822b8cd.jpg')
 zero.sendMessage(from, sexo, image, {
 quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈  
 ${topi1}
-Puntaje : ${topis1} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+Pontuação : ${topis1} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
 ${topii1}
-Puntaje : ${topiss1} / 10
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+Pontuação : ${topiss1} / 10
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈
 ${topiii1}
-Puntaje : ${topisss1} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+Pontuação : ${topisss1} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
 ${topiiii1}
-Puntaje : ${topissss1} / 10
-◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+Pontuação : ${topissss1} / 10
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈
 ${topiiiii1}
-Puntaje : ${topisssss1} / 10
-◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+Pontuação : ${topisssss1} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
            _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_`
 })
 
 break
+
+case 'playboy':		  
+  if (args.length < 1) return reply('Escribe el nombre')
+  reply(`indo`)
+
+
+  play = body.slice(6)
+  
+  anu = await fetchJson(`http://x-restapi.herokuapp.com/api/play?q=${play}&apikey=BETA`)
+  if (anu.error) return reply(anu.error)
+  infomp3 = `❒═════❬ *𝐏𝐋𝐀𝐘* ❭═════╾❒
+├‣ *Nombre* : 
+┴
+${anu.result.title}
+┬
+├‣ *Fuente* : 
+┴
+${anu.result.source}
+┬
+├‣ *Tamaño* : 
+┴
+${anu.result.size}
+┬
+├‣ *Link* :
+┴
+*${anu.result.url_audio}
+┬
+❒═════════════════╾❒`
+  buffer = await getBuffer(anu.result.thumbnail)
+  lagu = await getBuffer(anu.result.url_audio)
+  zero.sendMessage(from, buffer, image, {
+quoted: mek, caption: infomp3 })
+  zero.sendMessage(from, lagu, audio, {
+mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek})
+          break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
