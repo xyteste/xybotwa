@@ -2286,7 +2286,10 @@ break
 /////
 
 case 'ping':
-reply('🏓 pong')
+aki = `🏓 pong`
+const timestampi = speed();
+					const latensyi = speed() - timestampi
+					reply(`${aki}\nPing: ${latensyi.toFixed(4)} Segundos`)
 break
 		
 		
