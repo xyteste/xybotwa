@@ -3925,6 +3925,34 @@ reply('Erro ao enviar imagem');
 }
 break
 
+case 'baixe':
+addFilter(from) 
+if (args.length < 1) return reply(`teste`)
+teks = args.join(' ')
+reply(`aguarde`)
+if (!teks.endsWith("-doc")){
+res = await yts(`${teks}`).catch(e => {
+enviar('_[ ! ] O erro de consulta inserido não existe_')
+})
+let thumbInfo = `❒「  *Youtube Search*  」
+├ *Título :* ${res.all[0].title}
+├ *ID de vídeo :* ${res.all[0].videoId}
+├ *Carregado em :* ${res.all[0].ago}
+├ *Visualizações :* ${res.all[0].views}
+├ *Duração :* ${res.all[0].timestamp}
+├ *Canal :* ${res.all[0].author.name}
+└ *Link do canal :* ${res.all[0].author.url}
+
+*_Aguarde o processo de upload....._*
+`
+sendFileFromUrl(res.all[0].image, image, {quoted: mek, caption: thumbInfo})
+res = await y2mateA(res.all[0].url).catch(e => {
+enviar('_[ ! ] Erro ao entrar no Y2mate Web * Tente repetir*_')
+})
+sendFileFromUrl(res[0].link, audio, {quoted: mek, mimetype: 'audio/mp4', filename: res[0].output})
+}
+break
+
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
 try {
