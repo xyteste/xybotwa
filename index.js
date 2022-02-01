@@ -3953,14 +3953,54 @@ sendFileFromUrl(res[0].link, audio, {quoted: mek, mimetype: 'audio/mp4', filenam
 }
 break
 
-case 'frmotivacion': 
-		case 'frasesmotivadoras':
-		case 'motivacion':
-					anu = await fetchJson(`https://x-restapi.herokuapp.com/api/random-motivasi?apikey=BETA`)
-					anis = (anu.motivasi)
-	anuu = await fetchJson(`https://api.lolhuman.xyz/api/translate/auto/id?apikey=a0cdbc2b856e5a1d041ff2aa&text=${anis}`)
-					reply(`🎊️𝐅𝐫𝐚𝐬𝐞𝐬 𝐦𝐨𝐭𝐢𝐯𝐚𝐜𝐢𝐨𝐧𝐚𝐥𝐞𝐬🎊 : ${anuu.result.translated}`)
-					break
+case 'topanime':
+case 'topanimes':
+anu = await fetchJson(`https://x-restapi.herokuapp.com/api/topanime?apikey=BETA`, {
+method: 'get'
+})
+n = JSON.parse(JSON.stringify(anu.data));
+top = n[Math.floor(Math.random() * n.length)];
+topp = n[Math.floor(Math.random() * n.length)];
+toppp = n[Math.floor(Math.random() * n.length)];
+topppp = n[Math.floor(Math.random() * n.length)];
+toppppp = n[Math.floor(Math.random() * n.length)];
+topi = (top.Judul)
+topis = (top.Score)
+
+topii = (topp.Judul)
+topiss = (topp.Score)
+
+topiii = (toppp.Judul)
+topisss = (toppp.Score)
+
+topiiii = (topppp.Judul)
+topissss = (topppp.Score)
+
+topiiiii = (toppppp.Judul)
+topisssss = (toppppp.Score)
+const topanune = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
+cnf.sendMessage(from, topanune, image, {
+quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
+${topi}
+Puntaje : ${topis} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+${topii}
+Puntaje : ${topiss} / 10
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+${topiii}
+Puntaje : ${topisss} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+${topiiii}
+Puntaje : ${topissss} / 10
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+${topiiiii}
+Puntaje : ${topisssss} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_`
+})
+
+break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
