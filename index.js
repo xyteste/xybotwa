@@ -3953,6 +3953,15 @@ sendFileFromUrl(res[0].link, audio, {quoted: mek, mimetype: 'audio/mp4', filenam
 }
 break
 
+case 'frmotivacion': 
+		case 'frasesmotivadoras':
+		case 'motivacion':
+					anu = await fetchJson(`https://x-restapi.herokuapp.com/api/random-motivasi?apikey=BETA`)
+					anis = (anu.motivasi)
+	anuu = await fetchJson(`https://api.lolhuman.xyz/api/translate/auto/id?apikey=a0cdbc2b856e5a1d041ff2aa&text=${anis}`)
+					reply(`🎊️𝐅𝐫𝐚𝐬𝐞𝐬 𝐦𝐨𝐭𝐢𝐯𝐚𝐜𝐢𝐨𝐧𝐚𝐥𝐞𝐬🎊 : ${anuu.result.translated}`)
+					break
+
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
 try {
