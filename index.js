@@ -29,6 +29,7 @@ const {
 
 const { upload } = require("./docs/lib/ytdl");
 const axios = require('axios').default;
+const speed = require('performance-now');
 const { isFiltered, addFilter } = require('./docs/lib/antispam')
 const { isFiltered2, addFilter2 } = require('./docs/lib/antispam2');
 const { spinOn, spinLoad } = require ('./docs/functions/spinner.js');
