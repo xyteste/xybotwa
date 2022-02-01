@@ -498,7 +498,6 @@ setTimeout( () => {
 
 //antiimg
 if(isAntiImg && isBotGroupAdmins && type == MessageType.image) {
-if (info.key.fromMe) return
 if(isGroupAdmins) return zero.sendMessage(from,'*mensagem proibida detectada, porém é admin logo a punição será anulada*', MessageType.text, {quoted: info})
 await zero.sendMessage(from, '*mensagem proibida detectada, banindo...*',  MessageType.text, {quoted: info})
 setTimeout(async function () {
