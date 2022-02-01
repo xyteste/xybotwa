@@ -2860,13 +2860,13 @@ gadop = `${Math.floor(Math.random() * 100)}`
 const programa = Math.ceil(Math.random() * 10000)
 buffer = await getBuffer(ppimg)
 texttto = `
-*Nome:* ${pushname}
-*Bio:* ${getBio.status}
-*Número:* wa.me//${sender.split("@")[0]}
-*Nível gado* : *${nivelgador}${nivelgado2r}%*
-*Nível puta* : *${putar}${putar2}%*
-*Nível de gostosura* : *${gostosurar}${gostosurar2}%*
-*Valor do programa* : *R$${programa}*
+*🗒️ Nome:* ${pushname}
+*📍 Status:* ${getBio.status}
+*📱 Número:* wa.me//${sender.split("@")[0]}
+*🤠 Nível gado* : *${nivelgador}${nivelgado2r}%*
+*💃 Nível puta* : *${putar}${putar2}%*
+*🥴 Nível de gostosura* : *${gostosurar}${gostosurar2}%*
+*🍼 Valor do programa* : *R$${programa}*
 `
 await zero.sendMessage(from, buffer, image, {caption: texttto, quoted: selocont})
 break
@@ -3908,7 +3908,7 @@ reply(`${comandoxy}`)
 break
 
 case 'cosplay': //by Momonga
-if (isOwner) return reply (`${say.only.owner}`);
+if (!isOwner) return reply (`${say.only.owner}`)
 for (let i =0; i < 5; i++){
 try {
 let cos = await fetchJson('https://momonga-api.herokuapp.com/cosplay')
