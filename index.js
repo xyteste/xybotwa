@@ -3979,7 +3979,7 @@ topissss = (topppp.Score)
 topiiiii = (toppppp.Judul)
 topisssss = (toppppp.Score)
 const topanune = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
-cnf.sendMessage(from, topanune, image, {
+zero.sendMessage(from, topanune, image, {
 quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
 ◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
 ${topi}
