@@ -3907,7 +3907,8 @@ case 'comandos':
 reply(`${comandoxy}`)
 break
 
-case 'cosplay':
+case 'cosplay': //by Momonga
+for (let i =0; i < 5; i++){
 try {
 let cos = await fetchJson('https://momonga-api.herokuapp.com/cosplay')
 let cosplayy = await getBuffer(cos.cosplay);
@@ -3919,6 +3920,7 @@ quoted: mek,
 } catch(e) {
 console.log(e)
 reply('Erro ao enviar imagem');
+}
 }
 break
 
