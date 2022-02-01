@@ -4027,7 +4027,7 @@ topissss1 = (topppp1.Score)
 
 topiiiii1 = (toppppp1.Judul)
 topisssss1 = (toppppp1.Score)
-const sexo = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
+const sexo = await getBuffer('https://telegra.ph/file/2df433596a0e6f822b8cd.jpg')
 zero.sendMessage(from, sexo, image, {
 quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_
 ◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
