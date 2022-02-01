@@ -4002,6 +4002,55 @@ Puntaje : ${topisssss} / 10
 
 break
 
+case 'top5manga':
+case 'top5mangas':
+anu = await fetchJson(`http://x-restapi.herokuapp.com/api/topmanga?apikey=BETA`, {
+method: 'get'
+})
+n = JSON.parse(JSON.stringify(anu.data));
+top = n[Math.floor(Math.random() * n.length)];
+topp = n[Math.floor(Math.random() * n.length)];
+toppp = n[Math.floor(Math.random() * n.length)];
+topppp = n[Math.floor(Math.random() * n.length)];
+toppppp = n[Math.floor(Math.random() * n.length)];
+topi = (top.Judul)
+topis = (top.Score)
+
+topii = (topp.Judul)
+topiss = (topp.Score)
+
+topiii = (toppp.Judul)
+topisss = (toppp.Score)
+
+topiiii = (topppp.Judul)
+topissss = (topppp.Score)
+
+topiiiii = (toppppp.Judul)
+topisssss = (toppppp.Score)
+const topanune = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
+zero.sendMessage(from, topanune, image, {
+quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
+${topi}
+Puntaje : ${topis} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+${topii}
+Puntaje : ${topiss} / 10
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+${topiii}
+Puntaje : ${topisss} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+${topiiii}
+Puntaje : ${topissss} / 10
+◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈
+${topiiiii}
+Puntaje : ${topisssss} / 10
+◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
+           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_`
+})
+
+break
+
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
 try {
