@@ -4029,7 +4029,7 @@ topiiiii1 = (toppppp1.Judul)
 topisssss1 = (toppppp1.Score)
 const sexo = await getBuffer('https://i.ibb.co/Q9JbhTQ/468-FA2-F1-8-F51-4-C77-A799-F7-EBCBAB05-C4-1.jpg')
 zero.sendMessage(from, sexo, image, {
-quoted: mek, caption: `ᷝ           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_
+quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_
 ◈ ━━━━━ ◈❮🎊❯◈ ━━━━━ ◈  
 ${topi1}
 Puntaje : ${topis1} / 10
@@ -4046,7 +4046,7 @@ Puntaje : ${topissss1} / 10
 ${topiiiii1}
 Puntaje : ${topisssss1} / 10
 ◈ ━━━━━ ◈❮❄️❯◈ ━━━━━ ◈
-           _𝚻𝚯𝚸 𝟓 𝚫𝚴𝚰𝚳𝚬𝐒_`
+           _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_`
 })
 
 break
