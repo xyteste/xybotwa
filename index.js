@@ -88,7 +88,8 @@ const antifake = JSON.parse(fs.readFileSync('./docs/json/antifake.json'));
 const whitelist = JSON.parse(fs.readFileSync('./docs/json/whitelist.json'));
 const globalmute = JSON.parse(fs.readFileSync('./docs/json/globalmute.json'));
 const blacklist = JSON.parse(fs.readFileSync('./docs/json/blacklist.json'));
-const antidoc = JSON.parse(fs.readFileSync('./docs/json/antidoc.json'))
+const antidoc = JSON.parse(fs.readFileSync('./docs/json/antidoc.json'));
+const antiimg = JSON.parse(fs.readFileSync('./docs/json/antiimg.json'));
 
 
 function isSpecialCaracter(str) { 
@@ -188,6 +189,7 @@ var sender = isGroup ? mek.participant : mek.key.remoteJid;
 
 //#is
 const Antidoc = isGroup ? antidoc.includes(from) : false;
+const isAntiImg = isGroup ? antiimg.includes(from) : false;
 const isMultiPrefix = isGroup ? multiprefix.includes(from) : false
 const isAntiPv = antipv.includes('online');
 const isWelkom = isGroup ? welkom.includes(from) : false;		
@@ -493,6 +495,17 @@ setTimeout( () => {
  zero.blockUser(sender, 'add')
  }, 5000)
 }
+
+//antiimg
+if(isAntiImg && isBotGroupAdmins && type == MessageType.image) {
+if (info.key.fromMe) return
+if(isGroupAdmins) return zero.sendMessage(from,'*mensagem proibida detectada, porém é admin logo a punição será anulada*', MessageType.text, {quoted: info})
+await zero.sendMessage(from, '*mensagem proibida detectada, banindo...*',  MessageType.text, {quoted: info})
+setTimeout(async function () {
+zero.groupRemove(from, [sender])
+}, 1000)
+}
+
 ///
 
 if (isGlobalMute) if (!isOwner) return;
@@ -2495,6 +2508,26 @@ reply('1 para ativar, 0 para desativar')
 }
 } catch {
 reply('Deu erro, tente novamente :/')
+}
+break
+
+case 'antiimg':
+if (!isGroup) return reply(`SOMENTE EM GRUPOS`)
+if (!isGroupAdmins) return reply(`no`)
+if (!isBotGroupAdmins) return reply(`O BOT PRECISA SER ADMIN`)
+if (args.length < 1) return reply('Hmmmm')
+if (Number(args[0]) === 1) {
+if (isAntiImg) return reply('Já Esta ativo')
+antiimg.push(from)
+fs.writeFileSync('./docs/json/antiimg.json', JSON.stringify(antiimg))
+reply('Ativou com sucesso o recurso de anti imagem neste grupo✔️')
+} else if (Number(args[0]) === 0) {
+if (!isAntiImg) return reply('Ja esta Desativado.')
+antiimg.splice(from, 1)
+fs.writeFileSync('./docs/json/antiimg.json', JSON.stringify(antiimg))
+reply('Desativou com sucesso o recurso de anti imagem neste grupo✔️')
+} else {
+reply('1 para ativar, 0 para desativar')
 }
 break
 		
