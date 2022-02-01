@@ -89,7 +89,6 @@ const whitelist = JSON.parse(fs.readFileSync('./docs/json/whitelist.json'));
 const globalmute = JSON.parse(fs.readFileSync('./docs/json/globalmute.json'));
 const blacklist = JSON.parse(fs.readFileSync('./docs/json/blacklist.json'));
 const antidoc = JSON.parse(fs.readFileSync('./docs/json/antidoc.json'));
-const issupre = supre.includes(sender);
 
 
 function isSpecialCaracter(str) { 
@@ -4491,7 +4490,7 @@ break
 // #down
 
 case 'playvid': // megumin bot
-if (!isOwner) if (isFiltered(sender)) return reply(`?? *SISTEMA DE ANTISPAM!*\n _aguarde 15 segundos..._`);
+if (!isOwner) if (isFiltered(sender)) return reply(`📍 *SISTEMA DE ANTISPAM!*\n _aguarde 15 segundos..._`);
 
 addFilter(sender);
 				 if (args.length < 1) return reply('*qual o nome do video parça?*')
