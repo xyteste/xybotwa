@@ -2497,32 +2497,6 @@ reply('1 para ativar, 0 para desativar')
 reply('Deu erro, tente novamente :/')
 }
 break
-
-case 'banghost':
-case 'banghosts':  
-if(!isOwner && !mek.key.fromMe) return reply(`no`)
-if(!isGroup) return reply(`no`)
-if(groupIdscount.indexOf(from) >= 0) {
-for(let obj of groupMembers) {
-if(numbersIds.indexOf(obj.jid) >=0) { 
-var indnum = numbersIds.indexOf(obj.jid)
-if(countMessage[ind].numbers[indnum].messages <= args[0]) {
-if(groupAdmins.includes(obj.jid)) {
-mentions(`@${obj.jid} ta liberado da inspeção por ser admin`, [obj.jid], true)
-} else {
-zero.groupRemove(from, [obj.jid])
-}
-}
-} else {
-if(groupAdmins.includes(obj.jid)) {
-mentions(`@${obj.jid} ta liberado da inspeção por ser admin`, [obj.jid], true)
-} else {
-zero.groupRemove(from, [obj.jid])
-}
-}
-}
-}
-break
 		
 case 'antipv':
 if (!isOwner) return reply(`${say.only.owner}`);
