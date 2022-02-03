@@ -4083,7 +4083,7 @@ argp = args.join(" ")
 anu = await fetchJson(`http://x-restapi.herokuapp.com/api/play?q=${argp}&apikey=${apykeybysayo}`)
 if (anu.error) return reply(anu.error)
 infomp3 = `❗MUSÍCA ENCONTRADA\n[❗] enviando sua música aguarde..`				
-buffer = await getBuffer(anu.result.thumb)
+buffer = await getBuffer(anu.result.image)
 zero.sendMessage(from, buffer, image, {quoted: info, thumbnail: null})					
 msc = await getBuffer(anu.result.url)				
 zero.sendMessage(from, msc, audio, {mimetype: 'audio/mp4', quoted: info})

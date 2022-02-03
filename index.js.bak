@@ -4075,14 +4075,18 @@ Pontuação : ${topisssss1} / 10
 
 break
 
-case 'playmp42':
-reply(`paro`) 
-if (args.length == 0) return reply(`Exemplo: ${prefix + command} Musica Sad`)
-query = args.join(" ")
-get_resullt = await fetchJson(`https://akamer.herokuapp.com/api/yt/playmp4?query=${query}&apikey=akame`)
-get_result = get_resullt.result
-get_video = await getBuffer(get_result.url)
-zero.sendMessage(from, get_video, video, {mimetype: Mimetype.mp4, filename: `${get_result.title}.mp4`, quoted: info, thumbnail: null})
+case 'playm4':
+if (args.length < 1) return reply(`Exemplo : ${prefix}play João e maria chico buarque`)
+reply(`nao`) 
+apykeybysayo = 'BETA'
+argp = args.join(" ")
+anu = await fetchJson(`http://x-restapi.herokuapp.com/api/play?q=${argp}&apikey=${apykeybysayo}`)
+if (anu.error) return reply(anu.error)
+infomp3 = `❗MUSÍCA ENCONTRADA\n[❗] enviando sua música aguarde..`				
+buffer = await getBuffer(anu.result.thumb)
+zero.sendMessage(from, buffer, image, {quoted: info, thumbnail: null})					
+msc = await getBuffer(anu.result.url)				
+zero.sendMessage(from, msc, audio, {mimetype: 'audio/mp4', quoted: info})
 break
 
 case 'recado':
