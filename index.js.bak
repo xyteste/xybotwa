@@ -29,6 +29,7 @@ const {
 
 const { upload } = require("./docs/lib/ytdl");
 const axios = require('axios').default;
+const speed = require('performance-now');
 const { isFiltered, addFilter } = require('./docs/lib/antispam')
 const { isFiltered2, addFilter2 } = require('./docs/lib/antispam2');
 const { spinOn, spinLoad } = require ('./docs/functions/spinner.js');
@@ -55,8 +56,22 @@ const sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+const time2 = moment().tz('America/Sao_Paulo').format('HH:mm:ss')
+if(time2 > "00:00:00"){
+var tempo = 'Boa madrugada'
+                                        } 
+if(time2 > "05:30:00"){
+var tempo = 'Bom dia'
+                                        }
+if(time2 > "12:00:00"){
+var tempo = 'Boa tarde'
+                                        }
+if(time2 > "19:00:00"){
+var tempo = 'Boa noite'
+                                        }
+
 // #texto #txt
-const { menuhentai, allmenu, menufigu, menuadms, menudono, menuutils, galeria } = require('./edit/txt/menus.js');
+const { menuhentai, allmenu, menufigu, menuadms, menudono, menuutils, galeria, menuesp } = require('./edit/txt/menus.js');
 const { help } = require('./edit/txt/help.js');
 say = require('./edit/txt/say.js')
 
@@ -73,6 +88,7 @@ const antifake = JSON.parse(fs.readFileSync('./docs/json/antifake.json'));
 const whitelist = JSON.parse(fs.readFileSync('./docs/json/whitelist.json'));
 const globalmute = JSON.parse(fs.readFileSync('./docs/json/globalmute.json'));
 const blacklist = JSON.parse(fs.readFileSync('./docs/json/blacklist.json'));
+const antidoc = JSON.parse(fs.readFileSync('./docs/json/antidoc.json'));
 
 
 function isSpecialCaracter(str) { 
@@ -87,6 +103,9 @@ function isSpecialCaracter(str) {
 
 const timeHours = moment.tz('America/Sao_Paulo').format('HH:mm');
 hours = timeHours;
+
+const date = moment.tz('America/Sao_Paulo').format('DD/MM/AA')
+
 // 00:00
 
 // #settings.json
@@ -120,7 +139,7 @@ async function starts() {
 		var iii = zero.user.jid
 		var kkk = Math.floor(Math.random() * (12 - 2) + 2);
 
-	 zero.setStatus(`Estou online desde às ${hours}`)
+	 zero.setStatus(`Apenas uma inteligência artificial. Online desde às ${hours}`)
 	 // atualizar a bio
 	 
 	 // atualizar foto de perfil
@@ -161,13 +180,14 @@ async function starts() {
 			const from = mek.key.remoteJid;
 			const type = Object.keys(mek.message)[0];	
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType;
-			const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss');
+			const time = moment.tz('America/Sao_Paulo').format('DDD/MMMM HH:mm:ss');
 			const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
 const botNumber = zero.user.jid;
 const isGroup = from.endsWith('@g.us')
 var sender = isGroup ? mek.participant : mek.key.remoteJid;
 
 //#is
+const Antidoc = isGroup ? antidoc.includes(from) : false;
 const isMultiPrefix = isGroup ? multiprefix.includes(from) : false
 const isAntiPv = antipv.includes('online');
 const isWelkom = isGroup ? welkom.includes(from) : false;		
@@ -274,7 +294,7 @@ const isSticker = type === 'stickerMessage';
 			if (authorname != undefined) { } else { authorname = groupName }	
 			
 			function addMetadata(packname, author) {	
-				if (!packname) packname = `${nomeBot}`; if (!author) author = 'by Tio Momonga';	
+				if (!packname) packname = `${nomeBot}`; if (!author) author = 'xyzada';	
 				author = author.replace(/[^a-zA-Z0-9]/g, '');	
 				let name = `${author}_${packname}`
 				if (fs.existsSync(`./docs/src/stickers/${name}.exif`)) return `./docs/src/stickers/${name}.exif`
@@ -460,11 +480,15 @@ message: {
 
 ////// fim dos verificados
 
+//mais consts
+
+const comandoxy = require('./edit/txt/comandos.js');
+
 // #functions //#home
 
 //#antipv
 if (!isOwner) if (isAntiPv) if (!isGroup) {
-reply (`📍 *Só funciona em grupos*\n\n${grupoDono}\n\nVc será bloqueado em seguida`)
+reply (`*Somente em grupos amigo 🤠*\n\n${grupoDono}\n\nVc será bloqueado em seguida\n*Porfavor fale com o ${wa} se quiser ser desbloqueado.*`)
 setTimeout( () => {
  zero.blockUser(sender, 'add')
  }, 5000)
@@ -476,7 +500,7 @@ if (isGlobalMute) if (!isOwner) return;
 const insiraAlgo = `use assim: ${prefix + command} exemplo`;
 
 async function menu() {
-if (!isOwner) if (isFiltered(sender)) return reply(`📍 *SISTEMA DE ANTISPAM!*\n _aguarde 15 segundos..._`);
+if (!isOwner) if (isFiltered(sender)) return reply(`*SISTEMA DE ANTI-SPAM!*\n _aguarde alguns segundos..._`);
 await addFilter(sender);
 
 try {
@@ -507,9 +531,9 @@ isMultiPrefix ? t5 = ' ✓ ': t5 = ' X ';
        txtt =` `
 
                buttons = [{buttonId:`menu lista`, 
-               buttonText:{displayText: '☉ lista de menus ☉'},type:1},
-               {buttonId:`help`,buttonText:{displayText:'☉ help ☉' },type:1},
-                {buttonId:`outros`,buttonText:{displayText:'𖣘 mais opções 𖣘' },type:1},
+               buttonText:{displayText: '𝙻𝙸𝚂𝚃𝙰 𝙳𝙴 𝙼𝙴𝙽𝚄𝚂'},type:1},
+               {buttonId:`help`,buttonText:{displayText:'𝙷𝙴𝙻𝙿' },type:1},
+                {buttonId:`outros`,buttonText:{displayText:'𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1}
                ]
 
 mathHelp(29, 1);
@@ -518,9 +542,9 @@ mathHelp(29, 1);
 
                buttonsMessage = {
                contentText: `${botDisplay}`,
-                 footerText: `${readmore}\n━━━━━━ ⊙ ━━━━━━
-         𝙎 𝙏 𝘼 𝙏 𝙐 𝙎 :
-━━━━━━ ⊙ ━━━━━━
+                 footerText: `${readmore}\n▰▰▰▰▰▰▰▰▰▰
+         𝐒𝐓𝐀𝐓𝐔𝐒 :
+▰▰▰▰▰▰▰▰▰▰
 *nsfw:*  ${t}
 *welkom:*  ${t2}
 *anti-link:*  ${t3}
@@ -651,6 +675,7 @@ const goAudio = './edit/media/audio/';
 const goSticker = './edit/media/sticker/';
 const goImage = './edit/media/image/';
 const goVideo = './edit/media/video/';
+const hx = require('hxz-api');
 
 // enviar mídia (foto, vídeo, áudio, etc)
 function sendMedia (id, arquivo, tipo, options = {}){
@@ -865,7 +890,7 @@ try {
 
 // #antispam
 if (isGroup) if (isCmd) {
-if (isFiltered2(sender)) return reply(`📍 *sistema de Anti_Spam!*`)
+if (isFiltered2(sender)) return reply(`*sistema de Anti_Spam!*`)
 addFilter2(sender)
 }
 
@@ -1170,7 +1195,22 @@ mimetype: Mimetype.mp4Audio,
  ptt:true});
 }
 
-if (budY.includes("dono do bot") || budY.includes("criador do bot")) {
+if (budy.includes("bot") || (budy.includes("bot ta on?") || (budy.includes("bot on?") || (budy.includes("bot?"))) )){
+reply (`aoba!`)
+}
+
+if (budy.includes("hola") || (budy.includes("hola!") || (budy.includes("hola.") || (budy.includes("hola?"))) )){
+reply (`olá, hoje é ${date}!`)
+}
+
+if (budy.includes("bdia")){
+await sendMedia(from, 'https://telegra.ph/file/ed37738ba80989d15e06d.jpg', 'image', {
+quoted: mek,
+caption: 'AOBAAAA', 
+})
+};
+
+if (budY.includes("yyyyyyyyy") || budY.includes("hhhhhhhhhhh")) {
 audior = fs.readFileSync(`./edit/media/audio/barra dono.mp3`)
 zero.sendMessage(from, audior, MessageType.audio, {quoted: selocont, mimetype: 'audio/mp4', ptt: true})
 };
@@ -1187,7 +1227,7 @@ sendEphemeral: true,
                 "previewType": "PHOTO",
                 "thumbnailUrl": "https://telegra.ph/file/bbb5eca08130920edbcb4.jpg",
         "thumbnail":  fs.readFileSync(`./edit/media/image/selos/${mathSelo}.jpg`),
-                "sourceUrl": `https://api.whatsapp.com/send?phone=55499157&text=Olá%20 Gabriel, tudo bom? `
+                "sourceUrl": `https://api.whatsapp.com/send?phone=558897321488&text=Olá%20 xy, tudo bom? `
 },mentionedJid:[sender]}, quoted : selocont})
         }
 			
@@ -1195,11 +1235,11 @@ sendEphemeral: true,
 function listaMenus () {
  listMsg = {
 
- buttonText: 'ver lista',
+ buttonText: 'selecione seu menu',
 
- footerText: `Lista com os comandos do bot separados por categorias\n${readmore}`,
+ footerText: `Lista De Menus Separados Por Categorias\n${readmore}`,
 
- description: `*LISTA DE COMANDOS*`,
+ description: `sexo`,
 
  sections: [
 
@@ -1244,6 +1284,12 @@ function listaMenus () {
 
                               "title": "galeria",
                               "rowId": `${prefix}` + "galeria"
+
+                           },
+                           {
+
+                              "title": "menu en español",
+                              "rowId": `${prefix}` + "menuesp"
 
                            },
                            {
@@ -2175,8 +2221,8 @@ console.log(e)
 }
 }}
 ////#fim
-                   
-if (dono === 'undefined') return reply ('Antes de continuar insira o seu número na pasta edit/settings.json!!!');
+
+if (isCmd) if (dono === 'undefined') return reply ('Antes de continuar insira o seu número na pasta edit/settings.json!!!');
 
                                       
 
@@ -2243,7 +2289,10 @@ break
 /////
 
 case 'ping':
-reply('🏓 pong')
+aki = `🏓 pong`
+const timestampi = speed();
+					const latensyi = speed() - timestampi
+					reply(`${aki}\nPing: ${latensyi.toFixed(4)} Segundos`)
 break
 		
 		
@@ -2427,6 +2476,27 @@ blockcmd.splice(cArgs);
 fs.writeFileSync('./docs/json/blockcmd.json', JSON.stringify(blockcmd))
 reply(`comando ${cArgs} foi desbloqueado`)
 break
+
+case 'antidocumento':
+if (!isGroup) return reply(` SOMENTE EM GRUPOS`)
+if (!isBotGroupAdmins) return reply(` O BOT PRECISA SER ADMIN`)
+try {														 
+if (args.length < 1) return reply('1 pra ativar, 0 pra desligar')
+if (Number(args[0]) === 1) {
+antidoc.push(from)
+fs.writeFileSync('./docs/json/antidoc.json', JSON.stringify(antidoc))
+reply('Ativou com sucesso o recurso de anti documento neste grupo✔️')
+} else if (Number(args[0]) === 0) {
+antidoc.splice(from, 1)
+fs.writeFileSync('./docs/json/antidoc.json', JSON.stringify(antidoc))
+reply('Desativou com sucesso o recurso de antidocumento neste grupo✔️')
+ } else {
+reply('1 para ativar, 0 para desativar')
+}
+} catch {
+reply('Deu erro, tente novamente :/')
+}
+break
 		
 case 'antipv':
 if (!isOwner) return reply(`${say.only.owner}`);
@@ -2445,7 +2515,7 @@ reply (`${prefix}antipv on/off`)
 }
 break
 		
-case 'notas': 
+case 'notas': case 'anotación':
 if (!isOwner) return
 
 					teks = `╭─「 *ANOTAÇÕES* 」\n`
@@ -2694,13 +2764,13 @@ mathHelp(99998, 1);
         }
         break;
 
-case 'clear': case 'clearchat':
+case 'clear': case 'clearchat': case 'limparchat':
 if (!isOwner) return reply (`${say.only.owner}`)
 try {
 await sleep(1000)
                 await zero.modifyChat(from, ChatModification.delete)
                 await sleep(1000)
-                reply(`✓ chat excluído`)
+                reply(`chat limpo`)
                 } catch(e) {
                 console.log(e)
                 }
@@ -2801,19 +2871,282 @@ var ppimg = await zero.getProfilePicture(`${sender.split('@')[0]}@c.us`)
             } catch {
                var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
             }
+            const nivelgado = ['1','2','3','4','5','6','7','8','9']
+const nivelgado2 = ['1','2','3','4','5','6','7','8','9'] 
+const nivelgador = nivelgado[Math.floor(Math.random() * (nivelgado.length))]
+const nivelgado2r = nivelgado2[Math.floor(Math.random() * (nivelgado2.length))] 
+const puta = ['1','2','3','4','5','6','7','8','9']
+const puta2 = ['1','2','3','4','5','6','7','8','9'] 
+const putar = puta[Math.floor(Math.random() * (puta.length))]
+const putar2 = puta2[Math.floor(Math.random() * (puta2.length))] 
+const gostosura = ['1','2','3','4','5','6','7','8','9']
+const gostosura2 = ['1','2','3','4','5','6','7','8','9'] 
+const gostosurar = gostosura[Math.floor(Math.random() * (gostosura.length))]
+const gostosurar2 = gostosura2[Math.floor(Math.random() * (gostosura2.length))] 
+gadop = `${Math.floor(Math.random() * 100)}`
+const programa = Math.ceil(Math.random() * 10000)
 buffer = await getBuffer(ppimg)
 texttto = `
-*nick:* ${pushname}
-*bio:* ${getBio.status}
-*número:* wa.me//${sender.split("@")[0]}
+*🗒️ Nome:* ${pushname}
+*📍 Status:* ${getBio.status}
+*📱 Número:* wa.me//${sender.split("@")[0]}
+*🤠 Nível gado* : *${nivelgador}${nivelgado2r}%*
+*💃 Nível puta* : *${putar}${putar2}%*
+*🥴 Nível de gostosura* : *${gostosurar}${gostosurar2}%*
+*🍼 Valor do programa* : *R$${programa}*
 `
 await zero.sendMessage(from, buffer, image, {caption: texttto, quoted: selocont})
 break
 
+case 'yo': case 'miperfil':
+try {
+var ppimg = await zero.getProfilePicture(`${sender.split('@')[0]}@c.us`)
+            } catch {
+               var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+            }
+const webxy = ['1','2','3','4','5','6','7','8','9']
+const webxy2 = ['1','2','3','4','5','6','7','8','9'] 
+const webxyr = webxy[Math.floor(Math.random() * (webxy.length))]
+const webxyr2 = webxy2[Math.floor(Math.random() * (webxy2.length))] 
+buffer = await getBuffer(ppimg)
+texttto = `
+*Nombre:* ${pushname}
+*Biografía:* ${getBio.status}
+*Número:* wa.me//${sender.split("@")[0]}
+*Nivel de belleza* : *${webxyr}${webxyr2}%*
+`
+await zero.sendMessage(from, buffer, image, {caption: texttto, quoted: selocont})
+break
+
+case 'gerarcpf': case 'crearcpf':
+cp1 = `${Math.floor(Math.random() * 300) + 600}`
+cp2 = `${Math.floor(Math.random() * 300) + 600}`
+cp3 = `${Math.floor(Math.random() * 300) + 600}`
+cp4 = `${Math.floor(Math.random() * 30) + 60}`
+cpf = `${cp1}.${cp2}.${cp3}-${cp4}`
+reply(`CPF gerado com sucesso : ${cpf}`)
+break
+
+case 'ddd':
+if (args.length < 1) return reply(`Use ${prefix + comando} 81`)
+ddd = body.slice(5)
+ddds = await axios.get(`https://brasilapi.com.br/api/ddd/v1/${ddd}`)
+dddlist = `Lista de Cidades de ${ddds.data.state} com este DDD ${body.slice(5)}>\n\n`
+for (let i = 0; i < ddds.data.cities.length; i++) { dddlist += `${i + 1} ⪧ *${ddds.data.cities[i]}*\n` }
+reply(`${dddlist}`)	
+break
+
+case 'plaq': //by zanga 
+if (args.length < 1) return reply(`${prefix}plaq e digite o seu nome`)
+teks = body.slice(6)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://raptibef.sirv.com/images%20(3).jpeg?text.0.text=${teks}&text.0.position.gravity=center&text.0.position.x=19%25&text.0.size=45&text.0.color=000000&text.0.opacity=55&text.0.font.family=Crimson%20Text&text.0.font.weight=300&text.0.font.style=italic&text.0.outline.opacity=21`)
+zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+break
+
+case 'plaq2': //by zanga 
+if (args.length < 1) return reply(`${prefix}plaq2 e digite o seu nome`)
+teks = body.slice(7)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://raptibef.sirv.com/images%20(1).jpeg?profile=Zanga%202.0&text.0.text=${teks}`)
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+break
+
+case 'plaq3': //by zanga
+if (args.length < 1) return reply(`${prefix}plaq3 e digite o seu nome`)
+teks = body.slice(7)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://raptibef.sirv.com/images.jpeg?profile=Zanga%203.0&text.0.text=${teks}&text.0.outline.blur=63`)
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+break
+
+case 'plaq4': //by zanga
+if (args.length < 1) return reply(`${prefix}plaq4 e digite o seu nome`)
+teks = body.slice(7)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://raptibef.sirv.com/images%20(2).jpeg?profile=Zanga%204.0&text.0.text=${teks}`)
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+break
+
+case 'plaq5':
+if (args.length < 1) return reply(`${prefix}plaq5 e digite o seu nome`)
+teks = body.slice(7)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://umethroo.sirv.com/9152e7a9-7d49-4ef-bac-2e6149fda0b2.jpg?text.0.text=${teks}&text.0.position.x=-70%25&text.0.position.y=-23%25&text.0.size=17&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=300`)
+plaq = ` *Plaquinha feita ✓* `
+await zero.sendMessage(from, buffer, image, {caption: plaq, quoted: selocont, thumbnail: null, sendEphemeral:true, contextInfo : {forwardingScore: 500, isForwarded:true}})
+break
+
+case 'plaq6':
+if (args.length < 1) return reply(`${prefix}plaq6 e digite o seu nome`)
+teks = body.slice(7)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://clutamac.sirv.com/1011b71-bab1-49e3-9db-ee2c0646fa%20(1).jpg?text.0.text=${teks}&text.0.position.gravity=northwest&text.0.position.x=22%25&text.0.position.y=60%25&text.0.size=12&text.0.color=000000&text.0.opacity=47&text.0.font.family=Roboto%20Mono&text.0.font.style=italic`) //api
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+break
+
+case 'plaq7':
+if (args.length < 1) return reply(`${prefix}plaq7 e digite o seu nome`)
+teks = body.slice(7)
+if (teks.length > 10) return reply('O texto é longo, até 10 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://umethroo.sirv.com/Torcedora-da-sele%C3%A7%C3%A3o-brasileira-nua-mostrando-a-bunda-236x300.jpg?text.0.text=${teks}&text.0.position.x=-64%25&text.0.position.y=-39%25&text.0.size=25&text.0.color=1b1a1a&text.0.font.family=Architects%20Daughter`) //api
+plaq = ` *Plaquinha feita ✓* `
+await zero.sendMessage(from, buffer, image, {caption: plaq, quoted: selocont, thumbnail: null, sendEphemeral:true})
+break
+
+case 'plaq8':
+if (args.length < 1) return reply(`${prefix}plaq8 e digite o seu nome`)
+teks = body.slice(7)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://umethroo.sirv.com/BUNDA1.jpg?text.0.text=${teks}&text.0.position.x=-20%25&text.0.position.y=-20%25&text.0.size=1&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=700&text.0.background.opacity=65`) //api
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+break
+
+case 'plaq9':
+if (args.length < 1) return reply(`${prefix}plaq9 e digite o seu nome`)
+teks = body.slice(6)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://umethroo.sirv.com/fotobundatop.jpg?text.0.text=${teks}&text.0.position.x=-61%25&text.0.position.y=-%25&text.0.size=1&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=700`) //api
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+break
+
+case 'plaq10':
+if (args.length < 1) return reply(`${prefix}plaq10 e digite o seu nome`)
+teks = body.slice(7)
+if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
+buffer = await getBuffer(`https://umethroo.sirv.com/peito1.jpg?text.0.text=${teks}&text.0.position.x=-4%25&text.0.position.y=-6%25&text.0.size=14&text.0.color=000000&text.0.font.family=Shadows%20Into%20Light&text.0.font.weight=700`)
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+break
+
+case 'morte':
+case 'death':
+                if (!isGroup) return reply(ind.groupo())
+idde = ["30","76","90","72","83","73","83","74","92","100","94","48","37","53","63"]
+idade = idde[Math.floor(Math.random() * (idde.length))]
+morte = `Pessoas com este nome: ${pushname} \nTendem a morrer aos ${idade} anos de idade.`
+reply(morte)
+break
+
+case 'gostosa': case 'gustosa':
+                if (!isGroup) return reply(ind.groupo())
+                random = `${Math.floor(Math.random() * 100)}`
+boiola = random
+if (boiola < 20) {bo = 'Fei pra caralho👹KKKKKKKKKKKKK'} else if (boiola == 21 ) {bo = 'mt feio bixo👹??'} else if (boiola == 23 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 24 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 25 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 26 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 27 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 28 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 29 ) {bo = 'mt feio bixo👹??'} else if (boiola == 30 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 31 ) {bo = 'você é aceitável 🧐'} else if (boiola == 32 ) {bo = 'você é aceitável 🧐'} else if (boiola == 33 ) {bo = 'você é aceitável 🧐'} else if (boiola == 34 ) {bo = 'você é aceitável 🧐'}  else if (boiola == 35 ) {bo = 'você é aceitável 🧐'} else if (boiola == 36 ) {bo = 'você é aceitável 🧐'} else if (boiola == 37 ) {bo = 'você é aceitável 🧐'} else if (boiola == 38 ) {bo = 'você é aceitável 🧐'} else if (boiola == 39 ) {bo = 'você é aceitável 🧐'} else if (boiola == 40 ) {bo = 'você é aceitável 🧐'} else if (boiola == 41 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 42 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 43 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 44 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 45 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 46 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 47 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 48 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 49 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 50 ) {bo = 'GOSTOSAKKKKKKKKKKKK'} else if (boiola > 51) {bo = 'Passa o zap gostosa 😳'}
+teks = `Você é ${random}% Gostosa\n\n${bo}`
+reply(`${teks}`)
+break
+
+case 'casal': case 'pareja':
+                if (!isGroup) return reply(ind.groupo())
+ jds = []
+					const jdii = groupMembers
+					const koss = groupMembers
+					const akuu = jdii[Math.floor(Math.random() * jdii.length)]
+					const diaa = koss[Math.floor(Math.random() * koss.length)]
+					teks = `Meus cálculos dizem que @${akuu.jid.split('@')[0]} e @${diaa.jid.split('@')[0]} possuem grande chance de namorar, apenas aceitem o destino...`
+					jds.push(akuu.jid)
+					jds.push(diaa.jid)
+					mentions(teks, jds, true)
+					break	
+					
+					case 'abraço': case 'abrazo':
+                if (!isGroup) return reply(ind.groupo())
+
+if (args.length < 1) return reply('em quem você quer dar um abraço?')
+wew = fs.readFileSync('./edit/media/gif/abraço.mp4');
+yhb = `eita`
+zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
+break
+
+case 'chute': case 'patear':
+                if (!isGroup) return reply(ind.groupo())
+if (args.length < 1) return reply('marque a pessoa que você quer agredir')
+mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+pro = '.\n'
+for (let _ of mentioned) {
+pro += `@${_.split('@')[0]}\n`
+} 
+wew = fs.readFileSync('./edit/media/gif/chute.mp4');
+yhb = `Pra que agredir?` 
+zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
+break
+
+case 'ship':
+                if (!isGroup) return reply(ind.groupo())
+
+if (args.length < 1) return reply('marque alguém')
+porc = `${Math.floor(Math.random() * 100)}`
+yh1b =  `Vocês possuem uma chance de ${porc}% de namorarem.💘`,
+wew = fs.readFileSync(`./edit/media/image/foti/ship.jpg`)
+zero.sendMessage(from, wew, image, {quoted: mek, caption: yh1b})
+break
+
+case 'carinho': case 'cariño':
+                if (!isGroup) return reply(ind.groupo())
+
+if (args.length < 1) return reply('em quem você quer fazer carinho?')
+if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return 
+mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+pro = '.\n'
+for (let _ of mentioned) {
+pro += `@${_.split('@')[0]}\n`
+} 
+cu = `fofo`
+wew = fs.readFileSync('./edit/media/gif/carinho.mp4');
+zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: cu})
+break
+
+case 'gostosa2': case 'gustosa2':
+                if (!isGroup) return reply(ind.groupo())
+                      membro = []
+                      const mett1 = groupMembers
+                      const msdd1 = groupMembers
+                      const siapsasa = mett1[Math.floor(Math.random() * mett1.length)]
+                      const siapsasa2 = mett1[Math.floor(Math.random() * mett1.length)]
+                      const sipssda1 = pushname[Math.floor(Math.random() * msdd1.length)]
+                      cuzin = `*ＤＥＴＥＣＴＯＲ   ＤＥ  ＧＯＳＴＯＳＡＳ👩‍⚕️*\n\n*pipipipi🚨🚨🚨pipipipi🚨🚨🚨pipipipi🚨🚨🚨*\n\n @${siapsasa.jid.split('@')[0]} @${siapsasa2.jid.split('@')[0]} *PARADA(O)S AÍ🖐*\n\n*VOCÊ ACABA DE RECEBER UMA MULTA POR EXCEDER O LIMITE DE GOSTOSURAKKKKKK*\n\n*VALOR DA MULTA:*\n*FOTO DA RABA NO PV kkkkk*`
+                      membro.push(siapsasa.jid)
+                      membro.push(siapsasa2.jid)
+                      mentions(cuzin, membro, true) 
+                       break
+
+case 'chiste':
+            respuesta = [`¿Cuál es el colmo de un ciego?\n Enamorarse a primera vista.`, `*¿Qué le dijo un zapato a otro?* \n - Qué vida más arrastrada llevas. \n ¡MIRA LOS ZAPATOS QUE EXISTEN PARA ANDAR POR EL TECHO!`, `¿Qué le dijo un cable a otro cable? \n Somos los intocables.`, `*¿Qué le dijo batman al papel higiénico?* \n Tu eres el único que conoce mi baticueva.`, `¿Por qué llora un libro de matemáticas? \n ¡Porque tiene muchos problemas!`, `¿Qué está al final de todo? ¡La letra o!`, `¿Por qué el profe de música tiene una escalera? \n ¡Para poder llegar a las notas más altas!`, `¿Qué le dice una iguana a su hermana gemela? \n Somos iguanitas`, `*¿Cuál es el colmo del electricista?* \n ¡Que su mujer se llame Luz!`, `¿Cómo se dice pañuelo en japonés? \n Sacamoko`, `¿Cuál es el pez que huele mucho? \n ¡Peztoso!`, `¿Sabes cómo se queda un mago después de comer? \n Magordito`, `Si se muere una pulga, ¿a dónde va? \n Al pulgatorio.` ]
+            answer = respuesta[Math.floor(Math.random() * respuesta.length)]
+            reply(answer)
+            addFilter(from)
+            break
+
+case 'piada':
+            respuesta = [`Qual é a panela que está sempre triste?\n A panela depressão.`, `O que estará escrito na lápide do Papai Noel? \n Ele não está mais em trenós.`, `O que os estilistas fazem no tempo livre? \n Inventam moda.`, `Qual a cidade brasileira onde não tem táxis? \n Uberlândia.`, `Qual é o peixe que caiu do 10º andar? \n O aaaaaaatuuuuuuum.`, `Por que o jacaré tirou o filho da escola? \n Porque ele réptil de ano.`, `O que um tijolo falou para o outro? \n Há um cimento entre nós.`, `Como fazer um nó em duas motos? \n Pega duas Yamaha.`, `Qual campeonato é melhor que aspirina? \n Liberta-Dores!`, `O que a zebra disse para a mosca? \n Você está na minha listra negra.`, `Qual é o cachorro que vai à missa todo dia? \n O pastor alemão.`, `Um gatinho miou para a lua, mas ela não respondeu. Por quê? \n Porque astro-no-mia.`, `Qual é a comida que liga e desliga? \n Estrog-On-Off` ]
+            answer = respuesta[Math.floor(Math.random() * respuesta.length)]
+            reply(answer)
+            addFilter(from)
+            break
+					
 case 'dono': case 'criador':
 await reply(`
 
 *esse bot é de uso grátis,* você pode obtê-lo através do meu canal no YouTube:
+https://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw
+
+https://chat.whatsapp.com/J1yRTx7ClM14pNeGShYNXE
+`)
+await sleep(2000)
+sendDono('');
+break
+
+case 'simi': 
+query = args.join('')
+anu = await fetchJson(`https://akame-api.herokuapp.com/api/simi?msg={query}&apikey=FK7njbTR`)
+pica = await getBuffer(anu.result.resposta)
+reply(`${pica}`);
+break
+
+case 'creador':
+await reply(`
+
+*este bot es de uso gratuito,* puedes conseguirlo a través de mi canal de youtube (esta en portugues de brasil):
 https://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw
 
 https://chat.whatsapp.com/J1yRTx7ClM14pNeGShYNXE
@@ -2866,7 +3199,7 @@ pru += `@${_.split('@')[0]}\n`
 }
 blocked.push(`${mentioned}`)
 fs.writeFileSync('./docs/json/blocked.json', JSON.stringify(blocked))
-susp = `🚫@${mentioned[0].split('@')[0]} foi bloqueado e não poderá mais usar os comandos do bot🚫`
+susp = `🚫@${mentioned[0].split('@')[0]} foi bloqueado e não poderá mais usar os comandos do bot??`
 mentions(`${susp}`, mentioned, true)   
 
 break
@@ -3057,6 +3390,693 @@ reply('Transmissão enviada com sucesso')
 
 
 break		
+
+case 'sorteio': case 'sorteo':
+case 'sortear':
+addFilter(from)
+qy = args.join('')
+zero.updatePresence(from, Presence.composing)
+if (!isGroup) return enviar(linguagem.group())
+d = []
+teks = `_*🗣️ Parabéns por ganhar o sorteio ${qy}:_* `
+for(i = 0; i < 1; i++) {
+r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
+teks += `@${groupMembers[r].jid.split('@')[0]}\n`
+d.push(groupMembers[r].jid)
+}
+mentions(teks, d, true)
+break
+
+case 'amongus':
+addFilter(from)
+zero.updatePresence(from, Presence.composing)
+if (!isGroup) return enviar(linguagem.group())
+if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return enviar('Você precisa mencionar alguém')
+mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+pro = '.\n'
+for (let _ of mentioned) {
+pro += `@${_.split('@')[0]}\n`
+}
+sus = 
+`•      　。　　　　•　    　ﾟ　　。
+　　.　　　.　　　  　　.　　　　　。　　   。　.
+　.　　      。　        ඞ   。　    .    •
+•            @${mentioned[0].split('@')[0]} was E j e c t e d
+                  1 impostor remain   。　.
+　 　　。　　 　　　　ﾟ　　　.　      　　　.
+,　　　　.                  .`
+mentions(`${sus}`, mentioned, true)
+break
+
+case 'gado': case 'ganado':
+addFilter(from)
+zero.updatePresence(from, Presence.composing)
+if (!isGroup) return reply(linguagem.group())
+var chifre = ["ultra extreme gado", "Gado-Master", "Gado-Rei", "Gado", "Escravo-ceta", "Escravo-ceta Maximo", "Gacorno?", "Jogador De Forno Livre<3", "Mestre Do Frifai<3<3", "Gado-Manso", "Gado-Conformado", "Gado-Incubado", "Gado Deus", "Mestre dos Gados", "Topa tudo por buceta", "Gado Comum", "Mini Gadinho", "Gado Iniciante", "Gado Basico", "Gado Intermediario", "Gado Avançado", "Gado Profisional", "Gado Mestre", "Gado Chifrudo", "Corno Conformado", "Corno HiperChifrudo", "Chifrudo Deus", "Mestre dos Chifrudos"]
+var gado = chifre[Math.floor(Math.random() * chifre.length)]
+gadop = `${Math.floor(Math.random() * 100)}`
+hisil = `Você é:\n\n${gado}`
+reply(hisil)
+break
+
+case 'sn':
+addFilter(from)
+zero.updatePresence(from, Presence.composing)
+if (!isGroup) return reply(linguagem.group())
+const sn = ['sim', 'não']
+gosto = body.slice(3)
+if (args.length < 1) return zero.sendMessage(from, `Você deve fazer uma pergunta...\nExemplo: ${prefix}sn O ${SeuNome} é um baiano preguiçoso?`, text, {quoted: mek})
+const jawab = sn[Math.floor(Math.random() * (sn.length))]
+hasil = `${gosto}\n\nSegundo meus cálculos, eu acredito que... ${jawab}`
+reply(hasil)
+break
+
+case 'pregunta':
+                  respuesta = ['Si', 'No', 'Tal vez', 'Puede ser', 'Ai una probabilidad del 99.99999999991.01%', 'Puede que no', 'Yo que se', 'mmmm🤔.... Dejame lo pienso un poco']
+                  answer = respuesta[Math.floor(Math.random() * respuesta.length)]
+                  if (args.length < 1) return reply('Y la pregunta?')
+                  reply(answer)
+                  addFilter(from)
+                  break
+
+case 'chance':
+addFilter(from)
+zero.updatePresence(from, Presence.composing)
+if (!isGroup) return enviar(linguagem.group())
+zero.updatePresence(from, Presence.composing) 
+var avb = body.slice(7)
+if (args.length < 1) return zero.sendMessage(from, `Você precisa digitar da forma correta\nExemplo: ${prefix}chance do ${SeuNome} ser um trouxa`, text, {quoted: mek})
+random = `${Math.floor(Math.random() * 100)}`
+hasil = `A chance ${body.slice(7)}\n\né de... ${random}%`
+zero.sendMessage(from, hasil, text, {quoted: mek, contextInfo: {mentionedJid: [sender]}})
+break
+
+case 'pau':
+addFilter(from)
+zero.updatePresence(from, Presence.composing)
+random = `${Math.floor(Math.random() * 35)}`
+const tamanho = random
+if (tamanho < 13 ) {pp = 'só a fimose'} else if (tamanho == 13 ) {pp = 'passou da média😳'} else if (tamanho == 14 ) {pp = 'passou da média😳'} else if (tamanho == 15 ) {pp = 'eita, vai pegar manga?'} else if (tamanho == 16 ) {pp = 'eita, vai pegar manga?'} else if (tamanho == 17 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 18 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 19 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 20 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 21 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 22 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 23 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 24 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho > 25 ) {pp = 'vai procurar petróleo com isso?'
+}
+hasil = `Seu pau tem ${random}cm\n\n${pp}`
+reply(hasil)
+break
+
+case 'pene':
+addFilter(from)
+zero.updatePresence(from, Presence.composing)
+random = `${Math.floor(Math.random() * 35)}`
+const sexx = random
+if (sexx < 13 ) {pp = 'solo fimosis'} else if (sexx == 13 ) {pp = 'pasó el promedio😳'} else if (sexx == 14 ) {pp = 'pasó el promedio😳'} else if (sexx == 15 ) {pp = 'eita, vai pegar manga?'} else if (sexx == 16 ) {pp = 'eita, vai pegar manga?'} else if (sexx == 17 ) {pp = 'calma man, a mina não é um poço😳'} else if (sexx == 18 ) {pp = 'calma man, a mina não é um poço😳'} else if (sexx == 19 ) {pp = 'calma man, a mina não é um poço😳'} else if (sexx == 20 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx == 21 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx == 22 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx == 23 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx == 24 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx > 25 ) {pp = 'vai procurar petróleo com isso?'
+}
+hasil = `tu pene tiene ${random}cm\n\n${pp}`
+reply(hasil)
+break
+
+case 'gay':
+addFilter(from)
+zero.updatePresence(from, Presence.composing)
+random = `${Math.floor(Math.random() * 100)}`
+boiola = random
+if (boiola < 20 ) {bo = 'hmm... você é hetero😔'} else if (boiola == 21 ) {bo = '+/- boiola'} else if (boiola == 23 ) {bo = '+/- boiola'} else if (boiola == 24 ) {bo = '+/- boiola'} else if (boiola == 25 ) {bo = '+/- boiola'} else if (boiola == 26 ) {bo = '+/- boiola'} else if (boiola == 27 ) {bo = '+/- boiola'} else if (boiola == 28 ) {bo = '+/- boiola'} else if (boiola == 29 ) {bo = '+/- boiola'} else if (boiola == 30 ) {bo = '+/- boiola'} else if (boiola == 31 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 32 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 33 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 34 ) {bo = 'tenho minha desconfiança...??'} else if (boiola == 35 ) {bo = 'tenho minha desconfiança...??'} else if (boiola == 36 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 37 ) {bo = 'tenho minha desconfiança...??'} else if (boiola == 38 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 39 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 40 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 41 ) {bo = 'você é né?😏'} else if (boiola == 42 ) {bo = 'você é né?😏'} else if (boiola == 43 ) {bo = 'você é né?😏'} else if (boiola == 44 ) {bo = 'você é né?😏'} else if (boiola == 45 ) {bo = 'você é né?😏'} else if (boiola == 46 ) {bo = 'você é né?😏'} else if (boiola == 47 ) {bo = 'você é né?😏'} else if (boiola == 48 ) {bo = 'você é né?😏'} else if (boiola == 49 ) {bo = 'você é né?😏'} else if (boiola == 50 ) {bo = 'você é ou não???'} else if (boiola > 51) {bo = 'você é gay??'
+}
+hasil = `Você é ${random}% gay\n\n${bo}`
+reply(hasil)
+break
+
+case 'caracoroa':
+addFilter(from)
+zero.updatePresence(from, Presence.composing) 
+const cara = fs.readFileSync('./edit/media/sticker/caracoroa/cara.webp');
+const coroa = fs.readFileSync('./edit/media/sticker/caracoroa/coroa.webp');
+cararo = ["cara", "coroa"]
+fej = cararo[Math.floor(Math.random() * cararo.length)]
+gg = fej
+reply(`você conseguiu: ${fej}`)
+cararoa = fs.readFileSync('./edit/media/sticker/caracoroa/'+fej+'.webp')
+zero.sendMessage(from, cararoa, sticker, {quoted: mek})
+break
+
+case 'dado':
+addFilter(from)
+zero.updatePresence(from, Presence.composing)
+if (!isGroup) return reply(linguagem.group())
+const dadus = ["⚀","⚁","⚂","⚃","⚄","⚅"]
+dadu = dadus[Math.floor(Math.random() * dadus.length)]
+dador = fs.readFileSync('./edit/media/sticker/dados/'+dadu+'.webp')
+zero.sendMessage(from, dador, sticker, {quoted: mek})
+break
+
+case 'tts':
+case 'voz':
+                if (args.length < 1) return zero.sendMessage(from, 'Y el codigo de idioma? escribe el comando *idiomas* para ver la lista', text, { quoted: mek })
+                const gtts = require('./docs/lib/gtts')(args[0])
+                if (args.length < 2) return zero.sendMessage(from, 'Escribe el texto', text, {quoted: mek})
+                dtt = body.slice(8)
+                ranm = getRandom('.mp3')
+                rano = getRandom('.ogg')
+                dtt.length > 300
+                ? reply('Mira, si no sabes usar esto... mejor no lo agas 😤')
+                : gtts.save(ranm, dtt, function() {
+                zero.updatePresence(from, Presence.recording)
+                zero.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', duration: -999999999999999999, ptt:true, sendEphemeral: true, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+                fs.unlinkSync(ranm)
+                })
+                addFilter(from)
+                break
+
+case 'idiomas':
+                  reply(`*Estos son los idiomas soportados por la voz👇🏻*:
+                  
+                    'af': 'Afrikaans',
+                    'sq': 'Albanian',
+                    'ar': 'Arabic',
+                    'hy': 'Armenian',
+                    'ca': 'Catalan',
+                    'zh': 'Chinese',
+                    'zh-cn': 'Chinese (Mandarin/China)',
+                    'zh-tw': 'Chinese (Mandarin/Taiwan)',
+                    'zh-yue': 'Chinese (Cantonese)',
+                    'hr': 'Croatian',
+                    'cs': 'Czech',
+                    'da': 'Danish',
+                    'nl': 'Dutch',
+                    'en': 'English',
+                    'en-au': 'English (Australia)',
+                    'en-uk': 'English (United Kingdom)',
+                    'en-us': 'English (United States)',
+                    'eo': 'Esperanto',
+                    'fi': 'Finnish',
+                    'fr': 'French',
+                    'de': 'German',
+                    'el': 'Greek',
+                    'ht': 'Haitian Creole',
+                    'hi': 'Hindi',
+                    'hu': 'Hungarian',
+                    'is': 'Icelandic',
+                    'id': 'Indonesian',
+                    'it': 'Italian',
+                    'ja': 'Japanese',
+                    'ko': 'Korean',
+                    'la': 'Latin',
+                    'lv': 'Latvian',
+                    'mk': 'Macedonian',
+                    'no': 'Norwegian',
+                    'pl': 'Polish',
+                    'pt': 'Portuguese',
+                    'pt-br': 'Portuguese (Brazil)',
+                    'ro': 'Romanian',
+                    'ru': 'Russian',
+                    'sr': 'Serbian',
+                    'sk': 'Slovak',
+                    'es': 'Spanish',
+                    'es-es': 'Spanish (Spain)',
+                    'es-us': 'Spanish (United States)',
+                    'sw': 'Swahili',
+                    'sv': 'Swedish',
+                    'ta': 'Tamil',
+                    'th': 'Thai',
+                    'tr': 'Turkish',
+                    'vi': 'Vietnamese',
+                    'cy': 'Welsh'`)
+                  break    
+                  
+case 'padoru':
+data = await fetchJson(`https://raw.githubusercontent.com/shadow578/Project-Padoru/master/padoru.json`, {
+method: 'get'
+})
+n = JSON.parse(JSON.stringify(data.Entries));
+nimek = n[Math.floor(Math.random() * n.length)];
+owo = (`${nimek.Image}`)
+ccf = ('https://raw.githubusercontent.com/shadow578/Project-Padoru/master/')
+pok = await getBuffer(`${ccf}${owo}`)
+zero.sendMessage(from, pok, image, {
+quoted: mek, caption: `Nome : ${nimek.Name}`
+})
+
+break
+
+case 'stickcum':
+case 'scum':
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/cum')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})	
+          break
+
+case 'stickhentai':		  
+case 'shentai':
+try {
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get(`https://nekos.life/api/v2/img/hentai`)			
+            exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+			 } catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }
+          break
+
+case 'stickfeetg':
+case 'sfeetg':
+case 'stickfeet':
+case 'feetg':
+try {
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/feetg')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+	       } catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }
+			break
+case 'stickbj':
+case 'stickblowbjob':
+case 'sbj':
+try {
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/bj')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+			} catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }
+			break
+case 'stickpussy':
+case 'spussy':
+case 'pussysticker':
+case 'stickerpussy':
+try {
+       ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/pussy')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+			 } catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }			
+			break
+case 'stickneko':
+case 'sneko':
+case 'nekostick':
+try {
+      ranp = getRandom('.gif')
+      rano = getRandom('.webp')
+			anu = await axios.get('https://nekos.life/api/v2/img/nsfw_neko_gif')
+			exec(`wget ${anu.data.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+			  fs.unlinkSync(ranp)
+				if (err) return reply('error')
+				buffer = fs.readFileSync(rano)
+				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				fs.unlinkSync(rano)
+			})
+			} catch {
+			 reply('Desculpe, não consegui fazer seu pedido :(')
+			 }
+
+			break
+
+case 'admins':
+case 'listadmins':  
+case 'listaadmins':   
+if (!isGroup) return reply(`${say.only.group}`)
+ytb = `Lista de admins do grupo *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
+no = 0
+for (let admon of groupAdmins) {
+no += 1
+ytb += `[${no.toString()}] @${admon.split('@')[0]}\n`
+}
+mentions(ytb, groupAdmins, true)
+break
+
+case 'sites18': //by: yuki
+		reply (`\nhehehe :\n\nhttp://xvideos.com
+
+http://xhamster.com
+
+http://xnxx.com
+
+http://pornhub.com
+
+http://redtube.com
+
+http://youporn.com
+
+http://snapdo.com
+
+http://livejasmin.com
+
+http://youjizz.com
+
+http://tube8.com
+
+http://dmm.co.jp
+
+http://cam4.com
+
+http://hardsextube.com
+
+http://e-hentai.org
+
+http://beeg.com
+
+http://2ch.net
+
+http://kickass.to
+
+http://myfreecams.com
+
+http://imagefap.com
+
+http://chaturbate.com
+
+http://4chan.org
+
+http://drtuber.com
+
+http://adnxs.com
+
+http://webalta.ru
+
+http://abril.com.br
+
+http://lxxx.com
+
+http://largeporntube.com
+
+http://rarbg.com
+
+http://porn.com
+
+http://perfectgirls.com
+
+http://xtube.com
+
+http://nuvid.com
+
+http://nudevista.com
+
+http://video-one.com
+
+http://porntube.com
+
+http://bravotube.com
+
+http://yourlust.com
+
+http://fucked-tube.com
+
+http://spankwire.com
+
+http://adam4adam.com
+
+http://motherless.com
+
+http://pornerbros.com
+
+http://batepapo.uol.com.br
+
+http://4tube.com
+
+http://sunporno.com
+
+http://eroprofile.com
+
+http://say-move.org
+
+http://streamcloud.eu
+
+http://pornmd.com
+
+http://keezmovies.com
+
+http://h2porn.com
+
+http://contenko.com
+
+http://xhamstercams.com
+
+http://pornhublive.com
+
+http://ryushare.com
+
+http://alphaporno.com
+
+http://anysex.com
+
+http://adult-empire.com
+
+http://brazzers.com
+
+http://sambaporno.com
+
+http://claro-search.com
+
+http://tubegalore.com
+
+http://videosexarchive.com
+
+http://exhentai.org
+
+http://tnaflix.com
+
+http://redtubelive.com
+
+http://vporn.com
+
+http://fakku.net
+
+http://anitube.se
+
+http://pornoxo.com
+
+http://freeones.com
+
+http://youjizzlive.com
+
+http://petardas.com
+
+http://woozworld.com
+
+http://literotica.com
+
+http://dojki.com
+
+http://manhunt.net
+
+http://ashemaletube.com
+
+http://ultrasurf.us
+
+http://gayromeo.com
+
+http://liveinternet.ru
+
+http://roulettebotplus.com
+
+http://pornsharía.com
+
+http://rarbg.com
+
+http://extremetube.com
+
+http://dmm.com
+
+http://juicyads.com`)
+		break
+
+case 'hentaialea':
+ if (!isNsfw) return reply(`${say.only.nsfw}`)
+const henta = Math.floor(Math.random() * 48) + 1;
+ xy = fs.readFileSync(`./edit/media/image/hentai/${henta}.jpg`);
+zero.sendMessage(from, xy, image, {quoted:mek, caption: 'ihh'})
+break
+
+case 'wpmobile':
+let blow = await fetchJson('https://api.xteam.xyz/randomimage/wpmobile?APIKEY=55341fd29facd829')
+let blowjob = await getBuffer(blow.blowjob);
+
+await zero.sendMessage(from, blowjob, image, {
+thumbnail: null,
+quoted: mek,
+})
+break
+
+case 'comandos':
+reply(`${comandoxy}`)
+break
+
+case 'cosplay': //by Momonga
+if (!isOwner) return reply (`num quero`)
+for (let i =0; i < 5; i++){
+try {
+let cos = await fetchJson('https://momonga-api.herokuapp.com/cosplay')
+let cosplayy = await getBuffer(cos.cosplay);
+
+await zero.sendMessage(from, cosplayy, image, {
+thumbnail: null,
+quoted: mek,
+})
+} catch(e) {
+console.log(e)
+reply('Erro ao enviar imagem');
+}
+}
+break
+
+case 'baixe':
+addFilter(from) 
+if (args.length < 1) return reply(`teste`)
+teks = args.join(' ')
+reply(`aguarde`)
+if (!teks.endsWith("-doc")){
+res = await yts(`${teks}`).catch(e => {
+enviar('_[ ! ] O erro de consulta inserido não existe_')
+})
+let thumbInfo = `❒「  *Youtube Search*  」
+├ *Título :* ${res.all[0].title}
+├ *ID de vídeo :* ${res.all[0].videoId}
+├ *Carregado em :* ${res.all[0].ago}
+├ *Visualizações :* ${res.all[0].views}
+├ *Duração :* ${res.all[0].timestamp}
+├ *Canal :* ${res.all[0].author.name}
+└ *Link do canal :* ${res.all[0].author.url}
+
+*_Aguarde o processo de upload....._*
+`
+sendFileFromUrl(res.all[0].image, image, {quoted: mek, caption: thumbInfo})
+res = await y2mateA(res.all[0].url).catch(e => {
+enviar('_[ ! ] Erro ao entrar no Y2mate Web * Tente repetir*_')
+})
+sendFileFromUrl(res[0].link, audio, {quoted: mek, mimetype: 'audio/mp4', filename: res[0].output})
+}
+break
+
+case 'top5anime':
+case 'top5animes':
+anu = await fetchJson(`https://x-restapi.herokuapp.com/api/topanime?apikey=BETA`, {
+method: 'get'
+})
+n = JSON.parse(JSON.stringify(anu.data));
+top = n[Math.floor(Math.random() * n.length)];
+topp = n[Math.floor(Math.random() * n.length)];
+toppp = n[Math.floor(Math.random() * n.length)];
+topppp = n[Math.floor(Math.random() * n.length)];
+toppppp = n[Math.floor(Math.random() * n.length)];
+topi = (top.Judul)
+topis = (top.Score)
+
+topii = (topp.Judul)
+topiss = (topp.Score)
+
+topiii = (toppp.Judul)
+topisss = (toppp.Score)
+
+topiiii = (topppp.Judul)
+topissss = (topppp.Score)
+
+topiiiii = (toppppp.Judul)
+topisssss = (toppppp.Score)
+const topanune = await getBuffer('https://telegra.ph/file/5c6429abd461d868b4f49.jpg')
+zero.sendMessage(from, topanune, image, {
+quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙰𝙽𝙸𝙼𝙴𝚂_
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈  
+${topi}
+Pontuação : ${topis} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
+${topii}
+Pontuação : ${topiss} / 10
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈
+${topiii}
+Pontuação : ${topisss} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
+${topiiii}
+Pontuação : ${topissss} / 10
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈
+${topiiiii}
+Pontuação : ${topisssss} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
+           _𝚃𝙾𝙿 5 𝙰𝙽𝙸𝙼𝙴𝚂_`
+})
+
+break
+
+case 'top5manga':
+case 'top5mangas':
+anu = await fetchJson(`http://x-restapi.herokuapp.com/api/topmanga?apikey=BETA`, {
+method: 'get'
+})
+n1 = JSON.parse(JSON.stringify(anu.data));
+top1 = n1[Math.floor(Math.random() * n1.length)];
+topp1 = n1[Math.floor(Math.random() * n1.length)];
+toppp1 = n1[Math.floor(Math.random() * n1.length)];
+topppp1 = n1[Math.floor(Math.random() * n1.length)];
+toppppp1 = n1[Math.floor(Math.random() * n1.length)];
+topi1 = (top1.Judul)
+topis1 = (top1.Score)
+
+topii1 = (topp1.Judul)
+topiss1 = (topp1.Score)
+
+topiii1 = (toppp1.Judul)
+topisss1 = (toppp1.Score)
+
+topiiii1 = (topppp1.Judul)
+topissss1 = (topppp1.Score)
+
+topiiiii1 = (toppppp1.Judul)
+topisssss1 = (toppppp1.Score)
+const sexo = await getBuffer('https://telegra.ph/file/2df433596a0e6f822b8cd.jpg')
+zero.sendMessage(from, sexo, image, {
+quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈  
+${topi1}
+Pontuação : ${topis1} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
+${topii1}
+Pontuação : ${topiss1} / 10
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈
+${topiii1}
+Pontuação : ${topisss1} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
+${topiiii1}
+Pontuação : ${topissss1} / 10
+◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈
+${topiiiii1}
+Pontuação : ${topisssss1} / 10
+◈ ━━━━━ ◈❮࿅❯◈ ━━━━━ ◈
+           _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_`
+})
+
+break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
@@ -3435,7 +4455,7 @@ await zero.sendMessage(from, imgUrl, image, {quoted: selocont, caption: textpo})
 
 break
 		
-case 'gerarnick':
+case 'gerarnick': case 'crearnick':
 let nickname = generator.randomNickname();
 reply(`*nickname gerado:*\n_${nickname}_`)
 break
@@ -3579,10 +4599,16 @@ break
 case 'galeria':
 reply (`${galeria}`)
 break
+
+case 'menuesp': case 'menuespanol': case 'menuespañol':
+reply (`${menuesp}`)
+await sleep(2000)
+sendDono('');
+break
 		
 // #admins	#adms
 
-case 'status':
+case 'status': case 'estatus':
 var b1 = isMute? '✓':'*X*';
 var b2 = isMultiPrefix? '✓':'*X*';
 var b3 = isNsfw? '✓':'*X*';
@@ -3631,7 +4657,7 @@ reply (`Não foi possível deletar a msg`)
 }
 break
 
-case 'roleta':
+case 'roleta': case 'ruleta':
 if (!isBotGroupAdmins) return reply (`${say.only.botAdmin}`)
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.admin}`)
 if (!isGroup) return reply(`${say.only.group}`)
@@ -3693,7 +4719,7 @@ break
 }
               break			
 
-case 'checkativo': case 'checarativo':
+case 'checkativo': case 'checarativo': case 'checkactivos':
  
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.admin}`);
 if (!isGroup) return reply(`${say.only.group}`)
@@ -3711,7 +4737,7 @@ mentions(`⋆⃟ۣۜ᭪➣ Consulta da atividade de ⋆⃟ۣۜ᭪➣ @${mentione
 
 break
 
-case 'topativos':
+case 'topativos': case 'topactivos':
  
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.admin}`);
 if (!isGroup) return reply(`${say.only.group}`)
@@ -3887,7 +4913,7 @@ reply (`${say.error}`)
 }
 break
 
-case 'ban':
+case 'ban': case 'expulsar':
 if (!isOwner) if (!isGroupAdmins) {
 return sendMedia(from, goAudio + 'admin.mp3', 'audio', {
 mimetype: Mimetype.mp4Audio,
@@ -3898,7 +4924,7 @@ if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 try {
 let cucu = body.slice(6) + '@s.whatsapp.net';
 let kkk = mek.message.extendedTextMessage.contextInfo.participant
-await reply (`até mais baka kkk`)
+await reply (`banido 😎`)
 await sleep(1000);
 if (kkk) {
 if (kkk === zero.user.jid) return reply (`Eu não vou me banir cara de cu`)
@@ -3971,14 +4997,14 @@ break
 
 
 
-case 'add':
+case 'add': case 'añadir':
 const qd = args.join(' ')
 if (!qd) return reply (`insira o número!`)
 if (!isGroup) return reply (`${say.only.group}`)
 if (!isGroupAdmins) if (!isOwner) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 const dl = body.slice(5)
-if (dl.length > 13)return reply(`Exemplo : ${prefix}add 554999979631`) 
+if (dl.length > 13)return reply(`Exemplo : ${prefix}add 5588997321488`) 
 if (args[0].startsWith('08')) return reply('Use o código do país, man')
 try {
 num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
@@ -4052,7 +5078,7 @@ if (isWelkom) {
           ]);        
           }
 if (!isWelkom) {
-			sendButMessage(from, seloOff, '🍎️ *welkom* está desativado', `com o welkon desativado, o bot suspende as mensagens de boas vindas.`, [
+			sendButMessage(from, seloOff, '??️ *welkom* está desativado', `com o welkon desativado, o bot suspende as mensagens de boas vindas.`, [
             {              
               buttonId: `welkom onn`,
               buttonText: {
@@ -4294,8 +5320,20 @@ break
 
 
 case 'blowjob':
-if (!isNsfw) return reply(`${say.only.nsfw}`)
-blowjob();
+for (let i =0; i < 10; i++){
+try {
+	if (!isNsfw) return reply(`${say.only.nsfw}`)
+let blow = await fetchJson('https://momonga-api.herokuapp.com/hentai/blowjob')
+let blowjob = await getBuffer(blow.blowjob);
+
+await zero.sendMessage(from, blowjob, image, {
+thumbnail: null,
+quoted: mek,
+})
+} catch(e) {
+reply(e); console.log(e)
+}
+}
 break
 
 
@@ -4500,7 +5538,7 @@ console.log(e)
 }
 break
 
-case 'togif':
+case 'togif': case 'agif':
 try {
 if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
 encmediaaa = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
@@ -5119,6 +6157,10 @@ if (selectedButton == 'help'){
 reply (`${help}`)
 }
 
+if (selectedButton == 'menuesp'){
+reply(`${menuesp}`)
+}
+
 if (selectedButton == `antifake on`) {
 try {
 if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
@@ -5231,6 +6273,22 @@ reply(`${groupDesc}`);
 	}	
 
 // antilink
+
+if (document.includes(type)){
+if (!Antidoc) return
+if (!botNumber) return
+if (isGroupAdmins) return reply(`hummmm documento`)     
+reply(`Não permitimos envio de documentos no grupo, por questões de segurança de travas e etc..., então por conta disso, terei que te remover, qualquer dúvida,entre em contato com algum adm.`)
+zero.groupSettingChange(from, GroupSettingChange.messageSend, true)		
+setTimeout(() =>{
+zero.groupRemove(from, [sender])
+}, 1000)
+setTimeout( () => {
+zero.groupSettingChange(from, GroupSettingChange.messageSend, false)
+}, 2000)
+clear = `🗑️\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🗑️\n❲❗❳ *Lɪᴍᴘᴇᴢᴀ ᴅᴇ Cʜᴀᴛ Cᴏɴᴄʟᴜɪ́ᴅᴀ* ✅`
+zero.sendMessage(from, clear , MessageType.text, {quoted: selo, contextInfo : { forwardingScore: 500, isForwarded:true}})
+}
 
 if (isAntiPalavrão) if (budY.includes("piroca") ||(budY.includes("filho da puta") || (budY.includes("toma no cu") || (budY.includes("no seu cu") || (budY.includes("toma no seu cú") || (budY.includes("teu cú") ||  (budY.includes("teu cu") || (budY.includes("no seu cú") || (budY.includes("tmnc") || (budY.includes("arrombado") || (budY.includes("fudid") || (budY.includes(" gore") || (budY.includes("bosta") || (budY.includes("fdp") || (budY.includes("merda") || (budY.includes("buceta") || (budY.includes("do seu cu") || (budY.includes("do seu cú") || (budY.includes("puta")))))))))))))))))))){
 if (isOwner) if (isGroupAdmins) {
@@ -5402,9 +6460,9 @@ resultMath = valorMath
  }
 mathHelp(29, 1);
                buttons = [{buttonId:`kkkkkk`, 
-               buttonText:{displayText: `🤒 F chat`},type:1},
+               buttonText:{displayText: `F chat 🤡`},type:1},
 {buttonId:`kkkkjjjjjkk`, 
-               buttonText:{displayText: `🌿 Vai tarde kkk`},type:1},
+               buttonText:{displayText: `Vai tarde 😎`},type:1},
                ]
                imageMsg = (await zero.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${mathResult}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage				
 				
