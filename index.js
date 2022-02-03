@@ -228,6 +228,7 @@ var argsMaiorQue = (teks) => cArgs.length > teks;
 var argsJoin = (teks) => args.join(teks);
 var budyIncludes = (teks) => budy.includes(teks);
 var budYIncludes = (teks) => budY.includes(teks);
+var q = args.join(" ")
 
 var argsSplit = args.join("").split('|');
 			
@@ -4072,6 +4073,16 @@ Pontuação : ${topisssss1} / 10
            _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_`
 })
 
+break
+
+case 'playmp42':
+reply(`paro`) 
+if (args.length == 0) return reply(`Exemplo: ${prefix + command} Musica Sad`)
+query = args.join(" ")
+get_resullt = await fetchJson(`https://akamer.herokuapp.com/api/yt/playmp4?query=${query}&apikey=akame`)
+get_result = get_resullt.result
+get_video = await getBuffer(get_result.url)
+zero.sendMessage(from, get_video, video, {mimetype: Mimetype.mp4, filename: `${get_result.title}.mp4`, quoted: info, thumbnail: null})
 break
 
 case 'recado':
