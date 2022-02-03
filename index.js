@@ -523,14 +523,15 @@ isWelkom ? t2 = ' ✓ ': t2 = ' X ';;
 isAntiLink ? t3 = ' ✓ ': t3 = ' X ';
 isAntiFake ? t4 = ' ✓ ': t4 = ' X ';
 isMultiPrefix ? t5 = ' ✓ ': t5 = ' X ';
+Antidoc ? t6 = ' ✓ ': t6 = ' X ';
 
 
        txtt =` `
 
                buttons = [{buttonId:`menu lista`, 
                buttonText:{displayText: '𝙻𝙸𝚂𝚃𝙰 𝙳𝙴 𝙼𝙴𝙽𝚄𝚂'},type:1},
-               {buttonId:`help`,buttonText:{displayText:'𝙷𝙴𝙻𝙿' },type:1},
-                {buttonId:`outros`,buttonText:{displayText:'𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1}
+               {buttonId:`help`,buttonText:{displayText:'𝙷𝙴𝙻𝙿' },type:1}
+                //{buttonId:`outros`,buttonText:{displayText:'𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1}
                ]
 
 mathHelp(29, 1);
@@ -543,10 +544,11 @@ mathHelp(29, 1);
          𝐒𝐓𝐀𝐓𝐔𝐒 :
 ▰▰▰▰▰▰▰▰▰▰
 *nsfw:*  ${t}
-*welkom:*  ${t2}
+*boas-vindas:*  ${t2}
 *anti-link:*  ${t3}
 *anti-fake:*  ${t4}
-*multi-prefix:* ${t5}
+*multi-prefixo:* ${t5}
+*anti-documento:* ${t6}
 ${allmenu}`, imageMessage: imageMsg,
                buttons: buttons,
                headerType: 4
@@ -1192,12 +1194,12 @@ mimetype: Mimetype.mp4Audio,
  ptt:true});
 }
 
-if (budy.includes("bot") || (budy.includes("bot ta on?") || (budy.includes("bot on?") || (budy.includes("bot?"))) )){
-reply (`aoba!`)
+if (budy.includes("bot ta on?") || (budy.includes("bot on?") )){
+reply (`sim!`)
 }
 
 if (budy.includes("hola") || (budy.includes("hola!") || (budy.includes("hola.") || (budy.includes("hola?"))) )){
-reply (`olá, hoje é ${date}!`)
+reply (`olá!`)
 }
 
 if (budy.includes("bdia")){
@@ -1224,7 +1226,7 @@ sendEphemeral: true,
                 "previewType": "PHOTO",
                 "thumbnailUrl": "https://telegra.ph/file/bbb5eca08130920edbcb4.jpg",
         "thumbnail":  fs.readFileSync(`./edit/media/image/selos/${mathSelo}.jpg`),
-                "sourceUrl": `https://api.whatsapp.com/send?phone=558897321488&text=Olá%20 xy, tudo bom? `
+                "sourceUrl": `https://api.whatsapp.com/send?phone=558897321488&text=Olá%20xy, tudo bom? `
 },mentionedJid:[sender]}, quoted : selocont})
         }
 			
@@ -3332,7 +3334,7 @@ member.map( async adm => {
 mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
 var options = {
-text: '*🔴 OFFLINE*',
+text: 'off, f.',
 contextInfo: { mentionedJid: mem },
 quoted: selocont
 }
@@ -3365,7 +3367,7 @@ member.map( async adm => {
 mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
 var options = {
-text: '*🟢 ONLINE*',
+text: 'onlineeeee',
 contextInfo: { mentionedJid: mem },
 quoted: selocont
 }
@@ -3448,8 +3450,8 @@ hasil = `${gosto}\n\nSegundo meus cálculos, eu acredito que... ${jawab}`
 reply(hasil)
 break
 
-case 'pregunta':
-                  respuesta = ['Si', 'No', 'Tal vez', 'Puede ser', 'Ai una probabilidad del 99.99999999991.01%', 'Puede que no', 'Yo que se', 'mmmm🤔.... Dejame lo pienso un poco']
+case 'pergunta':
+                  respuesta = ['Sim', 'Não', 'Talvez', 'Pode ser', 'Tem uma probabilidade de 99.99999999991.01%', 'Talvez não', 'E eu sei lá', 'mmmm🤔.... deixa eu pensar um pouco\nNão']
                   answer = respuesta[Math.floor(Math.random() * respuesta.length)]
                   if (args.length < 1) return reply('Y la pregunta?')
                   reply(answer)
@@ -3533,7 +3535,7 @@ case 'voz':
                 ranm = getRandom('.mp3')
                 rano = getRandom('.ogg')
                 dtt.length > 300
-                ? reply('Mira, si no sabes usar esto... mejor no lo agas 😤')
+                ? reply('Olha, se você não sabe como usar isso... é melhor não fazer isso. 😐')
                 : gtts.save(ranm, dtt, function() {
                 zero.updatePresence(from, Presence.recording)
                 zero.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', duration: -999999999999999999, ptt:true, sendEphemeral: true, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
@@ -3543,7 +3545,7 @@ case 'voz':
                 break
 
 case 'idiomas':
-                  reply(`*Estos son los idiomas soportados por la voz👇🏻*:
+                  reply(`*Estes são os idiomas suportados pela voz👇🏻*:
                   
                     'af': 'Afrikaans',
                     'sq': 'Albanian',
@@ -4073,20 +4075,6 @@ Pontuação : ${topisssss1} / 10
            _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_`
 })
 
-break
-
-case 'playm4':
-if (args.length < 1) return reply(`Exemplo : ${prefix}play João e maria chico buarque`)
-reply(`nao`) 
-apykeybysayo = 'BETA'
-argp = args.join(" ")
-anu = await fetchJson(`http://x-restapi.herokuapp.com/api/play?q=${argp}&apikey=${apykeybysayo}`)
-if (anu.error) return reply(anu.error)
-infomp3 = `❗MUSÍCA ENCONTRADA\n[❗] enviando sua música aguarde..`				
-buffer = await getBuffer(anu.result.image)
-zero.sendMessage(from, buffer, image, {quoted: info, thumbnail: null})					
-msc = await getBuffer(anu.result.url)				
-zero.sendMessage(from, msc, audio, {mimetype: 'audio/mp4', quoted: info})
 break
 
 case 'recado':
