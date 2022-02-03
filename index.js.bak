@@ -4076,7 +4076,7 @@ Pontuação : ${topisssss1} / 10
 break
 
 case 'playmp42':
-reply(enviar.espere) 
+reply(`paro`) 
 if (args.length == 0) return reply(`Exemplo: ${prefix + command} Musica Sad`)
 query = args.join(" ")
 get_resullt = await fetchJson(`https://akamer.herokuapp.com/api/yt/playmp4?query=${query}&apikey=akame`)
