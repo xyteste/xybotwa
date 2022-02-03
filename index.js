@@ -480,10 +480,6 @@ message: {
 
 ////// fim dos verificados
 
-//mais consts
-
-const comandoxy = require('./edit/txt/comandos.js');
-
 // #functions //#home
 
 //#antipv
@@ -6099,6 +6095,9 @@ reply(`*Outras opções:*
 *${prefix}criador* - falar com o dono
 *${prefix}learn* - como instalar o bot no seu celular
 `)
+
+await sleep(1500)
+await reply(`por enquanto apenas isso!`)
 }
 
 if (selectedButton == `nsfw on`) {
