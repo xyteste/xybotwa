@@ -529,8 +529,8 @@ Antidoc ? t6 = ' ✓ ': t6 = ' X ';
        txtt =` `
 
                buttons = [{buttonId:`menu lista`, 
-               buttonText:{displayText: '𝙻𝙸𝚂𝚃𝙰 𝙳𝙴 𝙼𝙴𝙽𝚄𝚂'},type:1},
-               {buttonId:`help`,buttonText:{displayText:'𝙷𝙴𝙻𝙿' },type:1}
+               buttonText:{displayText: '⌸ 𝙻𝙸𝚂𝚃𝙰 𝙳𝙴 𝙼𝙴𝙽𝚄𝚂'},type:1},
+               {buttonId:`help`,buttonText:{displayText:'⚿ 𝙷𝙴𝙻𝙿' },type:1}
                 //{buttonId:`outros`,buttonText:{displayText:'𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1}
                ]
 
@@ -540,15 +540,20 @@ mathHelp(29, 1);
 
                buttonsMessage = {
                contentText: `${botDisplay}`,
-                 footerText: `${readmore}\n▰▰▰▰▰▰▰▰▰▰
-         𝐒𝐓𝐀𝐓𝐔𝐒 :
-▰▰▰▰▰▰▰▰▰▰
-*nsfw:*  ${t}
-*boas-vindas:*  ${t2}
-*anti-link:*  ${t3}
-*anti-fake:*  ${t4}
-*multi-prefixo:* ${t5}
-*anti-documento:* ${t6}
+                 footerText: `${readmore}\n
+*⌜⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⌝
+     𝐒𝐓𝐀𝐓𝐔𝐒 :
+⌞⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⌟*
+
+┏━━━━━━━━━━━━━━━┓
+┃*nsfw:*  ${t}
+┃*boas-vindas:*  ${t2}
+┃*anti-link:*  ${t3}
+┃*anti-fake:*  ${t4}
+┃*multi-prefixo:* ${t5}
+┃*anti-documento:* ${t6}
+┗━━━━━━━━━━━━━━━┛
+
 ${allmenu}`, imageMessage: imageMsg,
                buttons: buttons,
                headerType: 4
