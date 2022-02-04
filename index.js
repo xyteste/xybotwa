@@ -3907,21 +3907,19 @@ quoted: mek,
 })
 break
 
-case 'cosplay': //by Momonga
-if (!isOwner) return reply (`num quero`)
-for (let i =0; i < 5; i++){
+case 'cosplay':
 try {
-let cos = await fetchJson('momonga-api.herokuapp.com/hentai/cosplay')
-let cosplayy = await getBuffer(cos.cosplay);
-
-await zero.sendMessage(from, cosplayy, image, {
-thumbnail: null,
+let apikey = 'momonga';
+let apiResult = await fetchJson('https://momonga-api.herokuapp.com/hentai/cosplay?apikey=' + apikey);
+if (apiResult.error) return reply (apiResult.error);
+let mandarImagem = await getBuffer(apiResult.result);
+zero.sendMessage(from, mandarImagem, image, {
 quoted: mek,
-})
+thumbnail: null,
+caption: `🤒 sexy`
+});
 } catch(e) {
-console.log(e)
-reply('Erro ao enviar imagem');
-}
+console.log(e); reply(e);
 }
 break
 
@@ -6413,7 +6411,12 @@ console.log(color('[DEMOTE]', 'red')), (color(`${num.split('@')[0]} foi rebaixad
 const grupo = await zero.groupMetadata(anu.jid)
 num = anu.participants[0]
 console.log(color('[ADD] entraram via link ou foi adicionado', 'red'))
-await zero.sendMessage(grupo.id, `🔥፝⃟ Olá ${num.split('@')[0]} Seja bem vindo(a) ao grupo. leia as regras, para evitar banimento permanente`, MessageType.text)
+let bvmc = num.split('@')[0]
+let bvresult = await fetchJson('https://akame-api.herokuapp.com/api/card/welcomev2?nome=' + bvmc + '&nomegp=BEM%20VINDO%20AO%20${groupName}&titulo=OL%C3%81&membros=666&cor=ffff00&tcor=ffff00&lcor=ffff00&perfil=https://telegra.ph/file/462699589472e4ed36322.jpg&fundo=https://telegra.ph/file/c0c438ff2c71454da16ad.jpg&numero=666&apikey=FK7njbTR');
+if (bvresult.error);
+let bvgo = await getBuffer(bvresult.result);
+zero.sendMessage(from, bvgo, image, {quoted: mek, thumbnail: null, caption: `🤠`
+});
 } else if (anu.action == 'remove') {
 num = anu.participants[0]
 const grupo = await zero.groupMetadata(anu.jid)
