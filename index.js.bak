@@ -71,11 +71,12 @@ var tempo = 'Boa noite'
                                         }
 
 // #texto #txt
-const { menuhentai, allmenu, menufigu, menuadms, menudono, menuutils, galeria, menuesp } = require('./edit/txt/menus.js');
+const { menuhentai, allmenu, menufigu, menuadms, menudono, menuutils, galeria } = require('./edit/txt/menus.js');
 const { help } = require('./edit/txt/help.js');
 say = require('./edit/txt/say.js')
 
 //#json
+const vacilo = JSON.parse(fs.readFileSync('./docs/json/vacilo.json'))
 const acordarDono = JSON.parse(fs.readFileSync('./docs/json/acordarDono.json'))
 const multiprefix = JSON.parse(fs.readFileSync('./docs/json/multiprefix.json'))
 const nsfw = JSON.parse(fs.readFileSync('./docs/json/nsfw.json'));
@@ -187,6 +188,7 @@ const isGroup = from.endsWith('@g.us')
 var sender = isGroup ? mek.participant : mek.key.remoteJid;
 
 //#is
+const isVacilo = isGroup ? vacilo.includes(from) : true
 const Antidoc = isGroup ? antidoc.includes(from) : false;
 const isMultiPrefix = isGroup ? multiprefix.includes(from) : false
 const isAntiPv = antipv.includes('online');
@@ -540,15 +542,15 @@ mathHelp(29, 1);
 
                buttonsMessage = {
                contentText: `${botDisplay}`,
-                 footerText: `${readmore}\n▰▰▰▰▰▰▰▰▰▰
-         𝐒𝐓𝐀𝐓𝐔𝐒 :
-▰▰▰▰▰▰▰▰▰▰
-*nsfw:*  ${t}
-*boas-vindas:*  ${t2}
-*anti-link:*  ${t3}
-*anti-fake:*  ${t4}
-*multi-prefixo:* ${t5}
-*anti-documento:* ${t6}
+                 footerText: `${readmore}\n        𝐒𝐓𝐀𝐓𝐔𝐒 :
+┏━━━━━━━━━━━━━━━┓
+┃*nsfw:*  ${t}
+┃*boas-vindas:*  ${t2}
+┃*anti-link:*  ${t3}
+┃*anti-fake:*  ${t4}
+┃*multi-prefixo:* ${t5}
+┃*anti-documento:* ${t6}
+┗━━━━━━━━━━━━━━━┛
 ${allmenu}`, imageMessage: imageMsg,
                buttons: buttons,
                headerType: 4
@@ -1249,51 +1251,45 @@ function listaMenus () {
 
                           {
 
-                              "title": "menu admins",
+                              "title": "Menu Admins",
                               "rowId": `${prefix}` + "menuadmins"
 
                            },
 
                            {
 
-                              "title": "menu stickers",
+                              "title": "Menu Stickers",
                               "rowId": `${prefix}` + "menufigu"
 
                            },
 
                            {
 
-                              "title": "menu utils",
+                              "title": "Menu Utils",
                               "rowId": `${prefix}` + "menuutils"
 
                            },
                            {
 
-                              "title": "menu nsfw",
+                              "title": "Menu Nsfw",
                               "rowId": `${prefix}` + "menunsfw"
 
                            },
                                                       {
 
-                              "title": "menu dono",
+                              "title": "Menu Dono",
                               "rowId": `${prefix}` + "menudono"
 
                            },
                            {
 
-                              "title": "galeria",
+                              "title": "Galeria",
                               "rowId": `${prefix}` + "galeria"
 
                            },
                            {
 
-                              "title": "menu en español",
-                              "rowId": `${prefix}` + "menuesp"
-
-                           },
-                           {
-
-                              "title": "interagir com o bot",
+                              "title": "Interagir Com O Bot",
                               "rowId": `${prefix}` + "interagir"
 
                            },
@@ -3022,11 +3018,11 @@ case 'death':
                 if (!isGroup) return reply(ind.groupo())
 idde = ["30","76","90","72","83","73","83","74","92","100","94","48","37","53","63"]
 idade = idde[Math.floor(Math.random() * (idde.length))]
-morte = `Pessoas com este nome: ${pushname} \nTendem a morrer aos ${idade} anos de idade.`
+morte = `Pessoas com o nome: ${pushname} \nTendem a morrer aos ${idade} anos de idade.`
 reply(morte)
 break
 
-case 'gostosa': case 'gustosa':
+case 'gostosa':
                 if (!isGroup) return reply(ind.groupo())
                 random = `${Math.floor(Math.random() * 100)}`
 boiola = random
@@ -3035,7 +3031,7 @@ teks = `Você é ${random}% Gostosa\n\n${bo}`
 reply(`${teks}`)
 break
 
-case 'casal': case 'pareja':
+case 'casal':
                 if (!isGroup) return reply(ind.groupo())
  jds = []
 					const jdii = groupMembers
@@ -3057,7 +3053,7 @@ yhb = `eita`
 zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
 break
 
-case 'chute': case 'patear':
+case 'chute':
                 if (!isGroup) return reply(ind.groupo())
 if (args.length < 1) return reply('marque a pessoa que você quer agredir')
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -3080,7 +3076,7 @@ wew = fs.readFileSync(`./edit/media/image/foti/ship.jpg`)
 zero.sendMessage(from, wew, image, {quoted: mek, caption: yh1b})
 break
 
-case 'carinho': case 'cariño':
+case 'carinho':
                 if (!isGroup) return reply(ind.groupo())
 
 if (args.length < 1) return reply('em quem você quer fazer carinho?')
@@ -3095,7 +3091,7 @@ wew = fs.readFileSync('./edit/media/gif/carinho.mp4');
 zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: cu})
 break
 
-case 'gostosa2': case 'gustosa2':
+case 'gostosa2':
                 if (!isGroup) return reply(ind.groupo())
                       membro = []
                       const mett1 = groupMembers
@@ -3124,15 +3120,18 @@ case 'piada':
             break
 					
 case 'dono': case 'criador':
-await reply(`
+await reply(`indo!`)
 
+await sleep(2000)
+sendDono('')
+/*antiga case dono(`
 *esse bot é de uso grátis,* você pode obtê-lo através do meu canal no YouTube:
 https://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw
 
 https://chat.whatsapp.com/J1yRTx7ClM14pNeGShYNXE
 `)
 await sleep(2000)
-sendDono('');
+sendDono('');*/
 break
 
 case 'simi': 
@@ -3140,18 +3139,6 @@ query = args.join('')
 anu = await fetchJson(`https://akame-api.herokuapp.com/api/simi?msg={query}&apikey=FK7njbTR`)
 pica = await getBuffer(anu.result.resposta)
 reply(`${pica}`);
-break
-
-case 'creador':
-await reply(`
-
-*este bot es de uso gratuito,* puedes conseguirlo a través de mi canal de youtube (esta en portugues de brasil):
-https://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw
-
-https://chat.whatsapp.com/J1yRTx7ClM14pNeGShYNXE
-`)
-await sleep(2000)
-sendDono('');
 break
 
 				case 'multiprefix':
@@ -3427,7 +3414,7 @@ sus =
 mentions(`${sus}`, mentioned, true)
 break
 
-case 'gado': case 'ganado':
+case 'gado':
 addFilter(from)
 zero.updatePresence(from, Presence.composing)
 if (!isGroup) return reply(linguagem.group())
@@ -3478,17 +3465,6 @@ const tamanho = random
 if (tamanho < 13 ) {pp = 'só a fimose'} else if (tamanho == 13 ) {pp = 'passou da média😳'} else if (tamanho == 14 ) {pp = 'passou da média😳'} else if (tamanho == 15 ) {pp = 'eita, vai pegar manga?'} else if (tamanho == 16 ) {pp = 'eita, vai pegar manga?'} else if (tamanho == 17 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 18 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 19 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 20 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 21 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 22 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 23 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 24 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho > 25 ) {pp = 'vai procurar petróleo com isso?'
 }
 hasil = `Seu pau tem ${random}cm\n\n${pp}`
-reply(hasil)
-break
-
-case 'pene':
-addFilter(from)
-zero.updatePresence(from, Presence.composing)
-random = `${Math.floor(Math.random() * 35)}`
-const sexx = random
-if (sexx < 13 ) {pp = 'solo fimosis'} else if (sexx == 13 ) {pp = 'pasó el promedio😳'} else if (sexx == 14 ) {pp = 'pasó el promedio😳'} else if (sexx == 15 ) {pp = 'eita, vai pegar manga?'} else if (sexx == 16 ) {pp = 'eita, vai pegar manga?'} else if (sexx == 17 ) {pp = 'calma man, a mina não é um poço😳'} else if (sexx == 18 ) {pp = 'calma man, a mina não é um poço😳'} else if (sexx == 19 ) {pp = 'calma man, a mina não é um poço😳'} else if (sexx == 20 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx == 21 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx == 22 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx == 23 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx == 24 ) {pp = 'você tem um poste no meio das pernas'} else if (sexx > 25 ) {pp = 'vai procurar petróleo com isso?'
-}
-hasil = `tu pene tiene ${random}cm\n\n${pp}`
 reply(hasil)
 break
 
@@ -3545,7 +3521,7 @@ case 'voz':
                 break
 
 case 'idiomas':
-                  reply(`*Estes são os idiomas suportados pela voz👇🏻*:
+                  reply(`*Estes são os idiomas suportados pela voz!*:
                   
                     'af': 'Afrikaans',
                     'sq': 'Albanian',
@@ -3724,6 +3700,7 @@ try {
 			break
 
 case 'admins':
+case 'listadmin':
 case 'listadmins':  
 case 'listaadmins':   
 if (!isGroup) return reply(`${say.only.group}`)
@@ -3737,7 +3714,8 @@ mentions(ytb, groupAdmins, true)
 break
 
 case 'sites18': //by: yuki
-		reply (`\nhehehe :\n\nhttp://xvideos.com
+		reply (`\nLista de sites:\n
+http://xvideos.com
 
 http://xhamster.com
 
@@ -3927,10 +3905,6 @@ await zero.sendMessage(from, blowjob, image, {
 thumbnail: null,
 quoted: mek,
 })
-break
-
-case 'comandos':
-reply(`${comandoxy}`)
 break
 
 case 'cosplay': //by Momonga
@@ -4123,7 +4097,7 @@ mimetype: Mimetype.mp4Audio,
  quoted: mek,
  ptt:true});
 await sleep(2000)
-await reply (`👋 bye`)
+await reply (`vazando...`)
              await zero.groupLeave(from) 
               break
               
@@ -4452,6 +4426,33 @@ let textpo = `
 `
 await zero.sendMessage(from, imgUrl, image, {quoted: selocont, caption: textpo})
 
+break
+
+case 'bemvindo2':  
+if (!isGroup) return reply(`somente em grupos`)
+if (!isGroupAdmins) return reply(`somente adms`)
+if (args.length < 1) return reply(`Digite da forma correta:\nComando: ${prefix + command} 1 para ativar `)
+if (Number(args[0]) === 1) {
+if (isVacilo) return reply('❎O recurso já está ativado no grupo❎')
+vacilo.push(from)
+fs.writeFileSync('./docs/json/vacilo.json', JSON.stringify(vacilo))
+reply('✅O recurso foi ativado✅')
+} else if (Number(args[0]) === 0) {
+if (!isVacilo) return reply('❎O recurso não está ativado no grupo❎')
+let position = false
+Object.keys(vacilo).forEach((i) => {
+if (vacilo[i] === from) {
+position = i
+}
+})
+if (position !== false) {
+vacilo.splice(position, 1)
+fs.writeFileSync('./docs/json/vacilo.json', JSON.stringify(vacilo))
+}
+reply('❌O recurso foi desativado❌')
+} else {
+reply(`Digite da forma correta:\nComando: ${prefix + command} 1, para ativar e 0 para desativar`)
+}
 break
 		
 case 'gerarnick': case 'crearnick':
