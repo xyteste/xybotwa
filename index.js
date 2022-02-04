@@ -6411,9 +6411,9 @@ console.log(color('[DEMOTE]', 'red')), (color(`${num.split('@')[0]} foi rebaixad
 const grupo = await zero.groupMetadata(anu.jid)
 num = anu.participants[0]
 console.log(color('[ADD] entraram via link ou foi adicionado', 'red'))
-let bvresult = await fetchJson('https://akame-api.herokuapp.com/api/card/welcomev2?nome=MEMBRO%20NOVO&nomegp=BEM%20VINDO%20AO%20GRUPO!&titulo=BEM-VINDO&membros=~&cor=ffff00&tcor=ffff00&lcor=ffff00&perfil=https://telegra.ph/file/462699589472e4ed36322.jpg&fundo=https://telegra.ph/file/c0c438ff2c71454da16ad.jpg&numero=~&apikey=FK7njbTR');
+const bvresult = await fetchJson('https://akame-api.herokuapp.com/api/card/welcomev2?nome=MEMBRO%20NOVO&nomegp=BEM%20VINDO%20AO%20GRUPO!&titulo=BEM-VINDO&membros=~&cor=ffff00&tcor=ffff00&lcor=ffff00&perfil=https://telegra.ph/file/462699589472e4ed36322.jpg&fundo=https://telegra.ph/file/c0c438ff2c71454da16ad.jpg&numero=~&apikey=FK7njbTR');
 if (bvresult.error);
-let bvgo = await getBuffer(bvresult.result);
+const bvgo = await getBuffer(bvresult.result);
 zero.sendMessage(from, bvgo, image, {quoted: mek, thumbnail: null, caption: `🤠`
 });
 } else if (anu.action == 'remove') {
