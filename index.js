@@ -4064,39 +4064,6 @@ Pontuação : ${topisssss1} / 10
 
 break
 
-case 'gerarnick': //@Kratos цДЫ     		
-teks = args.join(" ")
-send = await fetchJson(`http://brizas-api.herokuapp.com/gerador/fancytext?apikey=brizaloka&text=${teks}`)
-teks = `NICKS GERADOS COM SUCESSO!ЁЯРд
-ЁЯНЩPrimeiro ${send.random_1} 
-ЁЯНЩSegundo ${send.random_2} 
-ЁЯНЩTerceiro ${send.random_3} 
-ЁЯНЩQuarto ${send.random_4} 
-ЁЯНЩQuinto ${send.random_5}
- 
-         ЁЯС╛EXTRASЁЯС╛
- ЁЯС╛${send.squares}
- ЁЯС╛${send.inverted_squares}
- ЁЯС╛${send.italic}
- ЁЯС╛${send.bold}
- ЁЯС╛${send.future_alien}
- ЁЯС╛${send.asian_1}
- ЁЯС╛${send.asian_2}
- ЁЯС╛${send.squiggle}
- ЁЯС╛${send.squiggle_2}
- ЁЯС╛${send.squiggle_3}
- ЁЯС╛${send.squiggle_4}
- ЁЯС╛${send.neon}
- 
- 
-тЮг    тЦЙтХСтЦИтЦРтЦЙтЦЙтЦРтЦРтЦНтЦИтХСтЦНтЦЙтЦПтЦНтЦН
-тЮг    тЦЙтХСтЦИтЦРтЦЙтЦЙтЦРтЦРтЦНтЦИтХСтЦНтЦЙтЦПтЦНтЦН
-    
-    ┬йpinguim
- `
-zero.sendMessage(from, teks, text, {quoted: mek})
-break	     	
-
 case 'wa.me':
 case 'wame':
                  zero.updatePresence(from, Presence.composing) 
