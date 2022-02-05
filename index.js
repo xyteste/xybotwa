@@ -27,6 +27,7 @@ const {
 } = require('@adiwajshing/baileys');
 ///
 
+const imgbb = require('imgbb-uploader');
 const { upload } = require("./docs/lib/ytdl");
 const axios = require('axios').default;
 const speed = require('performance-now');
@@ -4061,6 +4062,42 @@ Pontuação : ${topisssss1} / 10
 })
 
 break
+
+case 'setperfil':
+				zero.updatePresence(from, Presence.composing) 
+				if (!isQuotedImage) return reply(`Envie fotos com legendas ${prefix}setperfil ou tags de imagem que já foram enviadas`)
+				if (!isOwner) return reply(mess.only.ownerB)
+				enmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+				media = await zero.downloadAndSaveMediaMessage(enmedia)
+				await zero.updateProfilePicture(botNumber, media)
+				reply('Obrigado pelo novo perfil!')
+				break 
+				
+				case 'procurado':
+case 'figuprocurado':
+                    var imgbb = require('imgbb-uploader')
+                    if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+                        ger = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : may
+                        reply(mess.wait)                     
+                        owgi = await zero.downloadAndSaveMediaMessage(ger)
+                        anu = await imgbb("9d7a1bd760e2e3360dbfd40cec4d7ad7", owgi)
+                        imgtrg = `${anu.display_url}`
+                        ranp = getRandom('.gif')
+                        rano = getRandom('.webp')
+                        anu1 = `https://api-exteam.herokuapp.com/api/procurado?img=${imgtrg}`
+                        exec(`wget ${anu1} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+                            fs.unlinkSync(ranp)
+                            if (err) return reply(`DEU ERROR ЁЯШЮ`)
+                            nobg = fs.readFileSync(rano)
+                            zero.sendMessage(from, nobg, sticker, {
+                                quoted: may
+                            })
+                            fs.unlinkSync(rano)
+                        })
+                    } else {
+                        reply('Você precisa marcar ou enviar uma imagem para isso')
+                    }
+                    break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
