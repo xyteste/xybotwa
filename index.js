@@ -4063,19 +4063,44 @@ Pontuação : ${topisssss1} / 10
 
 break
 
-case 'attp2':	//@Kratos ├жтАЮтА║	
-if (args.length < 1) return reply('Cad├к o texto?')
-teks = body.slice(6)
-url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp6?apikey=brizaloka&text=${teks}`)
-send = await getBuffer(url)
-zero.sendMessage(from, send, sticker, {quoted: selocont})
-break	
+case 'gerarnick': //@Kratos цДЫ     		
+teks = body.slice(10)
+send = await fetchJson(`http://brizas-api.herokuapp.com/gerador/fancytext?apikey=brizaloka&text=${teks}`)
+teks = `NICKS GERADOS COM SUCESSO!ЁЯРд
+ЁЯНЩPrimeiro ${send.random_1} 
+ЁЯНЩSegundo ${send.random_2} 
+ЁЯНЩTerceiro ${send.random_3} 
+ЁЯНЩQuarto ${send.random_4} 
+ЁЯНЩQuinto ${send.random_5}
+ 
+         ЁЯС╛EXTRASЁЯС╛
+ ЁЯС╛${send.squares}
+ ЁЯС╛${send.inverted_squares}
+ ЁЯС╛${send.italic}
+ ЁЯС╛${send.bold}
+ ЁЯС╛${send.future_alien}
+ ЁЯС╛${send.asian_1}
+ ЁЯС╛${send.asian_2}
+ ЁЯС╛${send.squiggle}
+ ЁЯС╛${send.squiggle_2}
+ ЁЯС╛${send.squiggle_3}
+ ЁЯС╛${send.squiggle_4}
+ ЁЯС╛${send.neon}
+ 
+ 
+тЮг    тЦЙтХСтЦИтЦРтЦЙтЦЙтЦРтЦРтЦНтЦИтХСтЦНтЦЙтЦПтЦНтЦН
+тЮг    тЦЙтХСтЦИтЦРтЦЙтЦЙтЦРтЦРтЦНтЦИтХСтЦНтЦЙтЦПтЦНтЦН
+    
+    ┬йpinguim
+ `
+zero.sendMessage(from, teks, text, {quoted: mek})
+break	     	
 
 case 'wa.me':
 case 'wame':
                  zero.updatePresence(from, Presence.composing) 
                  options = {
-                 text: `уАМ *LINK WHATSAPP* уАН\n\n_Solicitado por_ : *@${sender.split("@s.whatsapp.net")[0]}*\n\nSeu link WhatsApp:\n\n*https://wa.me/${sender.split("@s.whatsapp.net")[0]}*\n\n*Ou*\n\n*https://api.whatsapp.com/send?phone=${sender.split("@")[0]}*\n\n*PINGUIM NO CONTROLEЁЯРКЁЯЪй*`,
+                 text: `*LINK WHATSAPP*\n\n_Solicitado por_ : *@${sender.split("@s.whatsapp.net")[0]}*\n\nSeu link WhatsApp:\n\n*https://wa.me/${sender.split("@s.whatsapp.net")[0]}*\n\n*Ou*\n\n*https://api.whatsapp.com/send?phone=${sender.split("@")[0]}*\n\n*😎*`,
                  contextInfo: { mentionedJid: [sender] }
                  }
                  zero.sendMessage(from, options, text, { quoted: mek } )
