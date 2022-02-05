@@ -4077,7 +4077,7 @@ case 'setperfil':
 case 'figuprocurado':
                     var imgbb = require('imgbb-uploader')
                     if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-                        ger = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : may
+                        ger = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
                         reply(mess.wait)                     
                         owgi = await zero.downloadAndSaveMediaMessage(ger)
                         anu = await imgbb("9d7a1bd760e2e3360dbfd40cec4d7ad7", owgi)
@@ -4090,7 +4090,7 @@ case 'figuprocurado':
                             if (err) return reply(`DEU ERROR ЁЯШЮ`)
                             nobg = fs.readFileSync(rano)
                             zero.sendMessage(from, nobg, sticker, {
-                                quoted: may
+                                quoted: mek
                             })
                             fs.unlinkSync(rano)
                         })
