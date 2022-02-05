@@ -1211,6 +1211,19 @@ caption: 'AOBAAAA',
 })
 };
 
+if (budY.includes("canta")){ //by pinguim
+const menus = ["google","pozeday","canto"]
+pingu = menus[Math.floor(Math.random() * menus.length)]
+menu = fs.readFileSync('./assets/'+pingu+'.mp3')
+zero.sendMessage(from, menu, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+};
+
+if (budY.includes('Cringe') || (budy.includes('cringe'))) {
+if(!mek.key.fromMe){
+result = fs.readFileSync(`./assets/cringe.webp`)
+zero.sendMessage(from, result, sticker, { quoted: mek })
+}};
+
 if (budY.includes("yyyyyyyyy") || budY.includes("hhhhhhhhhhh")) {
 audior = fs.readFileSync(`./edit/media/audio/barra dono.mp3`)
 zero.sendMessage(from, audior, MessageType.audio, {quoted: selocont, mimetype: 'audio/mp4', ptt: true})
