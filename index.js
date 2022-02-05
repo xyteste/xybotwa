@@ -27,7 +27,6 @@ const {
 } = require('@adiwajshing/baileys');
 ///
 
-const listRM = (type === 'listResponseMessage') ? mek.message.listResponseMessage.singleSelectReply.selectedRowId : ''
 const imgbb = require('imgbb-uploader');
 const { upload } = require("./docs/lib/ytdl");
 const axios = require('axios').default;
@@ -6417,19 +6416,6 @@ return await zero.sendMessage(mdata.id, '✓ salvo pela white list', MessageType
 		return reply (`${say.erro}`)
 		}	}
 		}
-		
-		if (listRM.includes("abrir1")){
-zero.updatePresence(from, Presence.composing) 
-if (!isGroup) return reply(mess.only.group)
-if (!isGroupAdmins) return reply(mess.only.admin)
-if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-open = {
-text: `*GRUPO ABERTO PELO ADMINISTRADOR* @${sender.split("@s.whatsapp.net")[0]}\nAGORA TODOS PODEM ENVIAR MENSAGENS`,
-contextInfo: { mentionedJid: [sender] }
-}
-zero.groupSettingChange (from, GroupSettingChange.messageSend, false)
-reply(open)  
-}
 		
 		zero.on('group-participants-update', async (anu) => { 
 if (!vacilo.includes(anu.jid)) return
