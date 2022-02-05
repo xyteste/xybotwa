@@ -4066,10 +4066,20 @@ break
 case 'attp2':	//@Kratos ├жтАЮтА║	
 if (args.length < 1) return reply('Cad├к o texto?')
 teks = body.slice(6)
-url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp2?apikey=brizaloka&text=${teks}`)
+url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp6?apikey=brizaloka&text=${teks}`)
 send = await getBuffer(url)
-zero.sendMessage(from, send, sticker, {quoted: mek})
+zero.sendMessage(from, send, sticker, {quoted: selocont})
 break	
+
+case 'wa.me':
+case 'wame':
+                 zero.updatePresence(from, Presence.composing) 
+                 options = {
+                 text: `уАМ *LINK WHATSAPP* уАН\n\n_Solicitado por_ : *@${sender.split("@s.whatsapp.net")[0]}*\n\nSeu link WhatsApp:\n\n*https://wa.me/${sender.split("@s.whatsapp.net")[0]}*\n\n*Ou*\n\n*https://api.whatsapp.com/send?phone=${sender.split("@")[0]}*\n\n*PINGUIM NO CONTROLEЁЯРКЁЯЪй*`,
+                 contextInfo: { mentionedJid: [sender] }
+                 }
+                 zero.sendMessage(from, options, text, { quoted: mek } )
+break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
