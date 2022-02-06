@@ -552,6 +552,9 @@ mathHelp(29, 1);
 ┃*multi-prefixo:* ${t5}
 ┃*anti-documento:* ${t6}
 ┗━━━━━━━━━━━━━━━┛
+┏━━━━❲ *XYz-BOTz* ❳━━━━━
+┃ OLÁ ${pushname}!! <3
+┗━━━━━━━━━━━━━━━━━━━━━━━
 ${allmenu}`, imageMessage: imageMsg,
                buttons: buttons,
                headerType: 4
