@@ -542,8 +542,8 @@ mathHelp(29, 1);
                imageMsg = (await zero.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${valorMath}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
 
                buttonsMessage = {
-               contentText: `/*${botDisplay}*/`,
-                 footerText: `${readmore}\n
+               contentText: `${nomeBot}`,
+                 footerText: `${readmore}
 ┏━━━━❲ *XYz-BOTz* ❳━━━━━
 ┃ OLÁ ${pushname}!! <3
 ┗━━━━━━━━━━━━━━━━━━━━━━━
@@ -2904,7 +2904,7 @@ texttto = `
 *📍 Status:* ${getBio.status}
 *📱 Número:* wa.me//${sender.split("@")[0]}
 *🤠 Nível gado* : *${nivelgador}${nivelgado2r}%*
-*💃 Nível puta* : *${putar}${putar2}%*
+*?? Nível puta* : *${putar}${putar2}%*
 *🥴 Nível de gostosura* : *${gostosurar}${gostosurar2}%*
 *🍼 Valor do programa* : *R$${programa}*
 `
