@@ -5369,7 +5369,7 @@ break
 	for (let i =0; i < 10; i++){
 try {
 let xuxa = 'momonga';
-let superaidol = await fetchJson('https://momonga-api.herokuapp.com/hentai/cosplay?apikey=' + xuxa);
+let superaidol = await fetchJson('https://momonga-api.herokuapp.com/hentai/blowjob?apikey=' + xuxa);
 if (superaidol.error) return reply (superaidol.error);
 let pikachola = await getBuffer(superaidol.result);
 zero.sendMessage(from, pikachola, image, {
