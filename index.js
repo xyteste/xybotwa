@@ -544,9 +544,19 @@ mathHelp(29, 1);
                buttonsMessage = {
                contentText: `┏━━━━❲ *XYz-BOTz* ❳━━━━━
 ┃ OLÁ ${pushname}!! Ɛ>
-┗━━━━━━━━━━━━━━━━━━━━━━━`,
+┃ Eu te dou as boas vindas ao menu.
+┗━━━━━━━━━━━━━━━━━━━━━━━
+${allmenu}`,
                  footerText: `
-${allmenu}`, imageMessage: imageMsg,
+┏━━━━❲ *STATUSz* ❳━━━━━
+┃*nsfw:*  ${t}
+┃*boas-vindas:*  ${t2}
+┃*anti-link:*  ${t3}
+┃*anti-fake:*  ${t4}
+┃*multi-prefixo:* ${t5}
+┃*anti-documento:* ${t6}
+┗━━━━━━━━━━━━━━━━━━━━━━━
+`, imageMessage: imageMsg,
                buttons: buttons,
                headerType: 4
 }
@@ -557,17 +567,6 @@ prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: seloc
              }
              };
 //// fim do menu 
-
-/*               𝐒𝐓𝐀𝐓𝐔𝐒 :
-┏━━━━━━━━━━━━━━━┓
-┃*nsfw:*  ${t}
-┃*boas-vindas:*  ${t2}
-┃*anti-link:*  ${t3}
-┃*anti-fake:*  ${t4}
-┃*multi-prefixo:* ${t5}
-┃*anti-documento:* ${t6}
-┗━━━━━━━━━━━━━━━┛
-*/
 
 async function extraPlay(cArgs) {
 try {

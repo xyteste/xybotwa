@@ -163,6 +163,7 @@ exports.menuutils = `
 `
 
 exports.menuent = `
+┏━━━━━━━━━━━━━━━━━━━━━━
 ┃╔═❲ *ENTRETENIMENTO* ❳═>
 ┃║⛇ *${prefix}sorteio* <text>
 ┃║⛇ *${prefix}amongus* <tag>
@@ -268,6 +269,7 @@ exports.allmenu = `
 ┃║⛇ *${prefix}spussy*
 ┃║⛇ *${prefix}sneko*
 ┃╚══════════════════════
+┣━━━━━━━━━━━━━━━━━━━━━━
 ┃╔═❲ *UTILIDADES* ❳═>
 ┃║⛇ *${prefix}anime* <text>
 ┃║⛇ *${prefix}play* <text>
@@ -280,6 +282,7 @@ exports.allmenu = `
 ┃║⛇ *${prefix}gerarcpf*
 ┃║⛇ *${prefix}ddd* <text>
 ┃╚══════════════════════
+┣━━━━━━━━━━━━━━━━━━━━━━
 ┃╔═❲ *ENTRETENIMENTO* ❳═>
 ┃║⛇ *${prefix}sorteio* <text>
 ┃║⛇ *${prefix}amongus* <tag>
@@ -303,6 +306,7 @@ exports.allmenu = `
 ┃║⛇ *${prefix}voz*
 ┃║⛇ *${prefix}padoru*
 ┃╚══════════════════════
+┣━━━━━━━━━━━━━━━━━━━━━━
 ┃╔═❲ *GALERIA* ❳═>
 ┃║⛇ *${prefix}loli*
 ┃║⛇ *${prefix}neko*
@@ -312,12 +316,14 @@ exports.allmenu = `
 ┃║⛇ *${prefix}kimono*
 ┃║⛇ *${prefix}uwu*
 ┃╚══════════════════════
+┣━━━━━━━━━━━━━━━━━━━━━━
 ┃╔═❲ *OUTRAS OPÇÕES* ❳═>
 ┃║⛇ *${prefix}bug* <text>
 ┃║⛇ *${prefix}avaliar*
 ┃║⛇ *${prefix}criador*
 ┃║⛇ *${prefix}learn*
 ┃╚══════════════════════
+┣━━━━━━━━━━━━━━━━━━━━━━
 ┃╔═❲ *NSFW* ❳═>
 ┃║⛇ *${prefix}ass*
 ┃║⛇ *${prefix}bdsm*
