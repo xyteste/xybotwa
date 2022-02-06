@@ -3921,7 +3921,7 @@ quoted: mek,
 })
 break
 
-case 'cosplay':
+case 'cosplay18':
 try {
 let apikey = 'momonga';
 let apiResult = await fetchJson('https://momonga-api.herokuapp.com/hentai/cosplay?apikey=' + apikey);
@@ -3931,6 +3931,22 @@ zero.sendMessage(from, mandarImagem, image, {
 quoted: mek,
 thumbnail: null,
 caption: `🤒 sexy`
+});
+} catch(e) {
+console.log(e); reply(e);
+}
+break
+
+case 'cosplay':
+try {
+let xyxyxy = 'momonga';
+let minecraft = await fetchJson('https://momonga-api.herokuapp.com/hentai/cosplay?apikey=' + xyxyxy);
+if (minecraft.error) return reply (minecraft.error);
+let websecso = await getBuffer(minecraft.result);
+zero.sendMessage(from, websecso, image, {
+quoted: mek,
+thumbnail: null,
+caption: `🤒`
 });
 } catch(e) {
 console.log(e); reply(e);
@@ -4071,6 +4087,17 @@ case 'wame':
                  contextInfo: { mentionedJid: [sender] }
                  }
                  zero.sendMessage(from, options, text, { quoted: mek } )
+break
+
+case 'gifhentai':
+let mp4h = await fetchJson('http://momonga-api.herokuapp.com/hentai/gif/?apikey=momonga');
+let mp = await getBuffer(mp4h.result)
+zero.sendMessage(from, mp, video, {
+quoted: mek,
+mimetype: Mimetype.gif,
+thumbnail: null,
+caption: '🥴'
+})
 break
 
 case 'recado':
@@ -4477,7 +4504,7 @@ reply(`Digite da forma correta:\nComando: ${prefix + command} 1, para ativar e 0
 }
 break
 		
-case 'gerarnick': case 'crearnick':
+case 'gerarnick': case 'criarnick':
 let nickname = generator.randomNickname();
 reply(`*nickname gerado:*\n_${nickname}_`)
 break
@@ -4621,16 +4648,10 @@ break
 case 'galeria':
 reply (`${galeria}`)
 break
-
-case 'menuesp': case 'menuespanol': case 'menuespañol':
-reply (`${menuesp}`)
-await sleep(2000)
-sendDono('');
-break
 		
 // #admins	#adms
 
-case 'status': case 'estatus':
+case 'status':
 var b1 = isMute? '✓':'*X*';
 var b2 = isMultiPrefix? '✓':'*X*';
 var b3 = isNsfw? '✓':'*X*';
@@ -4741,7 +4762,7 @@ break
 }
               break			
 
-case 'checkativo': case 'checarativo': case 'checkactivos':
+case 'checkativo': case 'checarativo':
  
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.admin}`);
 if (!isGroup) return reply(`${say.only.group}`)
@@ -4759,7 +4780,7 @@ mentions(`⋆⃟ۣۜ᭪➣ Consulta da atividade de ⋆⃟ۣۜ᭪➣ @${mentione
 
 break
 
-case 'topativos': case 'topactivos':
+case 'topativos':
  
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.admin}`);
 if (!isGroup) return reply(`${say.only.group}`)
@@ -6436,7 +6457,7 @@ const grupo = await zero.groupMetadata(anu.jid)
 num = anu.participants[0]
 console.log(color('[ADD] entraram via link ou foi adicionado', 'red'))
 let bvresult = await fetchJson('https://akame-api.herokuapp.com/api/card/welcomev2?nome=MEMBRO%20NOVO&nomegp=BEM%20VINDO%20AO%20GRUPO!&titulo=BEM-VINDO&membros=~&cor=ffff00&tcor=ffff00&lcor=ffff00&perfil=https://telegra.ph/file/462699589472e4ed36322.jpg&fundo=https://telegra.ph/file/c0c438ff2c71454da16ad.jpg&numero=~&apikey=FK7njbTR');
-var bvgo = await getBuffer(bvresult.result);
+var bvgo = await getBuffer(bvresult);
 if (bvresult.error) return reply (bvresult.error);
 zero.sendMessage(from, bvgo, image, {quoted: mek, thumbnail: null, caption: `🤠`
 })
