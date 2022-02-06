@@ -5365,20 +5365,20 @@ if (!isNsfw) return reply(`${say.only.nsfw}`)
 netorare();
 break
 
-
-case 'blowjob':
-for (let i =0; i < 10; i++){
+	case 'blowjob':
+	for (let i =0; i < 10; i++){
 try {
-	if (!isNsfw) return reply(`${say.only.nsfw}`)
-let blow = await fetchJson('https://momonga-api.herokuapp.com/hentai/blowjob?apikey=momonga')
-let blowjob = await getBuffer(blow.blowjob);
-
-await zero.sendMessage(from, blowjob, image, {
-thumbnail: null,
+let xuxa = 'momonga';
+let superaidol = await fetchJson('https://momonga-api.herokuapp.com/hentai/cosplay?apikey=' + xuxa);
+if (superaidol.error) return reply (superaidol.error);
+let pikachola = await getBuffer(superaidol.result);
+zero.sendMessage(from, pikachola, image, {
 quoted: mek,
-})
+thumbnail: null,
+caption: `hehe`
+});
 } catch(e) {
-reply(e); console.log(e)
+console.log(e); reply(e);
 }
 }
 break
