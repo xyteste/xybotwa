@@ -542,20 +542,10 @@ mathHelp(29, 1);
                imageMsg = (await zero.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${valorMath}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
 
                buttonsMessage = {
-               contentText: `${nomeBot}`,
-                 footerText: `${readmore}
-┏━━━━❲ *XYz-BOTz* ❳━━━━━
-┃ OLÁ ${pushname}!! <3
-┗━━━━━━━━━━━━━━━━━━━━━━━
-               𝐒𝐓𝐀𝐓𝐔𝐒 :
-┏━━━━━━━━━━━━━━━┓
-┃*nsfw:*  ${t}
-┃*boas-vindas:*  ${t2}
-┃*anti-link:*  ${t3}
-┃*anti-fake:*  ${t4}
-┃*multi-prefixo:* ${t5}
-┃*anti-documento:* ${t6}
-┗━━━━━━━━━━━━━━━┛
+               contentText: `┏━━━━❲ *XYz-BOTz* ❳━━━━━
+┃ OLÁ ${pushname}!! Ɛ>
+┗━━━━━━━━━━━━━━━━━━━━━━━`,
+                 footerText: `
 ${allmenu}`, imageMessage: imageMsg,
                buttons: buttons,
                headerType: 4
@@ -566,7 +556,18 @@ prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: seloc
              console.log(e)
              }
              };
-//// fim do menu
+//// fim do menu 
+
+/*               𝐒𝐓𝐀𝐓𝐔𝐒 :
+┏━━━━━━━━━━━━━━━┓
+┃*nsfw:*  ${t}
+┃*boas-vindas:*  ${t2}
+┃*anti-link:*  ${t3}
+┃*anti-fake:*  ${t4}
+┃*multi-prefixo:* ${t5}
+┃*anti-documento:* ${t6}
+┗━━━━━━━━━━━━━━━┛
+*/
 
 async function extraPlay(cArgs) {
 try {
@@ -2904,7 +2905,7 @@ texttto = `
 *📍 Status:* ${getBio.status}
 *📱 Número:* wa.me//${sender.split("@")[0]}
 *🤠 Nível gado* : *${nivelgador}${nivelgado2r}%*
-*?? Nível puta* : *${putar}${putar2}%*
+*💃 Nível puta* : *${putar}${putar2}%*
 *🥴 Nível de gostosura* : *${gostosurar}${gostosurar2}%*
 *🍼 Valor do programa* : *R$${programa}*
 `
