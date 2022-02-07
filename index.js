@@ -506,17 +506,12 @@ await addFilter(sender);
 try {
 try {
 if (isOwner){
-await sendMedia(from, goAudio + 'nomes/' + `${nomeDono}` + '.mp3', 'audio', {
-mimetype: Mimetype.mp4Audio,
- quoted: mek,
- ptt:true});
+	mi = `estou enviando o menu!`
+await reply(mi);
  } else if (!isOwner) {
- await sendMedia(from, goAudio + 'menu.mp3', 'audio', {
-mimetype: Mimetype.mp4Audio,
- quoted: mek,
- ptt:true});
+ await reply(`o menu está sendo enviado, aguarde.`);
  }} catch(e) {
- return reply (`Ouve um problema ao reproduzir o áudio, talvez o nome do dono esteja errado. Para ver a lista com os nomes disponíveis, digite ${prefix}nomes.\n\nVá até a pasta docs/settings.json e insira um nome válido`)
+ return reply (`erro x-x)`)
  }
 
 await sleep(1000);
@@ -4106,33 +4101,6 @@ mimetype: Mimetype.gif,
 thumbnail: null,
 caption: '🥴'
 })
-break
-
-case 'lista':
-listMsg = {
-
- buttonText: 'OLÁ',
-
- footerText: 'ESTE É O MEU MENU',
-
- description: ':)',
-
- sections: [
-
-                     {
- rows: [
- 
-{
-"title": "${allmenu}",
-"rowId": `${prefix}` + "sexo"
-                           },
-
-                        ]
-                    }],
- listType: 1
-}
-
-zero.sendMessage(from, listMsg, MessageType.listMessage, {quoted: mek});
 break
 
 case 'recado':
