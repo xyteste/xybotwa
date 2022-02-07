@@ -4104,7 +4104,6 @@ case 'pinterest':
                 anu = await pinterest(c)
                 result = anu[Math.floor(Math.random(), anu.length)]
                 zero.sendMessage(from, { image: { url: result }, caption: c }, { quoted: mek })
-            await limitAdd(sender)﻿;
             break
 
 case 'recado':
