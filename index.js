@@ -4103,7 +4103,7 @@ case 'pinterest':
                  if (!c) reply('erro')
                 anu = await pinterest(c)
                 result = anu[Math.floor(Math.random(), anu.length)]
-                zero.sendMessage(m.chat, { image: { url: result }, caption: c }, { quoted: m })
+                zero.sendMessage(chat, { image: { url: result }, caption: c }, { quoted: mek })
             await limitAdd(sender)﻿;
             break
 
