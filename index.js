@@ -487,10 +487,10 @@ message: {
 // #functions //#home
 
 //#antipv
-if (!isOwner) if (isAntiPv) if (!isGroup) {
-reply (`*Somente em grupos amigo 🤠*\n\n${grupoDono}\n\nVc será bloqueado em seguida\n*Porfavor fale com o ${wa} se quiser ser desbloqueado.*`)
+if (isAntipv && !isOwner && !isGroup) {
+reply(`🚫 O PV ESTÁ BLOQUEADO 🚫`)
 setTimeout( () => {
- zero.blockUser(sender, 'add')
+zero.blockUser(sender, 'add')
  }, 5000)
 }
 ///
