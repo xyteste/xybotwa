@@ -27,6 +27,7 @@ const {
 } = require('@adiwajshing/baileys');
 ///
 
+const { pinterest, wallpaper, wikimedia, porno, quotesAnime,  gpwhatsapp, hentaistube, nerding, apkmodhacker, xvideos, uptodown, pornhub, soundl, st, gpsrc, dafontSearch, dafontDown,  apkmody } = require('./lib/scraper');
 const imgbb = require('imgbb-uploader');
 const { upload } = require("./docs/lib/ytdl");
 const axios = require('axios').default;
@@ -232,6 +233,7 @@ var argsJoin = (teks) => args.join(teks);
 var budyIncludes = (teks) => budy.includes(teks);
 var budYIncludes = (teks) => budY.includes(teks);
 var q = args.join(" ")
+        const c = args.join(' ')
 
 var argsSplit = args.join("").split('|');
 			
@@ -4096,6 +4098,15 @@ thumbnail: null,
 caption: '🥴'
 })
 break
+
+case 'pinterest': 
+                 if (!c) reply('erro')
+                anu = await pinterest(c)
+                result = anu[Math.floor(Math.random(), anu.length)]
+                zero.sendMessage(m.chat, { image: { url: result }, caption: c }, { quoted: m })
+            }
+            await limitAdd(sender)﻿
+            break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
