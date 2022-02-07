@@ -4099,12 +4099,13 @@ caption: '🥴'
 })
 break
 
-case 'pinterest': 
-                 if (!c) reply('erro')
-                anu = await pinterest(c)
-                result = anu[Math.floor(Math.random(), anu.length)]
-                zero.sendMessage(from, { image: { url: result }, caption: c }, { quoted: mek })
-            break
+            case 'uiui':
+            hentaiporno = await getBuffer(`https://akame-api.herokuapp.com/api/hentai/blowjob?apikey=akamekey`,`blowjob`)
+            let message = await prepareWAMessageMedia({ image: hentaiporno }, { upload: zero.waUploadToServer })
+            const template = generateWAMessageFromContent(from, proto.Message.fromObject({ 
+            templateMessage: { hydratedTemplate: { imageMessage: message.imageMessage, hydratedContentText: '😏', hydratedButtons: [{ urlButton: { displayText: '⚙️ API', url: 'https://akame-api.herokuapp.com/docs'}}, { quickReplyButton: { displayText: '😳 PRÓXIMA 😳', id: `${command}`}}]}}}), { userJid: m.chat, quoted: mek })
+            zero.relayMessage(from, template.message, { messageId: template.key.id })
+           break
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
