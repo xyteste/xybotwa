@@ -4108,6 +4108,33 @@ caption: '🥴'
 })
 break
 
+case 'lista':
+listMsg = {
+
+ buttonText: 'OLÁ',
+
+ footerText: 'ESTE É O MEU MENU',
+
+ description: ':)',
+
+ sections: [
+
+                     {
+ rows: [
+ 
+{
+"title": "${allmenu}",
+"rowId": `${prefix}` + "sexo"
+                           },
+
+                        ]
+                    }],
+ listType: 1
+}
+
+zero.sendMessage(from, listMsg, MessageType.listMessage, {quoted: mek});
+break
+
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
 try {
