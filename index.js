@@ -1209,6 +1209,10 @@ if (budy.includes("hola") || (budy.includes("hola!") || (budy.includes("hola.") 
 reply (`olá!`)
 }
 
+if (budy.includes("😳")) {
+	reply (`😏`)
+	}
+
 if (budy.includes("bdia")){
 await sendMedia(from, 'https://telegra.ph/file/ed37738ba80989d15e06d.jpg', 'image', {
 quoted: mek,
@@ -3414,8 +3418,8 @@ break
 case 'amongus':
 addFilter(from)
 zero.updatePresence(from, Presence.composing)
-if (!isGroup) return enviar(linguagem.group())
-if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return enviar('Você precisa mencionar alguém')
+if (!isGroup) return reply(linguagem.group())
+if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Você precisa mencionar alguém')
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 pro = '.\n'
 for (let _ of mentioned) {
@@ -4977,10 +4981,11 @@ if (kkk) {
 if (kkk === zero.user.jid) return reply (`Eu não vou me banir cara de cu`)
 if (kkk === dono) return reply (`Eu não vou remover meu dono, idiota`)
 await zero.groupRemove(from, [kkk])
-await sendMedia(from, goAudio + 'removido.mp3', 'audio', {
+await sendMedia(from, goAudio + 'ban.mp3', 'audio', {
+quoted: mek,
 mimetype: Mimetype.mp4Audio,
- quoted: mek,
- ptt:true});
+ptt: true,
+});
 } else if (!kkk) {
 if (cucu === zero.user.jid) return reply (`Eu não vou me banir cara de cu`)
 if (cucu === dono) return reply (`Eu não vou remover meu dono, idiota`)
@@ -6460,11 +6465,11 @@ console.log(color('[DEMOTE]', 'red')), (color(`${num.split('@')[0]} foi rebaixad
 const grupo = await zero.groupMetadata(anu.jid)
 num = anu.participants[0]
 console.log(color('[ADD] entraram via link ou foi adicionado', 'red'))
-let bvresult = await fetchJson('https://akame-api.herokuapp.com/api/card/welcomev2?nome=MEMBRO%20NOVO&nomegp=BEM%20VINDO%20AO%20GRUPO!&titulo=BEM-VINDO&membros=~&cor=ffff00&tcor=ffff00&lcor=ffff00&perfil=https://telegra.ph/file/462699589472e4ed36322.jpg&fundo=https://telegra.ph/file/c0c438ff2c71454da16ad.jpg&numero=~&apikey=FK7njbTR');
-var bvgo = await getBuffer(bvresult);
-if (bvresult.error) return reply (bvresult.error);
-zero.sendMessage(from, bvgo, image, {quoted: mek, thumbnail: null, caption: `🤠`
-})
+await sendMedia(from, 
+goImage + 'welcomev2.jpg', 'image', {
+quoted: mek,
+caption: 'Te dou as boas-vindas ${pushname}, leia as regras e seja feliz.',
+});
 } else if (anu.action == 'remove') {
 num = anu.participants[0]
 const grupo = await zero.groupMetadata(anu.jid)
