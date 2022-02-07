@@ -27,7 +27,6 @@ const {
 } = require('@adiwajshing/baileys');
 ///
 
-const { pinterest, wallpaper, wikimedia, porno, quotesAnime,  gpwhatsapp, hentaistube, nerding, apkmodhacker, xvideos, uptodown, pornhub, soundl, st, gpsrc, dafontSearch, dafontDown,  apkmody } = require('./lib/scraper');
 const imgbb = require('imgbb-uploader');
 const { upload } = require("./docs/lib/ytdl");
 const axios = require('axios').default;
