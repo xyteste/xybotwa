@@ -5758,6 +5758,7 @@ if (!isOwner) if (isFiltered(sender)) return reply(`📍 *anti SPAM*\n _aguarde 
 
 addFilter(sender);
 await sleep(6000)
+await reply(`fazendo...`)
 				try {
 				 
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
