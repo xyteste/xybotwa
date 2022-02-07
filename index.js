@@ -487,7 +487,7 @@ message: {
 // #functions //#home
 
 //#antipv
-if (isAntipv && !isOwner && !isGroup) {
+if (isAntiPv && !isOwner && !isGroup) {
 reply(`🚫 O PV ESTÁ BLOQUEADO 🚫`)
 setTimeout( () => {
 zero.blockUser(sender, 'add')
