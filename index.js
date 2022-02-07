@@ -537,20 +537,13 @@ mathHelp(29, 1);
                imageMsg = (await zero.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${valorMath}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
 
                buttonsMessage = {
-               contentText: `${readmore}`,
-                 footerText: `┏━━━━❲ *XYz-BOTz* ❳━━━━━
+               contentText: `${readmore}
+┏━━━━❲ *XYz-BOTz* ❳━━━━━
 ┃ OLÁ ${pushname}!! Ɛ>
 ┃ Eu te dou as boas vindas ao menu.
 ┗━━━━━━━━━━━━━━━━━━━━━━━
-${allmenu}
-┏━━━━❲ *STATUSz* ❳━━━━━
-┃*nsfw:*  ${t}
-┃*boas-vindas:*  ${t2}
-┃*anti-link:*  ${t3}
-┃*anti-fake:*  ${t4}
-┃*multi-prefixo:* ${t5}
-┃*anti-documento:* ${t6}
-┗━━━━━━━━━━━━━━━━━━━━━━━
+${allmenu}`,
+                 footerText: `*_XYz_*
 `, imageMessage: imageMsg,
                buttons: buttons,
                headerType: 4
