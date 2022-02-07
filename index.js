@@ -529,6 +529,12 @@ Antidoc ? t6 = ' ✓ ': t6 = ' X ';
 
                buttons = [{buttonId:`menu lista`, 
                buttonText:{displayText: '⌸ 𝙻𝙸𝚂𝚃𝙰 𝙳𝙴 𝙼𝙴𝙽𝚄𝚂'},type:1},
+               {
+                                callButton: {
+                                    displayText: '😏 GF',
+                                    phoneNumber: '+55 88 9732-1488'
+                                }
+                            },
                {buttonId:`help`,buttonText:{displayText:'⚿ 𝙷𝙴𝙻𝙿' },type:1}
                 //{buttonId:`outros`,buttonText:{displayText:'𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1}
                ]
