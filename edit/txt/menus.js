@@ -190,8 +190,7 @@ exports.menuent = `
 ┗━━━━━━━━━━━━━━━━━━━━━━━
 `
 
-exports.allmenu = `
-┏━━━━━━━━━━━━━━━━━━━━━━
+exports.allmenu = `┏━━━━━━━━━━━━━━━━━━━━━━
 ┃╔═❲ *MENU GRUPO* ❳═>
 ┃║⛇ *${prefix}add* <num>
 ┃║⛇ *${prefix}ban* <num>

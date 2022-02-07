@@ -930,10 +930,12 @@ isForwarded: true,
         };
         
 // #espere
+/*
 if (isCmd) if (!budy.includes(prefix + 'menu')) {
 await reply (`${say.wait}`);
 await sleep(1500);
 }
+/*
 
 
 
