@@ -2382,7 +2382,7 @@ ${
 
 
 		case 'learn':
-		reply (`\nmeu canal:\n\nhttps://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw\n\ncomandos para instalar o bot: \n\ntermux-setup-storage\n\ncd /sdcard/PASTA ONDE ESTÁ O SEU BOT\n\nbash install.sh\n\n depois disso é só dar\n node index\npara iniciar!`)
+		reply (`𝑪𝒓𝒆́𝒅𝒊𝒕𝒐𝒔:\ntioMomonga\n𝑪𝒂𝒏𝒂𝒍 𝑫𝒆𝒍𝒆:\nhttps://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw\n\n𝐂𝐨𝐦𝐚𝐧𝐝𝐨𝐬 𝐩𝐚𝐫𝐚 𝐢𝐧𝐬𝐭𝐚𝐥𝐚𝐫 𝐨 𝐛𝐨𝐭:\n\ntermux-setup-storage\n\ncd /sdcard/*PASTA ONDE ESTÁ O SEU BOT*\n\nbash install.sh\n\ndepois disso é só dar\n*node index*\npara iniciar!`)
 		break
 
 
@@ -2523,7 +2523,7 @@ reply (`${prefix}antipv on/off`)
 }
 break
 		
-case 'notas': case 'anotación':
+case 'notas':
 if (!isOwner) return
 
 					teks = `╭─「 *ANOTAÇÕES* 」\n`
@@ -2853,24 +2853,21 @@ if (!isGroup) return reply (`${say.only.group}`)
 if (args.length < 1) return reply(`Digite algo depois de "bug"`)
 suporte = dono + '@s.whatsapp.net';
 textos = `
-*[ relatório de bug ]*
-*de:* ${pushname} / wa.me//${sender.split("@")[0]}
-*no grupo:* ${groupName}
-*às:* ${hours}
-
-_" ${body.slice(5)} "_
+┏━━━━━━━━━━━━━━━━━━━━━━
+┃⛇ *❲ 𝓐𝓫𝓪 𝓭𝓮 𝓻𝓮𝓹𝓸𝓻𝓽𝓮𝓼 𝓭𝓪 𝓧𝔂 ❳*
+┃⛇ *𝓭𝓮:* ${pushname} / wa.me//${sender.split("@")[0]}
+┃⛇ *𝓝𝓸 𝓰𝓻𝓾𝓹𝓸:* ${groupName}
+┃⛇ *𝓐̀𝓼:* ${hours}
+┣━━━━━━━━━━━━━━━━━━━━━━
+┃⛇ _" ${body.slice(5)} "_
+┗━━━━━━━━━━━━━━━━━━━━━━━
 `
 await zero.sendMessage(suporte, textos, text)
-await sendMedia(from, goAudio + 'bugada.mp3', 'audio', {
-mimetype: Mimetype.mp4Audio,
- quoted: mek,
- ptt:true});
-mathHelp(7, 1);
-await sendMedia(from, goSticker + 'gl' + valorMath + '.webp', 'sticker', {
+await sendMedia(from, goSticker + 'tabom1.webp', 'sticker', {
 mimetype: Mimetype.sticker,
  quoted: mek,});
  await sleep(1200)
-await reply (`✓ relatório enviado ao meu criador, obrigada`)
+await reply (`O seu relatório foi enviado e logo será solucionado, obrigada!`)
 break
 
 case 'perfil':

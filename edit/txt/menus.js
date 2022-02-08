@@ -63,6 +63,7 @@ exports.menuadms = `
 ┃║⛇ *${prefix}antifake*
 ┃║⛇ *${prefix}antilink*
 ┃║⛇ *${prefix}antipalavrão*
+┃║⛇ *${prefix}antidocumento*
 ┃║⛇ *${prefix}nsfw*
 ┃║⛇ *${prefix}welkom*
 ┃║⛇ *${prefix}contador* <num>
