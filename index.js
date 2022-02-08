@@ -2903,26 +2903,6 @@ texttto = `
 await zero.sendMessage(from, buffer, image, {caption: texttto, quoted: selocont})
 break
 
-case 'yo': case 'miperfil':
-try {
-var ppimg = await zero.getProfilePicture(`${sender.split('@')[0]}@c.us`)
-            } catch {
-               var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-            }
-const webxy = ['1','2','3','4','5','6','7','8','9']
-const webxy2 = ['1','2','3','4','5','6','7','8','9'] 
-const webxyr = webxy[Math.floor(Math.random() * (webxy.length))]
-const webxyr2 = webxy2[Math.floor(Math.random() * (webxy2.length))] 
-buffer = await getBuffer(ppimg)
-texttto = `
-*Nombre:* ${pushname}
-*Biografía:* ${getBio.status}
-*Número:* wa.me//${sender.split("@")[0]}
-*Nivel de belleza* : *${webxyr}${webxyr2}%*
-`
-await zero.sendMessage(from, buffer, image, {caption: texttto, quoted: selocont})
-break
-
 case 'gerarcpf': case 'crearcpf':
 cp1 = `${Math.floor(Math.random() * 300) + 600}`
 cp2 = `${Math.floor(Math.random() * 300) + 600}`
@@ -2946,7 +2926,7 @@ if (args.length < 1) return reply(`${prefix}plaq e digite o seu nome`)
 teks = body.slice(6)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://raptibef.sirv.com/images%20(3).jpeg?text.0.text=${teks}&text.0.position.gravity=center&text.0.position.x=19%25&text.0.size=45&text.0.color=000000&text.0.opacity=55&text.0.font.family=Crimson%20Text&text.0.font.weight=300&text.0.font.style=italic&text.0.outline.opacity=21`)
-zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq2': //by zanga 
@@ -2954,7 +2934,7 @@ if (args.length < 1) return reply(`${prefix}plaq2 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://raptibef.sirv.com/images%20(1).jpeg?profile=Zanga%202.0&text.0.text=${teks}`)
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq3': //by zanga
@@ -2962,7 +2942,7 @@ if (args.length < 1) return reply(`${prefix}plaq3 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://raptibef.sirv.com/images.jpeg?profile=Zanga%203.0&text.0.text=${teks}&text.0.outline.blur=63`)
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq4': //by zanga
@@ -2970,7 +2950,7 @@ if (args.length < 1) return reply(`${prefix}plaq4 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://raptibef.sirv.com/images%20(2).jpeg?profile=Zanga%204.0&text.0.text=${teks}`)
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq5':
@@ -2978,7 +2958,7 @@ if (args.length < 1) return reply(`${prefix}plaq5 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/9152e7a9-7d49-4ef-bac-2e6149fda0b2.jpg?text.0.text=${teks}&text.0.position.x=-70%25&text.0.position.y=-23%25&text.0.size=17&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=300`)
-plaq = ` *Plaquinha feita ✓* `
+plaq = ` *Plaquinha feita.* `
 await zero.sendMessage(from, buffer, image, {caption: plaq, quoted: selocont, thumbnail: null, sendEphemeral:true, contextInfo : {forwardingScore: 500, isForwarded:true}})
 break
 
@@ -2987,7 +2967,7 @@ if (args.length < 1) return reply(`${prefix}plaq6 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://clutamac.sirv.com/1011b71-bab1-49e3-9db-ee2c0646fa%20(1).jpg?text.0.text=${teks}&text.0.position.gravity=northwest&text.0.position.x=22%25&text.0.position.y=60%25&text.0.size=12&text.0.color=000000&text.0.opacity=47&text.0.font.family=Roboto%20Mono&text.0.font.style=italic`) //api
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq7':
@@ -2995,7 +2975,7 @@ if (args.length < 1) return reply(`${prefix}plaq7 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 10) return reply('O texto é longo, até 10 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/Torcedora-da-sele%C3%A7%C3%A3o-brasileira-nua-mostrando-a-bunda-236x300.jpg?text.0.text=${teks}&text.0.position.x=-64%25&text.0.position.y=-39%25&text.0.size=25&text.0.color=1b1a1a&text.0.font.family=Architects%20Daughter`) //api
-plaq = ` *Plaquinha feita ✓* `
+plaq = ` *Plaquinha feita.* `
 await zero.sendMessage(from, buffer, image, {caption: plaq, quoted: selocont, thumbnail: null, sendEphemeral:true})
 break
 
@@ -3004,7 +2984,7 @@ if (args.length < 1) return reply(`${prefix}plaq8 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/BUNDA1.jpg?text.0.text=${teks}&text.0.position.x=-20%25&text.0.position.y=-20%25&text.0.size=1&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=700&text.0.background.opacity=65`) //api
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq9':
@@ -3012,7 +2992,7 @@ if (args.length < 1) return reply(`${prefix}plaq9 e digite o seu nome`)
 teks = body.slice(6)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/fotobundatop.jpg?text.0.text=${teks}&text.0.position.x=-61%25&text.0.position.y=-%25&text.0.size=1&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=700`) //api
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq10':
@@ -3020,7 +3000,7 @@ if (args.length < 1) return reply(`${prefix}plaq10 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/peito1.jpg?text.0.text=${teks}&text.0.position.x=-4%25&text.0.position.y=-6%25&text.0.size=14&text.0.color=000000&text.0.font.family=Shadows%20Into%20Light&text.0.font.weight=700`)
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita ✓* '})
+await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'morte':
@@ -3030,6 +3010,10 @@ idde = ["30","76","90","72","83","73","83","74","92","100","94","48","37","53","
 idade = idde[Math.floor(Math.random() * (idde.length))]
 morte = `Pessoas com o nome: ${pushname} \nTendem a morrer aos ${idade} anos de idade.`
 reply(morte)
+await sleep(2000);
+await sendMedia(from, goSticker + 'sorrizin.webp', 'sticker', {
+mimetype: Mimetype.sticker,
+ quoted: mek,});
 break
 
 case 'gostosa':
