@@ -898,7 +898,7 @@ isSticker ? mediaKey = mek.message.stickerMessage.mediaKey.toString('base64'):""
 
 const reply2 = (teks) => {
 // selo YouTube
-img2 = fs.readFileSync('./edit/media/image/momonga.jpeg');
+img2 = fs.readFileSync('./edit/media/image/apoio.jpeg');
             zero.sendMessage(from, teks, text,  {contextInfo :{text: 'hi',
 
 "forwardingScore": 1000000000,
@@ -907,7 +907,7 @@ isForwarded: true,
 
 "externalAdReply": {
 
-                "title": `🔎 conheça meu trabalho!`,
+                "title": `✨ siga-me no instagram! ✨`,
 
                 "body": "clique aqui",
 
@@ -917,7 +917,7 @@ isForwarded: true,
 
                 "thumbnail": img2,
 
-                "sourceUrl": `https://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw`
+                "sourceUrl": `https://instagram/exys7`
 
 },mentionedJid:[sender]}, quoted: selotempoonline })
 
@@ -1223,9 +1223,10 @@ result = fs.readFileSync(`./assets/cringe.webp`)
 zero.sendMessage(from, result, sticker, { quoted: mek })
 }};
 
-if (budY.includes("yyyyyyyyy") || budY.includes("hhhhhhhhhhh")) {
-audior = fs.readFileSync(`./edit/media/audio/barra dono.mp3`)
-zero.sendMessage(from, audior, MessageType.audio, {quoted: selocont, mimetype: 'audio/mp4', ptt: true})
+if (budY.includes("dono do bot") || budY.includes("bot dono")) {
+await sendMedia(from, goSticker + 'olaa.webp', 'sticker', {
+mimetype: Mimetype.sticker,
+ quoted: mek,});
 };
 /*############# fim da interação*/
 
