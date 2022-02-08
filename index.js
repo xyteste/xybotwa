@@ -3038,7 +3038,7 @@ case 'casal':
 					mentions(teks, jds, true)
 					break	
 					
-					case 'abraço': case 'abrazo':
+					case 'abraço':
                 if (!isGroup) return reply(ind.groupo())
 
 if (args.length < 1) return reply('em quem você quer dar um abraço?')
@@ -3099,13 +3099,6 @@ case 'gostosa2':
                       mentions(cuzin, membro, true) 
                        break
 
-case 'chiste':
-            respuesta = [`¿Cuál es el colmo de un ciego?\n Enamorarse a primera vista.`, `*¿Qué le dijo un zapato a otro?* \n - Qué vida más arrastrada llevas. \n ¡MIRA LOS ZAPATOS QUE EXISTEN PARA ANDAR POR EL TECHO!`, `¿Qué le dijo un cable a otro cable? \n Somos los intocables.`, `*¿Qué le dijo batman al papel higiénico?* \n Tu eres el único que conoce mi baticueva.`, `¿Por qué llora un libro de matemáticas? \n ¡Porque tiene muchos problemas!`, `¿Qué está al final de todo? ¡La letra o!`, `¿Por qué el profe de música tiene una escalera? \n ¡Para poder llegar a las notas más altas!`, `¿Qué le dice una iguana a su hermana gemela? \n Somos iguanitas`, `*¿Cuál es el colmo del electricista?* \n ¡Que su mujer se llame Luz!`, `¿Cómo se dice pañuelo en japonés? \n Sacamoko`, `¿Cuál es el pez que huele mucho? \n ¡Peztoso!`, `¿Sabes cómo se queda un mago después de comer? \n Magordito`, `Si se muere una pulga, ¿a dónde va? \n Al pulgatorio.` ]
-            answer = respuesta[Math.floor(Math.random() * respuesta.length)]
-            reply(answer)
-            addFilter(from)
-            break
-
 case 'piada':
             respuesta = [`Qual é a panela que está sempre triste?\n A panela depressão.`, `O que estará escrito na lápide do Papai Noel? \n Ele não está mais em trenós.`, `O que os estilistas fazem no tempo livre? \n Inventam moda.`, `Qual a cidade brasileira onde não tem táxis? \n Uberlândia.`, `Qual é o peixe que caiu do 10º andar? \n O aaaaaaatuuuuuuum.`, `Por que o jacaré tirou o filho da escola? \n Porque ele réptil de ano.`, `O que um tijolo falou para o outro? \n Há um cimento entre nós.`, `Como fazer um nó em duas motos? \n Pega duas Yamaha.`, `Qual campeonato é melhor que aspirina? \n Liberta-Dores!`, `O que a zebra disse para a mosca? \n Você está na minha listra negra.`, `Qual é o cachorro que vai à missa todo dia? \n O pastor alemão.`, `Um gatinho miou para a lua, mas ela não respondeu. Por quê? \n Porque astro-no-mia.`, `Qual é a comida que liga e desliga? \n Estrog-On-Off` ]
             answer = respuesta[Math.floor(Math.random() * respuesta.length)]
@@ -3131,8 +3124,9 @@ break
 case 'simi': 
 query = args.join('')
 anu = await fetchJson(`https://akame-api.herokuapp.com/api/simi?msg={query}&apikey=FK7njbTR`)
-pica = await getBuffer(anu.result.resposta)
-reply(`${pica}`);
+pica = await getBuffer(anu.result)
+sexoa2 = (anu.resposta)
+reply(`${sexoa2}`);
 break
 
 				case 'multiprefix':
