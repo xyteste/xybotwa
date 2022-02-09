@@ -3063,9 +3063,8 @@ break
 
 case 'tapa':
 if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
-if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
-if (info.message.extendedTextMessage === undefined || info.message.extendedTextMessage === null) return reply('marque o alvo que você quer dá o tapa')
-mentioned = info.message.extendedTextMessage.contextInfo.mentionedJid
+if (args.length < 1) return reply('marque o alvo que você quer dá o tapa')
+mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 pru = '.\n'
 for (let _ of mentioned) {
 pru += `@${_.split('@')[0]}\n`
@@ -3095,7 +3094,7 @@ pro = '.\n'
 for (let _ of mentioned) {
 pro += `@${_.split('@')[0]}\n`
 } 
-cu = `fofo`
+cu = `Você acaba de fazer carinho em @${mentioned[0].split('@')[0]} `
 wew = fs.readFileSync('./edit/media/gif/carinho.mp4');
 zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: cu})
 break
@@ -4194,7 +4193,7 @@ const o3 = p3[Math.floor(Math.random() * p3.length)]
 const o4 = p4[Math.floor(Math.random() * p4.length)]
 const o5 = p5[Math.floor(Math.random() * p5.length)]
 luy = `
-Paradas!🤚🤚\n\n1=🤚🤭@${o1.jid.split('@')[0]}🤚🤭\n\n\n2=🤚🤭@${o2.jid.split('@')[0]}🤚🤭\n\n\n3=🤚🤭@${o3.jid.split('@')[0]}🤚🤭\n\n\n4=🤚🤭@${o4.jid.split('@')[0]}🤚🤭\n\n\n5=🤚🤭@${o5.jid.split('@')[0]}🤚🤭\n\n\nMultas por serem gostosas dms😳 pague pena enviando nud no PV do dono😊 by Bot`
+Paradas!🤚🤚\n\n1=🤚🤭@${o1.jid.split('@')[0]}🤚🤭\n\n\n2=🤚🤭@${o2.jid.split('@')[0]}🤚??\n\n\n3=🤚🤭@${o3.jid.split('@')[0]}🤚🤭\n\n\n4=🤚🤭@${o4.jid.split('@')[0]}🤚🤭\n\n\n5=🤚🤭@${o5.jid.split('@')[0]}🤚🤭\n\n\nMultas por serem gostosas dms😳 pague pena enviando nud no PV do dono😊 by Bot`
 member.push(o1.jid)
 member.push(o2.jid)
 member.push(o3.jid)
