@@ -517,20 +517,12 @@ await reply(mi);
 
 await sleep(1000);
 
-isNsfw ? t = ' ✓ ': t = ' X ';
-isWelkom ? t2 = ' ✓ ': t2 = ' X ';;
-isAntiLink ? t3 = ' ✓ ': t3 = ' X ';
-isAntiFake ? t4 = ' ✓ ': t4 = ' X ';
-isMultiPrefix ? t5 = ' ✓ ': t5 = ' X ';
-Antidoc ? t6 = ' ✓ ': t6 = ' X ';
-
-
        txtt =` `
 
                buttons = [{buttonId:`menu lista`, 
                buttonText:{displayText: '⌸ 𝙻𝙸𝚂𝚃𝙰 𝙳𝙴 𝙼𝙴𝙽𝚄𝚂'},type:1},
-               {buttonId:`help`,buttonText:{displayText:'⚿ 𝙷𝙴𝙻𝙿' },type:1}
-                //{buttonId:`outros`,buttonText:{displayText:'𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1}
+               {buttonId:`statusgp`,buttonText:{displayText:'⚿ 𝚂𝚃𝙰𝚃𝚄𝚂 𝙶𝚁𝚄𝙿𝙾' },type:1},
+                {buttonId:`outros`,buttonText:{displayText:'⍝ 𝙼𝙰𝙸𝚂 𝙾𝙿𝙲̧𝙾̃𝙴𝚂' },type:1}
                ]
 
 mathHelp(29, 1);
@@ -3049,7 +3041,7 @@ for (let _ of mentioned) {
 pro += `@${_.split('@')[0]}\n`
 } 
 wew = fs.readFileSync('./edit/media/gif/abraço.mp4');
-yhb = `Você acaba de dar um abraço em @${mentioned[0].split('@')[0]} `
+yhb = `Você acaba de dar um abraço em @${mentioned[0].split('@')[0]} ✨`
 zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
 break
 
@@ -3074,9 +3066,22 @@ pru = '.\n'
 for (let _ of mentioned) {
 pru += `@${_.split('@')[0]}\n`
 }
-ukiko = fs.readFileSync('./edit/media/gif/tapa.gif')
-susp = `Você Acabou de da um tapa na raba da😏 @${mentioned[0].split('@')[0]} 🔥` 
+ukiko = fs.readFileSync('./edit/media/gif/tapa.mp4')
+susp = `Você acaba de dar um tapa na raba de 😏 @${mentioned[0].split('@')[0]} 🔥` 
 zero.sendMessage(from, ukiko,  MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: susp})
+break
+
+case 'beijo':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if (args.length < 1) return reply('Marque alguém que vc quer da um beijo')
+mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+pru = '.\n'
+for (let _ of mentioned) {
+pru += `@${_.split('@')[0]}\n`
+}
+wew = fs.readFileSync('./edit/media/gif/beijo.mp4')
+susp = `Você deu um beijo gostoso na(o) @${mentioned[0].split('@')[0]} 😁👉👈❤` 
+zero.sendMessage(from, wew, video, {mimetype: 'video/gif', quoted: info, caption: susp})
 break
 
 case 'ship':
@@ -6330,13 +6335,25 @@ reply('botão 3 pressionado');
 
 
 if (selectedButton === `outros`){
-reply(`*Outras opções:*
-
-*${prefix}avaliar* - fazer uma avaliação do bot
-*${prefix}bug* - reportar um bug ao criador
-*${prefix}criador* - falar com o dono
-*${prefix}learn* - como instalar o bot no seu celular
-`)
+reply(`┏━━━━━━━━━━━━━━━━━━━━━━
+┃*⍝ 𝙾𝚞𝚝𝚛𝚊𝚜 𝙾𝚙𝚌̧𝚘̃𝚎𝚜: ⍝*
+┣━━━━━━━━━━━━━━━━━━━━━━
+┃「*${prefix}help* 」
+┃⤿𝗠𝗼𝘀𝘁𝗿𝗮𝗿𝗮́ 𝗼 𝗠𝗲𝗻𝘂 𝗱𝗲 𝗔𝗷𝘂𝗱𝗮
+┃
+┃「*${prefix}avaliar* 」
+┃⤿𝗔𝘃𝗮𝗹𝗶𝗲 𝗼 𝗯𝗼𝘁! 𝗘𝗹𝗲 𝗳𝗶𝗰𝗮𝗿𝗮́ 𝗺𝗮𝗶𝘀 𝗾𝘂𝗲 𝗴𝗿𝗮𝘁𝗼!
+┃
+┃「*${prefix}bug* 」
+┃⤿𝗥𝗲𝗽𝗼𝗿𝘁𝗮𝗿 𝗨𝗺 𝗘𝗿𝗿𝗼 𝗔𝗼 𝗖𝗿𝗶𝗮𝗱𝗼𝗿
+┃
+┃「*${prefix}criador* 」
+┃⤿𝗙𝗮𝗹𝗮𝗿 𝗖𝗼𝗺 𝗢 𝗗𝗼𝗻𝗼
+┃
+┃「*${prefix}learn* 」
+┃⤿𝗧𝘂𝘁𝗼𝗿𝗶𝗮𝗹 𝗗𝗲 𝗖𝗼𝗺𝗼 𝗜𝗻𝘀𝘁𝗮𝗹𝗮𝗿 𝗢 𝗕𝗼𝘁 𝗡𝗼 𝗦𝗲𝘂 𝗖𝗲𝗹𝘂𝗹𝗮𝗿
+┃
+┗━━━━━━━━━━━━━━━━━━━━━━━`)
 
 await sleep(1500)
 await reply(`por enquanto apenas isso!`)
@@ -6394,12 +6411,27 @@ reply('erro inesperado')
 }
 };
 
-if (selectedButton == 'help'){
-reply (`${help}`)
-}
+if (selectedButton == 'statusgp'){
+	
+	isNsfw ? t = ' ✓ ': t = ' X ';
+isWelkom ? t2 = ' ✓ ': t2 = ' X ';;
+isAntiLink ? t3 = ' ✓ ': t3 = ' X ';
+isAntiFake ? t4 = ' ✓ ': t4 = ' X ';
+isMultiPrefix ? t5 = ' ✓ ': t5 = ' X ';
+Antidoc ? t6 = ' ✓ ': t6 = ' X ';
+isAntiPalavrão? t7 = ' ✓ ': t7 = ' X ';
 
-if (selectedButton == 'menuesp'){
-reply(`${menuesp}`)
+reply (`
+┏━ ✈ *𝚂𝚃𝙰𝚃𝚄𝚂* ✈ ━┓
+┣⌲𝑨𝒏𝒕𝒊-𝑳𝒊𝒏𝒌: ${t3}
+┣⊰𝑨𝒏𝒕𝒊-𝑭𝒂𝒌𝒆: ${t4}
+┣⌲𝑨𝒏𝒕𝒊-𝑶𝒇𝒆𝒏𝒔𝒂: ${t7}
+┣⊰𝑩𝒐𝒂𝒔-𝑽𝒊𝒏𝒅𝒂𝒔: ${t2}
+┣⌲𝑵𝒔𝒇𝒘: ${t}
+┣⊰𝑴𝒖𝒍𝒕𝒊-𝑷𝒓𝒆𝒇𝒊𝒙𝒐: ${t5}
+┣⌲𝑨𝒏𝒕𝒊-𝑫𝒐𝒄𝒖𝒎𝒆𝒏𝒕𝒐: ${t6}
+┗━━━━━━━━━━━
+`)
 }
 
 if (selectedButton == `antifake on`) {
