@@ -489,7 +489,7 @@ message: {
 
 //#antipv
 if (isAntiPv && !isOwner && !isGroup) {
-reply(`🚫 O PV ESTÁ BLOQUEADO 🚫`)
+reply(` 🚫 PARADO (A) AÍ 🚫\n‼️PV BLOQUEADO‼️ `)
 setTimeout( () => {
 zero.blockUser(sender, 'add')
  }, 5000)
@@ -1224,6 +1224,7 @@ zero.sendMessage(from, result, sticker, { quoted: mek })
 }};
 
 if (budY.includes("dono do bot") || budY.includes("bot dono")) {
+	reply('se deseja falar com o meu criador digite ${prefix}dono')
 await sendMedia(from, goSticker + 'olaa.webp', 'sticker', {
 mimetype: Mimetype.sticker,
  quoted: mek,});
@@ -1253,7 +1254,7 @@ function listaMenus () {
 
  footerText: `Lista De Menus Separados Por Categorias\n${readmore}`,
 
- description: `sexo`,
+ description: `${readmore}`,
 
  sections: [
 
@@ -2382,7 +2383,7 @@ ${
 
 
 		case 'learn':
-		reply (`𝑪𝒓𝒆́𝒅𝒊𝒕𝒐𝒔:\ntioMomonga\n𝑪𝒂𝒏𝒂𝒍 𝑫𝒆𝒍𝒆:\nhttps://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw\n\n𝐂𝐨𝐦𝐚𝐧𝐝𝐨𝐬 𝐩𝐚𝐫𝐚 𝐢𝐧𝐬𝐭𝐚𝐥𝐚𝐫 𝐨 𝐛𝐨𝐭:\n\ntermux-setup-storage\n\ncd /sdcard/*PASTA ONDE ESTÁ O SEU BOT*\n\nbash install.sh\n\ndepois disso é só dar\n*node index*\npara iniciar!`)
+		reply (`𝑪𝒓𝒆́𝒅𝒊𝒕𝒐𝒔:\n\n*tioMomonga*\n\n𝑪𝒂𝒏𝒂𝒍 𝑫𝒆𝒍𝒆:\n\nhttps://youtube.com/channel/UCEXnX1CqgbV5xVabZG71aUw\n\n𝐂𝐨𝐦𝐚𝐧𝐝𝐨𝐬 𝐩𝐚𝐫𝐚 𝐢𝐧𝐬𝐭𝐚𝐥𝐚𝐫 𝐨 𝐛𝐨𝐭:\n\ntermux-setup-storage\n\ncd /sdcard/*PASTA ONDE ESTÁ O SEU BOT*\n\nbash install.sh\n\ndepois disso é só dar\n*node index*\npara iniciar!`)
 		break
 
 
@@ -3056,8 +3057,22 @@ for (let _ of mentioned) {
 pro += `@${_.split('@')[0]}\n`
 } 
 wew = fs.readFileSync('./edit/media/gif/chute.mp4');
-yhb = `Pra que agredir?` 
+yhb = `Você Acabou de dar um chute em @${mentioned[0].split('@')[0]} 🤡` 
 zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
+break
+
+case 'tapa':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+if(!isModobn) return reply(`Este tipo de comando só pode ser utilizado com o modobrincadeira ativo, fale com um adm ou se você for, apenas digite ${prefix}modobrincadeira 1`)
+if (info.message.extendedTextMessage === undefined || info.message.extendedTextMessage === null) return reply('marque o alvo que você quer dá o tapa')
+mentioned = info.message.extendedTextMessage.contextInfo.mentionedJid
+pru = '.\n'
+for (let _ of mentioned) {
+pru += `@${_.split('@')[0]}\n`
+}
+susp = `Você Acabou de da um tapa na raba da😏 @${mentioned[0].split('@')[0]} 🔥` 
+const jrq = fs.readFileSync('./edit/media/gif/tapa.gif')
+await zero.sendMessage(from, jrq,  MessageType.video, {mimetype: 'video/gif', quoted: info, caption: susp})
 break
 
 case 'ship':
@@ -4073,6 +4088,207 @@ thumbnail: null,
 caption: '🥴'
 })
 break
+
+case 'rankgay':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+try{
+d = []
+ret = '🏳️‍🌈 Rank dos mais gays\n'
+for(i = 0; i < 5; i++) {
+r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
+ret += `🏳️‍🌈❧ @${groupMembers[r].jid.split('@')[0]}\n`
+d.push(groupMembers[r].jid)
+}
+mentions(ret, d, true)
+} catch (e) {
+console.log(e)
+reply('Deu erro, tente novamente :/')
+}
+break
+
+case 'rankgado':
+case 'rankgados':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+try{
+d = []
+ret = '🐂🐂 Rank dos mais gados do grupo \n'
+for(i = 0; i < 5; i++) {
+r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
+ret += `🐂❧ @${groupMembers[r].jid.split('@')[0]}\n`
+d.push(groupMembers[r].jid)
+}
+mentions(ret, d, true)
+} catch (e) {
+console.log(e)
+reply('Deu erro, tente novamente :/')
+}
+break
+
+case 'rankcorno':
+case 'rankcornos':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+membr = []
+const corno1 = groupMembers
+const corno2 = groupMembers
+const corno3 = groupMembers
+const corno4 = groupMembers
+const corno5 = groupMembers
+const cornos1 = corno1[Math.floor(Math.random() * corno1.length)]
+const cornos2 = corno2[Math.floor(Math.random() * corno2.length)]
+const cornos3 = corno3[Math.floor(Math.random() * corno3.length)]
+const cornos4 = corno4[Math.floor(Math.random() * corno4.length)]
+const cornos5 = corno5[Math.floor(Math.random() * corno5.length)]
+var porcentagemcorno = ["1%", `2%`, `3%`, `4%`, `5%`, `6%`, `7`, `%`, `9%`, `10`, `11%`, `12%`,`13%`, `14%`, `15%`, `16%`, `17%`, `1%`, `19%`, `20%`, `21%`, `22`, `23%`, `24%`, `25%`, `26%`, `27%`, `2%`, `27%`, `2%`, `29%`, `30%`, `31%`, `32%`, `33%`, `34%`, `35%`, `36%`, `37%`, `3%`, `39%`, `40%`, `41%`, `42%`, `43%`, `44%`, `45%`, `46%`, `47%`, `4%`, `49%`, `50%`, `51%`, `52%`, `53%`, `54%`, `55%`, `56%`, `57%`, `5%`, `59%`, `60%`, `61%`, `62%`, `63%`, `64%`, `65%`, `66%`, `67%`, `6%`, `69%`, `70%`, `71%`, `72%`, `73%`, `74%`, `75%`, `76%`, `77%`, `7%`, `79%`, `0%`, `1%`, `2%`, `5%`, `4%`, `5%`, `6%`, `7%`, `%`, `9%`, `90%`, `91%`, `92%`, `93%`, `94%`, `95%`, `96%`, `97%`, `9%`, `99%`, `O chifre desse ai bate na lua ksksksk`]
+const porcentagemc = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const porcentag = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const porcent = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const porcl = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const porg = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+const prg = porcentagemcorno[Math.floor(Math.random() * porcentagemcorno.length)]
+ytb = `
+Esses são os cornos do grupo ${groupName}\n@${cornos1.jid.split('@')[0]}\nCom uma porcentagem de ${porcent}\n@${cornos2.jid.split('@')[0]}\nCom uma porcentagem de ${porcentag}\n@${cornos3.jid.split('@')[0]}\nCom uma porcentagem de ${porcl}\n@${cornos4.jid.split('@')[0]}\nCom uma porcentagem de ${porg}\n@${cornos5.jid.split('@')[0]}\nCom uma porcentagem de ${prg}\n\n⚡ ${setting.NomeDoBot} ⚡`
+membr.push(cornos1.jid)
+membr.push(cornos2.jid)
+membr.push(cornos3.jid)
+membr.push(cornos4.jid)
+membr.push(cornos5.jid)
+mentions(ytb, membr, true)
+break
+
+case 'rankgostosos':
+case 'rankgostoso':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+member = []
+const p01 = groupMembers
+const p02 = groupMembers
+const p03 = groupMembers
+const p04 = groupMembers
+const p05 = groupMembers
+const o01 = p01[Math.floor(Math.random() * p01.length)]
+const o02 = p02[Math.floor(Math.random() * p02.length)]
+const o03 = p03[Math.floor(Math.random() * p03.length)]
+const o04 = p04[Math.floor(Math.random() * p04.length)]
+const o05 = p05[Math.floor(Math.random() * p05.length)]
+luy = `
+Parados!🤚🤚\n\n1=🤚🤭@${o01.jid.split('@')[0]}🤚🤭\n\n\n2=🤚🤭@${o02.jid.split('@')[0]}🤚🤭\n\n\n3=🤚🤭@${o03.jid.split('@')[0]}🤚🤭\n\n\n4=🤚🤭@${o04.jid.split('@')[0]}🤚🤭\n\n\n5=🤚🤭@${o05.jid.split('@')[0]}🤚🤭\n\n\nMulta por serem gostosos dms😳 pague pena trabalhando em nossa agência de modelos 😊 by: ${NomeDoBot}`
+member.push(o01.jid)
+member.push(o02.jid)
+member.push(o03.jid)
+member.push(o04.jid)
+member.push(o05.jid)
+mentions(luy, member, true)
+break
+
+case 'rankgostosas':
+case 'rankgostosa':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+member = []
+const p1 = groupMembers
+const p2 = groupMembers
+const p3 = groupMembers
+const p4 = groupMembers
+const p5 = groupMembers
+const o1 = p1[Math.floor(Math.random() * p1.length)]
+const o2 = p2[Math.floor(Math.random() * p2.length)]
+const o3 = p3[Math.floor(Math.random() * p3.length)]
+const o4 = p4[Math.floor(Math.random() * p4.length)]
+const o5 = p5[Math.floor(Math.random() * p5.length)]
+luy = `
+Paradas!🤚🤚\n\n1=🤚🤭@${o1.jid.split('@')[0]}🤚🤭\n\n\n2=🤚🤭@${o2.jid.split('@')[0]}🤚🤭\n\n\n3=🤚🤭@${o3.jid.split('@')[0]}🤚🤭\n\n\n4=🤚🤭@${o4.jid.split('@')[0]}🤚🤭\n\n\n5=🤚🤭@${o5.jid.split('@')[0]}🤚🤭\n\n\nMultas por serem gostosas dms😳 pague pena enviando nud no PV do dono😊 by Bot`
+member.push(o1.jid)
+member.push(o2.jid)
+member.push(o3.jid)
+member.push(o4.jid)
+member.push(o5.jid)
+mentions(luy, member, true)
+break
+
+case 'ranknazista':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+try{
+if(!isGroup) return reply(enviar.msg.grupo)
+d = []
+teks = '💂‍♂️Rank dos mais nazistas do gp\n'
+for(i = 0; i < 5; i++) {
+r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
+teks += `💂‍♂️❧ @${groupMembers[r].jid.split('@')[0]}\n`
+d.push(groupMembers[r].jid)
+}
+mentions(teks, d, true)
+} catch (e) {
+console.log(e)
+reply('Deu erro, tente novamente :/')
+}
+break
+
+case 'rankotakus':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+membr = []
+const otaku1 = groupMembers
+const otaku2 = groupMembers
+const otaku3 = groupMembers
+const otaku4 = groupMembers
+const otaku5 = groupMembers
+const otaku6 = groupMembers
+const otaku7 = groupMembers
+const otaku = groupMembers
+const otaku9 = groupMembers
+const otaku10 = groupMembers
+const otakus1 = otaku1[Math.floor(Math.random() * otaku1.length)]
+const otakus2 = otaku2[Math.floor(Math.random() * otaku2.length)]
+const otakus3 = otaku3[Math.floor(Math.random() * otaku3.length)]
+const otakus4 = otaku4[Math.floor(Math.random() * otaku4.length)]
+const otakus5 = otaku5[Math.floor(Math.random() * otaku5.length)]
+const otakus6 = otaku6[Math.floor(Math.random() * otaku6.length)]
+const otakus7 = otaku7[Math.floor(Math.random() * otaku7.length)]
+const otakus = otaku[Math.floor(Math.random() * otaku.length)]
+const otakus9 = otaku9[Math.floor(Math.random() * otaku9.length)]
+const otakus10 = otaku10[Math.floor(Math.random() * otaku10.length)]
+ytb = `esses são os otakus fedidos do grupo\n@${otakus1.jid.split('@')[0]}\n@${otakus2.jid.split('@')[0]}\n@${otakus3.jid.split('@')[0]}\n@${otakus4.jid.split('@')[0]}\n@${otakus5.jid.split('@')[0]}\n@${otakus6.jid.split('@')[0]}\n@${otakus7.jid.split('@')[0]}\n@${otakus.jid.split('@')[0]}\n@${otakus9.jid.split('@')[0]}\n@${otakus10.jid.split('@')[0]}\n\n⚡ ${setting.NomeDoBot} ⚡`
+membr.push(otakus1.jid)
+membr.push(otakus2.jid)
+membr.push(otakus3.jid)
+membr.push(otakus4.jid)
+membr.push(otakus5.jid)
+membr.push(otakus6.jid)
+membr.push(otakus7.jid)
+membr.push(otakus.jid)
+membr.push(otakus9.jid)
+membr.push(otakus10.jid)
+mentions(ytb, membr, true)
+break
+
+case 'rankpau':
+if(!isGroup) return reply('Só pode ser utilizado este comando, em grupo.')
+membr = []
+const pauz1 = groupMembers
+const pauz2 = groupMembers
+const pauz3 = groupMembers
+const pauz4 = groupMembers
+const pauz5 = groupMembers
+const paus1 = pauz1[Math.floor(Math.random() * pauz1.length)]
+const paus2 = pauz2[Math.floor(Math.random() * pauz2.length)]
+const paus3 = pauz3[Math.floor(Math.random() * pauz3.length)]
+const paus4 = pauz4[Math.floor(Math.random() * pauz4.length)]
+const paus5 = pauz5[Math.floor(Math.random() * pauz5.length)]
+var pcpau1 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+var pcpau2 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+var pcpau3 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+var pcpau4 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+var pcpau5 = ["Minuscúlo", `Pequenino`, `Pequeno`, `Médio`, `Grandinho`, `Grande`, `Grandão`, `Gigante`, `Gigantesco`, `Enorme`, `BATENDO NA LUA`, `QUEIMADO, TÃO GRANDE QUE BATEU NO SOL E QUEIMOU ksksksk`]
+const pc1 = pcpau1[Math.floor(Math.random() * pcpau1.length)]
+const pc2 = pcpau2[Math.floor(Math.random() * pcpau2.length)]
+const pc3 = pcpau3[Math.floor(Math.random() * pcpau3.length)]
+const pc4 = pcpau4[Math.floor(Math.random() * pcpau4.length)]
+const pc5 = pcpau5[Math.floor(Math.random() * pcpau5.length)]
+pdr = `Esses são os caras com o menor e maior pau do Grupo\n${groupName}\n\n@${paus1.jid.split('@')[0]}\n${pc1}\n@${paus2.jid.split('@')[0]}\n${pc2}\n@${paus3.jid.split('@')[0]}\n${pc3}\n@${paus4.jid.split('@')[0]}\n${pc4}\n@${paus5.jid.split('@')[0]}\n${pc5}\n\n ${setting.NomeDoBot}`
+membr.push(paus1.jid)
+membr.push(paus2.jid)
+membr.push(paus3.jid)
+membr.push(paus4.jid)
+membr.push(paus5.jid)
+mentions(pdr, membr, true)
+break 
 
 case 'recado':
 if (!isOwner) return reply(`${say.only.owner}`)
