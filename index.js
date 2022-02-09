@@ -3043,8 +3043,13 @@ case 'casal':
                 if (!isGroup) return reply(ind.groupo())
 
 if (args.length < 1) return reply('em quem você quer dar um abraço?')
+mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+pro = '.\n'
+for (let _ of mentioned) {
+pro += `@${_.split('@')[0]}\n`
+} 
 wew = fs.readFileSync('./edit/media/gif/abraço.mp4');
-yhb = `eita`
+yhb = `Você acaba de dar um abraço em @${mentioned[0].split('@')[0]} `
 zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
 break
 
@@ -3069,9 +3074,9 @@ pru = '.\n'
 for (let _ of mentioned) {
 pru += `@${_.split('@')[0]}\n`
 }
+ukiko = fs.readFileSync('./edit/media/gif/tapa.gif')
 susp = `Você Acabou de da um tapa na raba da😏 @${mentioned[0].split('@')[0]} 🔥` 
-const jrq = fs.readFileSync('./edit/media/gif/tapa.gif')
-await zero.sendMessage(from, jrq,  MessageType.video, {mimetype: 'video/gif', quoted: info, caption: susp})
+zero.sendMessage(from, ukiko,  MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: susp})
 break
 
 case 'ship':
@@ -4193,7 +4198,7 @@ const o3 = p3[Math.floor(Math.random() * p3.length)]
 const o4 = p4[Math.floor(Math.random() * p4.length)]
 const o5 = p5[Math.floor(Math.random() * p5.length)]
 luy = `
-Paradas!🤚🤚\n\n1=🤚🤭@${o1.jid.split('@')[0]}🤚🤭\n\n\n2=🤚🤭@${o2.jid.split('@')[0]}🤚??\n\n\n3=🤚🤭@${o3.jid.split('@')[0]}🤚🤭\n\n\n4=🤚🤭@${o4.jid.split('@')[0]}🤚🤭\n\n\n5=🤚🤭@${o5.jid.split('@')[0]}🤚🤭\n\n\nMultas por serem gostosas dms😳 pague pena enviando nud no PV do dono😊 by Bot`
+Paradas!🤚🤚\n\n1=🤚🤭@${o1.jid.split('@')[0]}🤚🤭\n\n\n2=🤚🤭@${o2.jid.split('@')[0]}🤚🤭\n\n\n3=🤚🤭@${o3.jid.split('@')[0]}🤚🤭\n\n\n4=🤚🤭@${o4.jid.split('@')[0]}🤚🤭\n\n\n5=🤚🤭@${o5.jid.split('@')[0]}🤚🤭\n\n\nMultas por serem gostosas dms😳 pague pena enviando nud no PV do dono😊 by Bot`
 member.push(o1.jid)
 member.push(o2.jid)
 member.push(o3.jid)
