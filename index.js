@@ -5167,25 +5167,26 @@ if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 try {
 let cucu = body.slice(6) + '@s.whatsapp.net';
 let kkk = mek.message.extendedTextMessage.contextInfo.participant
-await reply (`banido 😎`)
 await sleep(1000);
 if (kkk) {
 if (kkk === xyrus.user.jid) return reply (`Eu não vou me banir cara de cu`)
 if (kkk === dono) return reply (`Eu não vou remover meu dono, idiota`)
 await xyrus.groupRemove(from, [kkk])
-await sendMedia(from, goAudio + 'ban.mp3', 'audio', {
+await reply (`banido 😎`)
+/*await sendMedia(from, goAudio + 'ban.mp3', 'audio', {
 quoted: mek,
 mimetype: Mimetype.mp4Audio,
 ptt: true,
-});
+});*/
 } else if (!kkk) {
 if (cucu === xyrus.user.jid) return reply (`Eu não vou me banir cara de cu`)
 if (cucu === dono) return reply (`Eu não vou remover meu dono, idiota`)
 await xyrus.groupRemove(from, [cucu])
-await sendMedia(from, goAudio + 'removido.mp3', 'audio', {
+await reply (`banido 😎`)
+/*await sendMedia(from, goAudio + 'removido.mp3', 'audio', {
 mimetype: Mimetype.mp4Audio,
  quoted: mek,
- ptt:true});
+ ptt:true});*/
 }
 } catch(e) {
 console.log(e)
@@ -5819,7 +5820,7 @@ break
 							fs.unlinkSync(ran)
 						} else {
 							buffer = fs.readFileSync(ran)
-							xyrus.sendMessage(from, buffer, image, { caption:`${nomeBot}`,quoted: selocont })
+							xyrus.sendMessage(from, buffer, image, { caption:`aqui está!`,quoted: selocont })
 							fs.unlinkSync(ran)
 						}
 					})
