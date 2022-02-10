@@ -3014,7 +3014,7 @@ case 'gostosa':
                 if (!isGroup) return reply(ind.groupo())
                 random = `${Math.floor(Math.random() * 100)}`
 boiola = random
-if (boiola < 20) {bo = 'Fei pra caralho👹KKKKKKKKKKKKK'} else if (boiola == 21 ) {bo = 'mt feio bixo👹??'} else if (boiola == 23 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 24 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 25 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 26 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 27 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 28 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 29 ) {bo = 'mt feio bixo👹??'} else if (boiola == 30 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 31 ) {bo = 'você é aceitável 🧐'} else if (boiola == 32 ) {bo = 'você é aceitável 🧐'} else if (boiola == 33 ) {bo = 'você é aceitável 🧐'} else if (boiola == 34 ) {bo = 'você é aceitável 🧐'}  else if (boiola == 35 ) {bo = 'você é aceitável 🧐'} else if (boiola == 36 ) {bo = 'você é aceitável 🧐'} else if (boiola == 37 ) {bo = 'você é aceitável 🧐'} else if (boiola == 38 ) {bo = 'você é aceitável 🧐'} else if (boiola == 39 ) {bo = 'você é aceitável 🧐'} else if (boiola == 40 ) {bo = 'você é aceitável 🧐'} else if (boiola == 41 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 42 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 43 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 44 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 45 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 46 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 47 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 48 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 49 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 50 ) {bo = 'GOSTOSAKKKKKKKKKKKK'} else if (boiola > 51) {bo = 'Passa o zap gostosa 😳'}
+if (boiola < 20) {bo = 'Fei pra caralho👹KKKKKKKKKKKKK'} else if (boiola == 21 ) {bo = 'mt feio bixo👹??'} else if (boiola == 23 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 24 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 25 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 26 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 27 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 28 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 29 ) {bo = 'mt feio bixo👹??'} else if (boiola == 30 ) {bo = 'mt feio bixo👹👹'} else if (boiola == 31 ) {bo = 'você é aceitável 🧐'} else if (boiola == 32 ) {bo = 'você é aceitável 🧐'} else if (boiola == 33 ) {bo = 'você é aceitável 🧐'} else if (boiola == 34 ) {bo = 'você é aceitável 🧐'}  else if (boiola == 35 ) {bo = 'você é aceitável 🧐'} else if (boiola == 36 ) {bo = 'você é aceitável 🧐'} else if (boiola == 37 ) {bo = 'você é aceitável 🧐'} else if (boiola == 38 ) {bo = 'você é aceitável 🧐'} else if (boiola == 39 ) {bo = 'você é aceitável 🧐'} else if (boiola == 40 ) {bo = 'você é aceitável 🧐'} else if (boiola == 41 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 42 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 43 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 44 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 45 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 46 ) {bo = 'eu pegava 😳??😳'} else if (boiola == 47 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 48 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 49 ) {bo = 'eu pegava 😳😳😳'} else if (boiola == 50 ) {bo = 'GOSTOSAKKKKKKKKKKKK'} else if (boiola > 51) {bo = 'Passa o zap gostosa 😳'}
 teks = `Você é ${random}% Gostosa\n\n${bo}`
 reply(`${teks}`)
 break
@@ -6292,15 +6292,10 @@ await sendMedia(from, goSticker + 'baka' + valorMath + '.webp', 'sticker', {
 mimetype: Mimetype.sticker,
  quoted: mek,});
  await sleep(3000)
-await sendMedia(from, goAudio + 'baka.mp3', 'audio', {
-mimetype: Mimetype.mp4Audio,
- quoted: mek,
- ptt:true});
+umdois = `esse comando não existe, digite ${prefix}menu para ver os comandos!`
+await xyrus.sendMessage(from, umdois, text, {quoted: selocont});
  }
-if (isCmd) if (isOwner) await sendMedia(from, goAudio + 'n existe.mp3', 'audio', {
-mimetype: Mimetype.mp4Audio,
- quoted: mek,
- ptt:true});
+if (isCmd) if (isOwner) await xyrus.sendMessage(from, "comando inexistente, digite ${prefix}menu para ver os comandos", text, {quoted: selocont});
 						
                            } //#fim das cases 
                            };
