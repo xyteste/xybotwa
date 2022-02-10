@@ -6677,9 +6677,8 @@ console.log(color('[DEMOTE]', 'red')), (color(`${num.split('@')[0]} foi rebaixad
 const grupo = await xyrus.groupMetadata(anu.jid)
 num = anu.participants[0]
 console.log(color('[ADD] entraram via link ou foi adicionado', 'red'))
-await sendMedia(from, 
-goImage + 'welcomev2.jpg', 'image', {
-quoted: mek,
+bvuo = fs.readFileSync('./edit/media/image/welcomev2.jpg')
+xyrus.sendMessage(from, bvuo, image, {quoted: selocont})
 caption: 'Te dou as boas-vindas ${pushname}, leia as regras e seja feliz.',
 });
 } else if (anu.action == 'remove') {
