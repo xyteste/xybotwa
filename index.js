@@ -6293,9 +6293,9 @@ mimetype: Mimetype.sticker,
  quoted: mek,});
  await sleep(3000)
 umdois = `esse comando não existe, digite ${prefix}menu para ver os comandos!`
-await xyrus.sendMessage(from, umdois, text, {quoted: selocont});
+await xyrus.sendMessage(from, umdois, text, {quoted: mek});
  }
-if (isCmd) if (isOwner) await xyrus.sendMessage(from, "comando inexistente, digite ${prefix}menu para ver os comandos", text, {quoted: selocont});
+if (isCmd) if (isOwner) await xyrus.sendMessage(from, "comando inexistente, digite ${prefix}menu para ver os comandos", text, {quoted: mek});
 						
                            } //#fim das cases 
                            };
