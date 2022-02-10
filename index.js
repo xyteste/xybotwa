@@ -122,34 +122,34 @@ const nomeDono = nomeDonoY.toLowerCase();
 
 // #qrcode
 async function starts() {
-	const zero = new WAConnection();
-	const client = zero;
-	zero.logger.level = 'warn';
+	const xyrus = new WAConnection();
+	const client = xyrus;
+	xyrus.logger.level = 'warn';
 	console.log(banner.string);
-	zero.on('qr', () => {
+	xyrus.on('qr', () => {
 	
 		console.log(color('[','white'), color('!','red'), color(']','white'), color('Escaneie o QR Code'));
 	})
 
-	fs.existsSync('./docs/qrcode.json') && zero.loadAuthInfo('./docs/qrcode.json');
-	zero.on('connecting', () => {
+	fs.existsSync('./docs/qrcode.json') && xyrus.loadAuthInfo('./docs/qrcode.json');
+	xyrus.on('connecting', () => {
 	spinLoad();
 	})
-	zero.on('open', () => {		
-	zero.sendMessage("558897321488@s.whatsapp.net", "Olá, estou online!", MessageType.text);
+	xyrus.on('open', () => {		
+	xyrus.sendMessage("558897321488@s.whatsapp.net", "Olá, estou online!", MessageType.text);
 	spinOn();
 		try {
-		var iii = zero.user.jid
+		var iii = xyrus.user.jid
 		var kkk = Math.floor(Math.random() * (12 - 2) + 2);
 
-	 zero.setStatus(`Apenas uma inteligência artificial. Online desde às ${hours}`)
+	 xyrus.setStatus(`Apenas uma inteligência artificial. Online desde às ${hours}`)
 	 // atualizar a bio
 	 
 	 // atualizar foto de perfil
 	 //var kki = fs.readFileSync(`./edit/media/image/perfil/${kkk}.jpg`)
 	/* async () => {
 	 await sleep(300000);
-	 zero.updateProfilePicture(iii, kki);
+	 xyrus.updateProfilePicture(iii, kki);
 	 console.log('\nfoto de perfil atualizada\n');
 	 }*/
 	 } catch(e) {
@@ -163,10 +163,10 @@ async function starts() {
              } catch(e) {
              console.log(e)
              }
-	await zero.connect({timeoutMs: 30*1000})
-        fs.writeFileSync('./docs/qrcode.json', JSON.stringify(zero.base64EncodedAuthInfo(), null, '\t'));
+	await xyrus.connect({timeoutMs: 30*1000})
+        fs.writeFileSync('./docs/qrcode.json', JSON.stringify(xyrus.base64EncodedAuthInfo(), null, '\t'));
         
-	zero.on('chat-update', async (mek) => {
+	xyrus.on('chat-update', async (mek) => {
 	
 		try {
             if (!mek.hasNewMessage) return;
@@ -185,7 +185,7 @@ async function starts() {
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType;
 			const time = moment.tz('America/Sao_Paulo').format('DDD/MMMM HH:mm:ss');
 			const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
-const botNumber = zero.user.jid;
+const botNumber = xyrus.user.jid;
 const isGroup = from.endsWith('@g.us')
 var sender = isGroup ? mek.participant : mek.key.remoteJid;
 
@@ -246,12 +246,12 @@ var isNumero = (cArgs.includes('1') || (cArgs.includes('2') || (cArgs.includes('
 // se não for comando e for pra mim, retornar
 if (!isCmd) if (mek.key.fromMe) return;		
 		
-		var getBio = await zero.getStatus(`${sender.split('@')[0]}`, MessageType.text)
+		var getBio = await xyrus.getStatus(`${sender.split('@')[0]}`, MessageType.text)
 
 
 //#group
-var pushname = zero.contacts[sender] != undefined ? zero.contacts[sender].vname || zero.contacts[sender].notify : undefined
-			const groupMetadata = isGroup ? await zero.groupMetadata(from) : '';
+var pushname = xyrus.contacts[sender] != undefined ? xyrus.contacts[sender].vname || xyrus.contacts[sender].notify : undefined
+			const groupMetadata = isGroup ? await xyrus.groupMetadata(from) : '';
 			const groupDesc = isGroup ? groupMetadata.desc : ''
 			const groupName = isGroup ? groupMetadata.subject : '';
 			const groupId = isGroup ? groupMetadata.jid : '';
@@ -262,7 +262,7 @@ var pushname = zero.contacts[sender] != undefined ? zero.contacts[sender].vname 
 const isOwner = sender.includes(dono) ? sender.includes(dono):sender.includes(dono2);
 
 if (isBlocked) return; // banir bloqueados
-if (isBotGroupAdmins) if (isBlackList) await zero.groupRemove(from, [sender]); // blacklist ban
+if (isBotGroupAdmins) if (isBlackList) await xyrus.groupRemove(from, [sender]); // blacklist ban
 /// fim group
 
 
@@ -272,13 +272,13 @@ const selocont = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(fr
         }}};
 			
 			const reply = (teks) => {
-				zero.sendMessage(from, teks, text, {quoted:selocont})
+				xyrus.sendMessage(from, teks, text, {quoted:selocont})
 			};
 		const replySelo = (teks, cArgs) => {
-				zero.sendMessage(from, teks, text, {quoted: cArgs})
+				xyrus.sendMessage(from, teks, text, {quoted: cArgs})
 			};
 			const mentions = (teks, memberr, id) => {
-				(id == null || id == undefined || id == false) ? zero.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : zero.sendMessage(from, teks.trim(), extendedText, {quoted: selocont, contextInfo: {"mentionedJid": memberr}})
+				(id == null || id == undefined || id == false) ? xyrus.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : xyrus.sendMessage(from, teks.trim(), extendedText, {quoted: selocont, contextInfo: {"mentionedJid": memberr}})
 			};
 
 			colors = ['red','white','black','blue','yellow','green'];
@@ -296,7 +296,7 @@ const isSticker = type === 'stickerMessage';
 
 
 
-			let authorname = zero.contacts[from] != undefined ? zero.contacts[from].vname || zero.contacts[from].notify : undefined	
+			let authorname = xyrus.contacts[from] != undefined ? xyrus.contacts[from].vname || xyrus.contacts[from].notify : undefined	
 			if (authorname != undefined) { } else { authorname = groupName }	
 			
 			function addMetadata(packname, author) {	
@@ -492,7 +492,7 @@ message: {
 if (isAntiPv && !isOwner && !isGroup) {
 reply(` 🚫 PARADO (A) AÍ 🚫\n‼️PV BLOQUEADO‼️ `)
 setTimeout( () => {
-zero.blockUser(sender, 'add')
+xyrus.blockUser(sender, 'add')
  }, 5000)
 }
 ///
@@ -528,7 +528,7 @@ await sleep(1000);
 
 mathHelp(29, 1);
 
-               imageMsg = (await zero.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${valorMath}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
+               imageMsg = (await xyrus.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${valorMath}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
 
                buttonsMessage = {
                contentText: `${readmore}
@@ -542,8 +542,8 @@ ${allmenu}`,
                buttons: buttons,
                headerType: 4
 }
-prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: selocont})
-               zero.relayWAMessage(prep)
+prep = await xyrus.prepareMessageFromContent(from,{buttonsMessage},{quoted: selocont})
+               xyrus.relayWAMessage(prep)
              } catch(e) {
              console.log(e)
              }
@@ -646,7 +646,7 @@ let listaDeArquivos = await fss.readdir(diretorio);
 console.log(listaDeArquivos);
 
 for (var i = 0; i < listaDeArquivos.length; i++) {
-zero.sendMessage(from, `${listaDeArquivos[i]}`, text)
+xyrus.sendMessage(from, `${listaDeArquivos[i]}`, text)
 }
 
 }
@@ -671,7 +671,7 @@ if (tipo === 'audio') {
 const sendAudio = new Promise((resolve, reject) => {
 try {
 async function funcSendAudio () {
-await zero.sendMessage(
+await xyrus.sendMessage(
     id, 
     { url: `${arquivo}` }, 
     MessageType.audio,     
@@ -694,7 +694,7 @@ if (tipo === 'sticker' || tipo === 'figurinha') {
 const sendSticker = new Promise((resolve, reject) => {
 try {
 async function funcSendSticker () {
-await zero.sendMessage(
+await xyrus.sendMessage(
     id, 
     { url: `${arquivo}` }, 
     MessageType.sticker, 
@@ -717,7 +717,7 @@ if (tipo === 'imagem' || tipo === 'image') {
 const sendImage = new Promise((resolve, reject) => {
 try {
 async function funcSendImage () {
-await zero.sendMessage(
+await xyrus.sendMessage(
     id, 
     { url: `${arquivo}` }, 
     MessageType.image,
@@ -740,7 +740,7 @@ if (tipo === 'vídeo' || tipo === 'video') {
 const sendVideo = new Promise((resolve, reject) => {
 try {
 async function funcSendVideo () {
-await zero.sendMessage(
+await xyrus.sendMessage(
     id, 
     { url: `${arquivo}` }, 
     MessageType.video,
@@ -763,7 +763,7 @@ if (tipo === 'document' || tipo === 'documento') {
 const sendDoc = new Promise((resolve, reject) => {
 try {
 async function funcSendDoc () {
-await zero.sendMessage(
+await xyrus.sendMessage(
     id, 
     { url: `${arquivo}` }, 
     'documentMessage',
@@ -804,15 +804,15 @@ pausar = Presence.paused;
 	//call auto block // anticall
 const sleep = async (ms) => {return new Promise(resolve => setTimeout(resolve, ms))}
 
-zero.on('CB:action,,call', async json => {
+xyrus.on('CB:action,,call', async json => {
 const callerId = json[2][0][1].from;
 console.log('bloqueando o '+ callerId)
-return zero.blockUser(callerId, 'add')
+return xyrus.blockUser(callerId, 'add')
 })
 
 
 const sendMess = (hehe, teks) => {
-				zero.sendMessage(hehe, teks, text)
+				xyrus.sendMessage(hehe, teks, text)
 			}
 
 //# contador de msgs
@@ -856,10 +856,10 @@ fs.writeFileSync('./docs/src/countmsg.json', JSON.stringify(countMessage, null, 
 
 const sendFileFromUrl = async(link, type, options) => {
 hasil = await getBuffer(link)
-zero.sendMessage(from, hasil, type, options).catch(e => {
+xyrus.sendMessage(from, hasil, type, options).catch(e => {
 fetch(link).then((hasil) => {
-zero.sendMessage(from, hasil, type, options).catch(e => {
-zero.sendMessage(from, { url : link }, type, options).catch(e => {
+xyrus.sendMessage(from, hasil, type, options).catch(e => {
+xyrus.sendMessage(from, { url : link }, type, options).catch(e => {
 reply('_[ ! ] Erro ao baixar e enviar mídia_')
 })
 })
@@ -870,8 +870,8 @@ reply('_[ ! ] Erro ao baixar e enviar mídia_')
 //#lista
 const listmsg = (from, title, desc, list) => { 
 try {
-            let po = zero.prepareMessageFromContent(from, {"listMessage": {"title": title,"description": desc,"buttonText": "Escolha aqui","footerText": "lista","listType": "SINGLE_SELECT","sections": list}}, {})
-            return zero.relayWAMessage(po, {waitForAck: true})} catch(e) {
+            let po = xyrus.prepareMessageFromContent(from, {"listMessage": {"title": title,"description": desc,"buttonText": "Escolha aqui","footerText": "lista","listType": "SINGLE_SELECT","sections": list}}, {})
+            return xyrus.relayWAMessage(po, {waitForAck: true})} catch(e) {
             console.log(e)
             }
         }
@@ -882,7 +882,7 @@ if (isFiltered2(sender)) return reply(`*sistema de Anti_Spam!*`)
 addFilter2(sender)
 }
 
-if (isCmd) await zero.chatRead(from) // lê as msgs
+if (isCmd) await xyrus.chatRead(from) // lê as msgs
 
 //#fileSha
 isSticker ? fileSha256 = mek.message.stickerMessage.fileSha256.toString('base64'): "";
@@ -892,7 +892,7 @@ isSticker ? mediaKey = mek.message.stickerMessage.mediaKey.toString('base64'):""
 const reply2 = (teks) => {
 // selo YouTube
 img2 = fs.readFileSync('./edit/media/image/apoio.jpeg');
-            zero.sendMessage(from, teks, text,  {contextInfo :{text: 'hi',
+            xyrus.sendMessage(from, teks, text,  {contextInfo :{text: 'hi',
 
 "forwardingScore": 1000000000,
 
@@ -932,7 +932,7 @@ if (isSticker) tipoMsg = ' 💟 Sticker ';
 if (isAudio) tipoMsg = ' 🎶 Áudio ';
 
 if (mek.key.fromMe) pushname = "BOT 🤖"
-if (mek.key.fromMe) sender = zero.user.jid.split("@")[0]
+if (mek.key.fromMe) sender = xyrus.user.jid.split("@")[0]
 
 isImage ? imageCaption = (mek.message.imageMessage.caption): imageCaption = "";
 isVideo ? videoCaption = (mek.message.videoMessage.caption): videoCaption = "";
@@ -969,7 +969,7 @@ footerText: desc1,
 buttons: but,
 headerType: 1
 }
-zero.sendMessage(id, buttonMessage, MessageType.buttonsMessage, { quoted: quoo, options})
+xyrus.sendMessage(id, buttonMessage, MessageType.buttonsMessage, { quoted: quoo, options})
 } catch(e) {
 return reply (`📌 *Algo deu errado*`)
 }} catch(e) {
@@ -980,7 +980,7 @@ console.log(e)
 const sendButImage = async(id, text1, desc1, gam1, but = [], options = {}) => {
 try {
 kma = gam1
-mhan = await zero.prepareMessage(from, kma, image)
+mhan = await xyrus.prepareMessage(from, kma, image)
 const buttonMessages = {
 imageMessage: mhan.message.imageMessage,
 contentText: text1,
@@ -988,7 +988,7 @@ footerText: desc1,
 buttons: but,
 headerType: 4
 }
-zero.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+xyrus.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
 } catch(e) {
 console.log(e)
 }
@@ -1207,13 +1207,13 @@ if (budY.includes("canta")){ //by pinguim
 const menus = ["google","pozeday","canto"]
 pingu = menus[Math.floor(Math.random() * menus.length)]
 menu = fs.readFileSync('./assets/'+pingu+'.mp3')
-zero.sendMessage(from, menu, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+xyrus.sendMessage(from, menu, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
 };
 
 if (budY.includes('Cringe') || (budy.includes('cringe'))) {
 if(!mek.key.fromMe){
 result = fs.readFileSync(`./assets/cringe.webp`)
-zero.sendMessage(from, result, sticker, { quoted: mek })
+xyrus.sendMessage(from, result, sticker, { quoted: mek })
 }};
 
 if (budY.includes("dono do bot") || budY.includes("bot dono")) {
@@ -1225,7 +1225,7 @@ mimetype: Mimetype.sticker,
 /*############# fim da interação*/
 
 	const sendDono = (teks) => {
-            zero.sendMessage(from, teks, text,  {contextInfo :{text: 'hi',
+            xyrus.sendMessage(from, teks, text,  {contextInfo :{text: 'hi',
 "forwardingScore": 1000000000,
 isForwarded: true,
 sendEphemeral: true,
@@ -1311,7 +1311,7 @@ function listaMenus () {
 
 const selocat ={"key": { "fromMe": false,"participant":"0@s.whatsapp.net", "remoteJid": "556181496039-1625944593@g.us" }, "message": {orderMessage: {itemCount: `7`,status: 200, thumbnail: fs.readFileSync(`./edit/media/image/selos/${mathSelo}.jpg`), surface: 200, message: `⊳ Usuario ${pushname}`, orderTitle: '©Albedo', sellerJid: sender}}, contextInfo: {"forwardingScore":999999,"isForwarded":true},sendEphemeral: true};
 
-zero.sendMessage(from, listMsg, MessageType.listMessage,  {quoted: selocat})
+xyrus.sendMessage(from, listMsg, MessageType.listMessage,  {quoted: selocat})
 
 }
 if (selectedButton === 'menu lista'){
@@ -1344,11 +1344,11 @@ try {
 anu = await fetchJson(`https://x-restapi.herokuapp.com/api/random-kemono?apikey=BETA`)
 yoiz = await getBuffer(anu.link)
 buttons = [{buttonId: `kemono`,buttonText:{displayText: `☘ ️Next`},type:1}]
-              imageMsg = (await zero.prepareMessageMedia(yoiz, "imageMessage", { thumbnail: null, })).imageMessage
+              imageMsg = (await xyrus.prepareMessageMedia(yoiz, "imageMessage", { thumbnail: null, })).imageMessage
               buttonsMessage = {footerText:`${nomeBot}`, imageMessage: imageMsg,
               contentText:`Nota: Não faça spam`,buttons,headerType:4}
-              prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-              zero.relayWAMessage(prep)
+              prep = await xyrus.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+              xyrus.relayWAMessage(prep)
               } catch(e) {
               console.log(e)
               }}
@@ -1366,11 +1366,11 @@ try {
 anu = await fetchJson(`https://waifu.pics/api/sfw/awoo`)
 yoiz = await getBuffer(anu.url)
 buttons = [{buttonId: `uwu`,buttonText:{displayText: `☘ ️Next`},type:1}]
-              imageMsg = (await zero.prepareMessageMedia(yoiz, "imageMessage", { thumbnail: null })).imageMessage
+              imageMsg = (await xyrus.prepareMessageMedia(yoiz, "imageMessage", { thumbnail: null })).imageMessage
               buttonsMessage = {footerText:`${nomeBot}`, imageMessage: imageMsg,
               contentText:`Nota: Não faça spam`,buttons,headerType:4}
-              prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-              zero.relayWAMessage(prep)
+              prep = await xyrus.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+              xyrus.relayWAMessage(prep)
               } catch(e) {
               console.log(e)
               }}
@@ -1385,11 +1385,11 @@ async function sendNext (ex, ikk) {
  try {
 sendPorn = await getBuffer(ex);
 buttons = [{buttonId: ikk,buttonText:{displayText: `☘ ️Next`},type:1}]
-              imageMsg = (await zero.prepareMessageMedia(sendPorn, "imageMessage", { thumbnail: null, })).imageMessage
+              imageMsg = (await xyrus.prepareMessageMedia(sendPorn, "imageMessage", { thumbnail: null, })).imageMessage
               buttonsMessage = {footerText:`${nomeBot}`, imageMessage: imageMsg,
               contentText:`Nota: Não faça spam`,buttons,headerType:4}
-              prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-              zero.relayWAMessage(prep)
+              prep = await xyrus.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+              xyrus.relayWAMessage(prep)
               } catch(e) {
               console.log(e)
               }
@@ -2239,7 +2239,7 @@ if (!isOwner) return
 cuy = body.slice(10);
 try {
 reply('bloqueado com sucesso');
-zero.blockUser(cuy + '@s.whatsapp.net', 'add')
+xyrus.blockUser(cuy + '@s.whatsapp.net', 'add')
 } catch(e) {
 reply('Erro ao bloquear')
 }
@@ -2250,7 +2250,7 @@ if (!isOwner) return
 cuy = body.slice(12);
 try {
 reply('desbloqueado com sucesso');
-zero.blockUser(cuy + '@s.whatsapp.net', 'remove')
+xyrus.blockUser(cuy + '@s.whatsapp.net', 'remove')
 } catch(e) {
 reply('Erro ao desbloquear')
 }
@@ -2332,7 +2332,7 @@ case "ver":
             descOwner,
             descTime,
             creation,
-          } = await zero.query({
+          } = await xyrus.query({
             json: ["query", "invite", net],
             expect200: true,
           });
@@ -2367,7 +2367,7 @@ ${
             }`
           );
                     
-          zero.sendMessage(from, par, text, {
+          xyrus.sendMessage(from, par, text, {
             quoted: mek,
             contextInfo: { mentionedJid: jids },
           });
@@ -2424,7 +2424,7 @@ case 'update': case 'updates':
 						teks += `│「${no.toString()}」 ${uptpp.split('@')[0]}\n`
 					}
 					teks += `│ Total : ${updates.length}\n╰──────「 *${nomeBot}* 」`
-					zero.sendMessage(from, teks.trim(), text, {quoted: selocont})
+					xyrus.sendMessage(from, teks.trim(), text, {quoted: selocont})
 					
 break					
 case 'addupdate':
@@ -2457,7 +2457,7 @@ if (!isOwner) return reply(`${say.only.owner}`)
 						teks += `│「${no.toString()}」 ${prem}\n`
 					}
 					teks += `│ Total : ${blockcmd.length}\n╰──────「 *${nomeBot}* 」`
-					zero.sendMessage(from, teks.trim(), extendedText, {quoted: selocont})
+					xyrus.sendMessage(from, teks.trim(), extendedText, {quoted: selocont})
 					
 break							
 		
@@ -2527,7 +2527,7 @@ if (!isOwner) return
 						teks += `│「${no.toString()}」 ${uptpp.split('@')[0]}`
 					}
 					teks += `│ Total : ${blocoDeNotas.length}\n╰──────「 *${nomeBot}* 」`
-					zero.sendMessage(from, teks.trim(), text, {quoted: selocont})
+					xyrus.sendMessage(from, teks.trim(), text, {quoted: selocont})
 					
 break					
 case 'addupdate':
@@ -2732,7 +2732,7 @@ mathHelp(99998, 1);
               ? JSON.parse(JSON.stringify(mek).replace("quotedM", "m")).message
                   .extendedTextMessage.contextInfo
               : mek;
-          delb = await zero.downloadMediaMessage(boij);
+          delb = await xyrus.downloadMediaMessage(boij);
           fs.writeFileSync(`./edit/media/image/save/${mathResult}.jpg`, delb);
           reply(`Imagem salva ✓\n\nnome: ${mathResult}.jpg`);
         }
@@ -2757,7 +2757,7 @@ mathHelp(99998, 1);
               ? JSON.parse(JSON.stringify(mek).replace("quotedM", "m")).message
                   .extendedTextMessage.contextInfo
               : mek;
-          delb = await zero.downloadMediaMessage(boij);
+          delb = await xyrus.downloadMediaMessage(boij);
           fs.writeFileSync(`./edit/media/image/save/hentai/hentai${mathResult}.jpg`, delb);
           reply(`Imagem salva ✓\n\nnome: hentai${mathResult}.jpg`);
         }
@@ -2770,7 +2770,7 @@ case 'clear': case 'clearchat': case 'limparchat':
 if (!isOwner) return reply (`${say.only.owner}`)
 try {
 await sleep(1000)
-                await zero.modifyChat(from, ChatModification.delete)
+                await xyrus.modifyChat(from, ChatModification.delete)
                 await sleep(1000)
                 reply(`chat limpo`)
                 } catch(e) {
@@ -2838,7 +2838,7 @@ listMsg = {
 
 }
 
-zero.sendMessage(from, listMsg, MessageType.listMessage,  {contextInfo: { mentionedJid: [sender]}})
+xyrus.sendMessage(from, listMsg, MessageType.listMessage,  {contextInfo: { mentionedJid: [sender]}})
 
 break
 
@@ -2856,7 +2856,7 @@ textos = `
 ┃⛇ _" ${body.slice(5)} "_
 ┗━━━━━━━━━━━━━━━━━━━━━━━
 `
-await zero.sendMessage(suporte, textos, text)
+await xyrus.sendMessage(suporte, textos, text)
 await sendMedia(from, goSticker + 'tabom1.webp', 'sticker', {
 mimetype: Mimetype.sticker,
  quoted: mek,});
@@ -2866,7 +2866,7 @@ break
 
 case 'perfil':
 try {
-var ppimg = await zero.getProfilePicture(`${sender.split('@')[0]}@c.us`)
+var ppimg = await xyrus.getProfilePicture(`${sender.split('@')[0]}@c.us`)
             } catch {
                var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
             }
@@ -2894,7 +2894,7 @@ texttto = `
 *🥴 Nível de gostosura* : *${gostosurar}${gostosurar2}%*
 *🍼 Valor do programa* : *R$${programa}*
 `
-await zero.sendMessage(from, buffer, image, {caption: texttto, quoted: selocont})
+await xyrus.sendMessage(from, buffer, image, {caption: texttto, quoted: selocont})
 break
 
 case 'gerarcpf': case 'crearcpf':
@@ -2920,7 +2920,7 @@ if (args.length < 1) return reply(`${prefix}plaq e digite o seu nome`)
 teks = body.slice(6)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://raptibef.sirv.com/images%20(3).jpeg?text.0.text=${teks}&text.0.position.gravity=center&text.0.position.x=19%25&text.0.size=45&text.0.color=000000&text.0.opacity=55&text.0.font.family=Crimson%20Text&text.0.font.weight=300&text.0.font.style=italic&text.0.outline.opacity=21`)
-zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
+xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq2': //by zanga 
@@ -2928,7 +2928,7 @@ if (args.length < 1) return reply(`${prefix}plaq2 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://raptibef.sirv.com/images%20(1).jpeg?profile=Zanga%202.0&text.0.text=${teks}`)
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
+await xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq3': //by zanga
@@ -2936,7 +2936,7 @@ if (args.length < 1) return reply(`${prefix}plaq3 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://raptibef.sirv.com/images.jpeg?profile=Zanga%203.0&text.0.text=${teks}&text.0.outline.blur=63`)
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
+await xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq4': //by zanga
@@ -2944,7 +2944,7 @@ if (args.length < 1) return reply(`${prefix}plaq4 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://raptibef.sirv.com/images%20(2).jpeg?profile=Zanga%204.0&text.0.text=${teks}`)
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
+await xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq5':
@@ -2953,7 +2953,7 @@ teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/9152e7a9-7d49-4ef-bac-2e6149fda0b2.jpg?text.0.text=${teks}&text.0.position.x=-70%25&text.0.position.y=-23%25&text.0.size=17&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=300`)
 plaq = ` *Plaquinha feita.* `
-await zero.sendMessage(from, buffer, image, {caption: plaq, quoted: selocont, thumbnail: null, sendEphemeral:true, contextInfo : {forwardingScore: 500, isForwarded:true}})
+await xyrus.sendMessage(from, buffer, image, {caption: plaq, quoted: selocont, thumbnail: null, sendEphemeral:true, contextInfo : {forwardingScore: 500, isForwarded:true}})
 break
 
 case 'plaq6':
@@ -2961,7 +2961,7 @@ if (args.length < 1) return reply(`${prefix}plaq6 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://clutamac.sirv.com/1011b71-bab1-49e3-9db-ee2c0646fa%20(1).jpg?text.0.text=${teks}&text.0.position.gravity=northwest&text.0.position.x=22%25&text.0.position.y=60%25&text.0.size=12&text.0.color=000000&text.0.opacity=47&text.0.font.family=Roboto%20Mono&text.0.font.style=italic`) //api
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
+await xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq7':
@@ -2970,7 +2970,7 @@ teks = body.slice(7)
 if (teks.length > 10) return reply('O texto é longo, até 10 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/Torcedora-da-sele%C3%A7%C3%A3o-brasileira-nua-mostrando-a-bunda-236x300.jpg?text.0.text=${teks}&text.0.position.x=-64%25&text.0.position.y=-39%25&text.0.size=25&text.0.color=1b1a1a&text.0.font.family=Architects%20Daughter`) //api
 plaq = ` *Plaquinha feita.* `
-await zero.sendMessage(from, buffer, image, {caption: plaq, quoted: selocont, thumbnail: null, sendEphemeral:true})
+await xyrus.sendMessage(from, buffer, image, {caption: plaq, quoted: selocont, thumbnail: null, sendEphemeral:true})
 break
 
 case 'plaq8':
@@ -2978,7 +2978,7 @@ if (args.length < 1) return reply(`${prefix}plaq8 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/BUNDA1.jpg?text.0.text=${teks}&text.0.position.x=-20%25&text.0.position.y=-20%25&text.0.size=1&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=700&text.0.background.opacity=65`) //api
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
+await xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq9':
@@ -2986,7 +2986,7 @@ if (args.length < 1) return reply(`${prefix}plaq9 e digite o seu nome`)
 teks = body.slice(6)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/fotobundatop.jpg?text.0.text=${teks}&text.0.position.x=-61%25&text.0.position.y=-%25&text.0.size=1&text.0.color=000000&text.0.font.family=Architects%20Daughter&text.0.font.weight=700`) //api
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
+await xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'plaq10':
@@ -2994,7 +2994,7 @@ if (args.length < 1) return reply(`${prefix}plaq10 e digite o seu nome`)
 teks = body.slice(7)
 if (teks.length > 15) return reply('O texto é longo, até 15 caracteres') //maximo de caracteres
 buffer = await getBuffer(`https://umethroo.sirv.com/peito1.jpg?text.0.text=${teks}&text.0.position.x=-4%25&text.0.position.y=-6%25&text.0.size=14&text.0.color=000000&text.0.font.family=Shadows%20Into%20Light&text.0.font.weight=700`)
-await zero.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
+await xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
 case 'morte':
@@ -3043,7 +3043,7 @@ pro += `@${_.split('@')[0]}\n`
 } 
 wew = fs.readFileSync('./edit/media/gif/abraço.mp4');
 yhb = `Você acaba de dar um abraço em @${mentioned[0].split('@')[0]} ✨`
-zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
+xyrus.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
 break
 
 case 'chute':
@@ -3056,7 +3056,7 @@ pro += `@${_.split('@')[0]}\n`
 } 
 wew = fs.readFileSync('./edit/media/gif/chute.mp4');
 yhb = `Você Acabou de dar um chute em @${mentioned[0].split('@')[0]} 🤡` 
-zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
+xyrus.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: yhb})
 break
 
 case 'tapa':
@@ -3069,7 +3069,7 @@ pru += `@${_.split('@')[0]}\n`
 }
 ukiko = fs.readFileSync('./edit/media/gif/tapa.mp4')
 susp = `Você acaba de dar um tapa na raba de 😏 @${mentioned[0].split('@')[0]} 🔥` 
-zero.sendMessage(from, ukiko,  MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: susp})
+xyrus.sendMessage(from, ukiko,  MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: susp})
 break
 
 case 'beijo':
@@ -3082,7 +3082,7 @@ pru += `@${_.split('@')[0]}\n`
 }
 wew = fs.readFileSync('./edit/media/gif/beijo.mp4')
 susp = `Você deu um beijo gostoso na(o) @${mentioned[0].split('@')[0]} 😁👉👈❤` 
-zero.sendMessage(from, wew, video, {mimetype: 'video/gif', quoted: info, caption: susp})
+xyrus.sendMessage(from, wew, video, {mimetype: 'video/gif', quoted: info, caption: susp})
 break
 
 case 'ship':
@@ -3092,7 +3092,7 @@ if (args.length < 1) return reply('marque alguém')
 porc = `${Math.floor(Math.random() * 100)}`
 yh1b =  `Vocês possuem uma chance de ${porc}% de namorarem.💘`,
 wew = fs.readFileSync(`./edit/media/image/foti/ship.jpg`)
-zero.sendMessage(from, wew, image, {quoted: mek, caption: yh1b})
+xyrus.sendMessage(from, wew, image, {quoted: mek, caption: yh1b})
 break
 
 case 'carinho':
@@ -3107,7 +3107,7 @@ pro += `@${_.split('@')[0]}\n`
 } 
 cu = `Você acaba de fazer carinho em @${mentioned[0].split('@')[0]} `
 wew = fs.readFileSync('./edit/media/gif/carinho.mp4');
-zero.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: cu})
+xyrus.sendMessage(from, wew, MessageType.video, {mimetype: 'video/gif', quoted: mek, caption: cu})
 break
 
 case 'gostosa2':
@@ -3215,14 +3215,14 @@ viado = cArgs;
 blacklist.push(`${viado}`)
 fs.writeFileSync('./docs/json/blacklist.json', JSON.stringify(blacklist))
 teks = `@${viado.split("@")[0]} foi adicionado a lista negra e será banido dos grupos do bot agora em diante.`;
- zero.sendMessage(from, teks, text, {contextInfo: {"mentionedJid": [viado]}, quoted:mek});
+ xyrus.sendMessage(from, teks, text, {contextInfo: {"mentionedJid": [viado]}, quoted:mek});
 			}
 if (!budy.includes("@s.whatsapp.net")){
 viado = cArgs;
 blacklist.push(`${viado}@s.whatsapp.net`)
 fs.writeFileSync('./docs/json/blacklist.json', JSON.stringify(blacklist))
 teks = `@${viado} foi adicionado a lista negra e será banido dos grupos do bot agora em diante.`;
- zero.sendMessage(from, teks, text, {contextInfo: {"mentionedJid": [viado]}, quoted:mek});
+ xyrus.sendMessage(from, teks, text, {contextInfo: {"mentionedJid": [viado]}, quoted:mek});
 			}			
 } catch(e) {
 reply (`Erro`)
@@ -3237,7 +3237,7 @@ for (let benn of blocked) {
 jrc += `~> @${benn.split('@')[0]}\n`
 }
 jrc += `Total : ${blocked.length}`
-zero.sendMessage(from, jrc.trim(), extendedText, {quoted: selocont, thumbnail:null, contextInfo: {"mentionedJid": blocked}})
+xyrus.sendMessage(from, jrc.trim(), extendedText, {quoted: selocont, thumbnail:null, contextInfo: {"mentionedJid": blocked}})
 
 break
 
@@ -3249,7 +3249,7 @@ for (let benn of blacklist) {
 jrc += `~> @${benn.split('@')[0]}\n`
 }
 jrc += `Total : ${blacklist.length}`
-zero.sendMessage(from, jrc.trim(), extendedText, {quoted: selocont, thumbnail:null, contextInfo: {"mentionedJid": blacklist}})
+xyrus.sendMessage(from, jrc.trim(), extendedText, {quoted: selocont, thumbnail:null, contextInfo: {"mentionedJid": blacklist}})
 
 break
 
@@ -3325,9 +3325,9 @@ break
 case 'offline': case 'desligar': case 'off':
 
 		if (!isOwner) return reply(`${say.only.owner}`)
-zero.setStatus(`📡 Offline`)
+xyrus.setStatus(`📡 Offline`)
 await sleep(1000)		
-var group = await zero.groupMetadata(from)
+var group = await xyrus.groupMetadata(from)
 var member = group['participants']
 var mem = []
 member.map( async adm => {
@@ -3339,12 +3339,12 @@ contextInfo: { mentionedJid: mem },
 quoted: selocont
 }
 
-dfg = await zero.chats.all()
+dfg = await xyrus.chats.all()
 if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-buff = await zero.downloadMediaMessage(encmedia)
+buff = await xyrus.downloadMediaMessage(encmedia)
 for (let _ of dfg) {
-zero.sendMessage(_.jid, buff, image, options, {caption: ``})
+xyrus.sendMessage(_.jid, buff, image, options, {caption: ``})
 }
 reply('Transmissão enviada com sucesso')
 } else {
@@ -3360,7 +3360,7 @@ break
 case 'on': case 'ligar': case 'online':
 
 		if (!isOwner) return reply(`${say.only.owner}`)
-var group = await zero.groupMetadata(from)
+var group = await xyrus.groupMetadata(from)
 var member = group['participants']
 var mem = []
 member.map( async adm => {
@@ -3372,12 +3372,12 @@ contextInfo: { mentionedJid: mem },
 quoted: selocont
 }
 
-dfg = await zero.chats.all()
+dfg = await xyrus.chats.all()
 if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-buff = await zero.downloadMediaMessage(encmedia)
+buff = await xyrus.downloadMediaMessage(encmedia)
 for (let _ of dfg) {
-zero.sendMessage(_.jid, buff, image, options, {caption: ``})
+xyrus.sendMessage(_.jid, buff, image, options, {caption: ``})
 }
 reply('Transmissão enviada com sucesso')
 } else {
@@ -3394,7 +3394,7 @@ case 'sorteio': case 'sorteo':
 case 'sortear':
 addFilter(from)
 qy = args.join('')
-zero.updatePresence(from, Presence.composing)
+xyrus.updatePresence(from, Presence.composing)
 if (!isGroup) return enviar(linguagem.group())
 d = []
 teks = `_*🗣️ Parabéns por ganhar o sorteio ${qy}:_* `
@@ -3408,7 +3408,7 @@ break
 
 case 'amongus':
 addFilter(from)
-zero.updatePresence(from, Presence.composing)
+xyrus.updatePresence(from, Presence.composing)
 if (!isGroup) return reply(linguagem.group())
 if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Você precisa mencionar alguém')
 mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -3429,7 +3429,7 @@ break
 
 case 'gado':
 addFilter(from)
-zero.updatePresence(from, Presence.composing)
+xyrus.updatePresence(from, Presence.composing)
 if (!isGroup) return reply(linguagem.group())
 var chifre = ["ultra extreme gado", "Gado-Master", "Gado-Rei", "Gado", "Escravo-ceta", "Escravo-ceta Maximo", "Gacorno?", "Jogador De Forno Livre<3", "Mestre Do Frifai<3<3", "Gado-Manso", "Gado-Conformado", "Gado-Incubado", "Gado Deus", "Mestre dos Gados", "Topa tudo por buceta", "Gado Comum", "Mini Gadinho", "Gado Iniciante", "Gado Basico", "Gado Intermediario", "Gado Avançado", "Gado Profisional", "Gado Mestre", "Gado Chifrudo", "Corno Conformado", "Corno HiperChifrudo", "Chifrudo Deus", "Mestre dos Chifrudos"]
 var gado = chifre[Math.floor(Math.random() * chifre.length)]
@@ -3440,11 +3440,11 @@ break
 
 case 'sn':
 addFilter(from)
-zero.updatePresence(from, Presence.composing)
+xyrus.updatePresence(from, Presence.composing)
 if (!isGroup) return reply(linguagem.group())
 const sn = ['sim', 'não']
 gosto = body.slice(3)
-if (args.length < 1) return zero.sendMessage(from, `Você deve fazer uma pergunta...\nExemplo: ${prefix}sn O ${SeuNome} é um baiano preguiçoso?`, text, {quoted: mek})
+if (args.length < 1) return xyrus.sendMessage(from, `Você deve fazer uma pergunta...\nExemplo: ${prefix}sn O ${SeuNome} é um baiano preguiçoso?`, text, {quoted: mek})
 const jawab = sn[Math.floor(Math.random() * (sn.length))]
 hasil = `${gosto}\n\nSegundo meus cálculos, eu acredito que... ${jawab}`
 reply(hasil)
@@ -3460,19 +3460,19 @@ case 'pergunta':
 
 case 'chance':
 addFilter(from)
-zero.updatePresence(from, Presence.composing)
+xyrus.updatePresence(from, Presence.composing)
 if (!isGroup) return enviar(linguagem.group())
-zero.updatePresence(from, Presence.composing) 
+xyrus.updatePresence(from, Presence.composing) 
 var avb = body.slice(7)
-if (args.length < 1) return zero.sendMessage(from, `Você precisa digitar da forma correta\nExemplo: ${prefix}chance do ${SeuNome} ser um trouxa`, text, {quoted: mek})
+if (args.length < 1) return xyrus.sendMessage(from, `Você precisa digitar da forma correta\nExemplo: ${prefix}chance do ${SeuNome} ser um trouxa`, text, {quoted: mek})
 random = `${Math.floor(Math.random() * 100)}`
 hasil = `A chance ${body.slice(7)}\n\né de... ${random}%`
-zero.sendMessage(from, hasil, text, {quoted: mek, contextInfo: {mentionedJid: [sender]}})
+xyrus.sendMessage(from, hasil, text, {quoted: mek, contextInfo: {mentionedJid: [sender]}})
 break
 
 case 'pau':
 addFilter(from)
-zero.updatePresence(from, Presence.composing)
+xyrus.updatePresence(from, Presence.composing)
 random = `${Math.floor(Math.random() * 35)}`
 const tamanho = random
 if (tamanho < 13 ) {pp = 'só a fimose'} else if (tamanho == 13 ) {pp = 'passou da média😳'} else if (tamanho == 14 ) {pp = 'passou da média😳'} else if (tamanho == 15 ) {pp = 'eita, vai pegar manga?'} else if (tamanho == 16 ) {pp = 'eita, vai pegar manga?'} else if (tamanho == 17 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 18 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 19 ) {pp = 'calma man, a mina não é um poço😳'} else if (tamanho == 20 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 21 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 22 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 23 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho == 24 ) {pp = 'você tem um poste no meio das pernas'} else if (tamanho > 25 ) {pp = 'vai procurar petróleo com isso?'
@@ -3483,7 +3483,7 @@ break
 
 case 'gay':
 addFilter(from)
-zero.updatePresence(from, Presence.composing)
+xyrus.updatePresence(from, Presence.composing)
 random = `${Math.floor(Math.random() * 100)}`
 boiola = random
 if (boiola < 20 ) {bo = 'hmm... você é hetero😔'} else if (boiola == 21 ) {bo = '+/- boiola'} else if (boiola == 23 ) {bo = '+/- boiola'} else if (boiola == 24 ) {bo = '+/- boiola'} else if (boiola == 25 ) {bo = '+/- boiola'} else if (boiola == 26 ) {bo = '+/- boiola'} else if (boiola == 27 ) {bo = '+/- boiola'} else if (boiola == 28 ) {bo = '+/- boiola'} else if (boiola == 29 ) {bo = '+/- boiola'} else if (boiola == 30 ) {bo = '+/- boiola'} else if (boiola == 31 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 32 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 33 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 34 ) {bo = 'tenho minha desconfiança...??'} else if (boiola == 35 ) {bo = 'tenho minha desconfiança...??'} else if (boiola == 36 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 37 ) {bo = 'tenho minha desconfiança...??'} else if (boiola == 38 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 39 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 40 ) {bo = 'tenho minha desconfiança...😑'} else if (boiola == 41 ) {bo = 'você é né?😏'} else if (boiola == 42 ) {bo = 'você é né?😏'} else if (boiola == 43 ) {bo = 'você é né?😏'} else if (boiola == 44 ) {bo = 'você é né?😏'} else if (boiola == 45 ) {bo = 'você é né?😏'} else if (boiola == 46 ) {bo = 'você é né?😏'} else if (boiola == 47 ) {bo = 'você é né?😏'} else if (boiola == 48 ) {bo = 'você é né?😏'} else if (boiola == 49 ) {bo = 'você é né?😏'} else if (boiola == 50 ) {bo = 'você é ou não???'} else if (boiola > 51) {bo = 'você é gay??'
@@ -3494,7 +3494,7 @@ break
 
 case 'caracoroa':
 addFilter(from)
-zero.updatePresence(from, Presence.composing) 
+xyrus.updatePresence(from, Presence.composing) 
 const cara = fs.readFileSync('./edit/media/sticker/caracoroa/cara.webp');
 const coroa = fs.readFileSync('./edit/media/sticker/caracoroa/coroa.webp');
 cararo = ["cara", "coroa"]
@@ -3502,32 +3502,32 @@ fej = cararo[Math.floor(Math.random() * cararo.length)]
 gg = fej
 reply(`você conseguiu: ${fej}`)
 cararoa = fs.readFileSync('./edit/media/sticker/caracoroa/'+fej+'.webp')
-zero.sendMessage(from, cararoa, sticker, {quoted: mek})
+xyrus.sendMessage(from, cararoa, sticker, {quoted: mek})
 break
 
 case 'dado':
 addFilter(from)
-zero.updatePresence(from, Presence.composing)
+xyrus.updatePresence(from, Presence.composing)
 if (!isGroup) return reply(linguagem.group())
 const dadus = ["⚀","⚁","⚂","⚃","⚄","⚅"]
 dadu = dadus[Math.floor(Math.random() * dadus.length)]
 dador = fs.readFileSync('./edit/media/sticker/dados/'+dadu+'.webp')
-zero.sendMessage(from, dador, sticker, {quoted: mek})
+xyrus.sendMessage(from, dador, sticker, {quoted: mek})
 break
 
 case 'tts':
 case 'voz':
-                if (args.length < 1) return zero.sendMessage(from, 'Y el codigo de idioma? escribe el comando *idiomas* para ver la lista', text, { quoted: mek })
+                if (args.length < 1) return xyrus.sendMessage(from, 'Y el codigo de idioma? escribe el comando *idiomas* para ver la lista', text, { quoted: mek })
                 const gtts = require('./docs/lib/gtts')(args[0])
-                if (args.length < 2) return zero.sendMessage(from, 'Escribe el texto', text, {quoted: mek})
+                if (args.length < 2) return xyrus.sendMessage(from, 'Escribe el texto', text, {quoted: mek})
                 dtt = body.slice(8)
                 ranm = getRandom('.mp3')
                 rano = getRandom('.ogg')
                 dtt.length > 300
                 ? reply('Olha, se você não sabe como usar isso... é melhor não fazer isso. 😐')
                 : gtts.save(ranm, dtt, function() {
-                zero.updatePresence(from, Presence.recording)
-                zero.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', duration: -999999999999999999, ptt:true, sendEphemeral: true, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+                xyrus.updatePresence(from, Presence.recording)
+                xyrus.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', duration: -999999999999999999, ptt:true, sendEphemeral: true, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
                 fs.unlinkSync(ranm)
                 })
                 addFilter(from)
@@ -3598,7 +3598,7 @@ nimek = n[Math.floor(Math.random() * n.length)];
 owo = (`${nimek.Image}`)
 ccf = ('https://raw.githubusercontent.com/shadow578/Project-Padoru/master/')
 pok = await getBuffer(`${ccf}${owo}`)
-zero.sendMessage(from, pok, image, {
+xyrus.sendMessage(from, pok, image, {
 quoted: mek, caption: `Nome : ${nimek.Name}`
 })
 
@@ -3613,7 +3613,7 @@ case 'scum':
 			  fs.unlinkSync(ranp)
 				if (err) return reply('error')
 				buffer = fs.readFileSync(rano)
-				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				xyrus.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
 				fs.unlinkSync(rano)
 			})	
           break
@@ -3628,7 +3628,7 @@ try {
 			  fs.unlinkSync(ranp)
 				if (err) return reply('error')
 				buffer = fs.readFileSync(rano)
-				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				xyrus.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
 				fs.unlinkSync(rano)
 			})
 			 } catch {
@@ -3648,7 +3648,7 @@ try {
 			  fs.unlinkSync(ranp)
 				if (err) return reply('error')
 				buffer = fs.readFileSync(rano)
-				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				xyrus.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
 				fs.unlinkSync(rano)
 			})
 	       } catch {
@@ -3666,7 +3666,7 @@ try {
 			  fs.unlinkSync(ranp)
 				if (err) return reply('error')
 				buffer = fs.readFileSync(rano)
-				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				xyrus.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
 				fs.unlinkSync(rano)
 			})
 			} catch {
@@ -3685,7 +3685,7 @@ try {
 			  fs.unlinkSync(ranp)
 				if (err) return reply('error')
 				buffer = fs.readFileSync(rano)
-				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				xyrus.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
 				fs.unlinkSync(rano)
 			})
 			 } catch {
@@ -3703,7 +3703,7 @@ try {
 			  fs.unlinkSync(ranp)
 				if (err) return reply('error')
 				buffer = fs.readFileSync(rano)
-				zero.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
+				xyrus.sendMessage(from, buffer, MessageType.sticker, {quoted: mek})
 				fs.unlinkSync(rano)
 			})
 			} catch {
@@ -3907,14 +3907,14 @@ case 'hentaialea':
  if (!isNsfw) return reply(`${say.only.nsfw}`)
 const henta = Math.floor(Math.random() * 48) + 1;
  xy = fs.readFileSync(`./edit/media/image/hentai/${henta}.jpg`);
-zero.sendMessage(from, xy, image, {quoted:mek, caption: 'ihh'})
+xyrus.sendMessage(from, xy, image, {quoted:mek, caption: 'ihh'})
 break
 
 case 'wpmobile':
 let blow = await fetchJson('https://api.xteam.xyz/randomimage/wpmobile?APIKEY=55341fd29facd829')
 let blowjob = await getBuffer(blow.blowjob);
 
-await zero.sendMessage(from, blowjob, image, {
+await xyrus.sendMessage(from, blowjob, image, {
 thumbnail: null,
 quoted: mek,
 })
@@ -3926,7 +3926,7 @@ let apikey = 'momonga';
 let apiResult = await fetchJson('https://momonga-api.herokuapp.com/hentai/cosplay?apikey=' + apikey);
 if (apiResult.error) return reply (apiResult.error);
 let mandarImagem = await getBuffer(apiResult.result);
-zero.sendMessage(from, mandarImagem, image, {
+xyrus.sendMessage(from, mandarImagem, image, {
 quoted: mek,
 thumbnail: null,
 caption: `🤒 sexy`
@@ -3942,7 +3942,7 @@ let xyxyxy = 'momonga';
 let minecraft = await fetchJson('https://momonga-api.herokuapp.com/hentai/cosplay?apikey=' + xyxyxy);
 if (minecraft.error) return reply (minecraft.error);
 let websecso = await getBuffer(minecraft.result);
-zero.sendMessage(from, websecso, image, {
+xyrus.sendMessage(from, websecso, image, {
 quoted: mek,
 thumbnail: null,
 caption: `🤒`
@@ -4006,7 +4006,7 @@ topissss = (topppp.Score)
 topiiiii = (toppppp.Judul)
 topisssss = (toppppp.Score)
 const topanune = await getBuffer('https://telegra.ph/file/5c6429abd461d868b4f49.jpg')
-zero.sendMessage(from, topanune, image, {
+xyrus.sendMessage(from, topanune, image, {
 quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙰𝙽𝙸𝙼𝙴𝚂_
 ◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈  
 ${topi}
@@ -4055,7 +4055,7 @@ topissss1 = (topppp1.Score)
 topiiiii1 = (toppppp1.Judul)
 topisssss1 = (toppppp1.Score)
 const sexo = await getBuffer('https://telegra.ph/file/2df433596a0e6f822b8cd.jpg')
-zero.sendMessage(from, sexo, image, {
+xyrus.sendMessage(from, sexo, image, {
 quoted: mek, caption: `ᷝ           _𝚃𝙾𝙿 5 𝙼𝙰𝙽𝙶𝙰𝚂_
 ◈ ━━━━━ ◈❮٭❯◈ ━━━━━ ◈  
 ${topi1}
@@ -4080,18 +4080,18 @@ break
 
 case 'wa.me':
 case 'wame':
-                 zero.updatePresence(from, Presence.composing) 
+                 xyrus.updatePresence(from, Presence.composing) 
                  options = {
                  text: `*LINK WHATSAPP*\n\n_Solicitado por_ : *@${sender.split("@s.whatsapp.net")[0]}*\n\nSeu link WhatsApp:\n\n*https://wa.me/${sender.split("@s.whatsapp.net")[0]}*\n\n*Ou*\n\n*https://api.whatsapp.com/send?phone=${sender.split("@")[0]}*\n\n*😎*`,
                  contextInfo: { mentionedJid: [sender] }
                  }
-                 zero.sendMessage(from, options, text, { quoted: mek } )
+                 xyrus.sendMessage(from, options, text, { quoted: mek } )
 break
 
 case 'gifhentai':
 let mp4h = await fetchJson('http://momonga-api.herokuapp.com/hentai/gif/?apikey=momonga');
 let mp = await getBuffer(mp4h.result)
-zero.sendMessage(from, mp, video, {
+xyrus.sendMessage(from, mp, video, {
 quoted: mek,
 mimetype: Mimetype.gif,
 thumbnail: null,
@@ -4305,7 +4305,7 @@ if (!isOwner) return reply(`${say.only.owner}`)
 try {
 qttp = body.slice(8)
 if (args.length < 1) {texti = '*📡 [RECADO]*\n\n(trollei kkk)'} else {texti = `*📡 [RECADO]*\n\n_${qttp}_\n\n©${nomeBot}`}
-var group = await zero.groupMetadata(from)
+var group = await xyrus.groupMetadata(from)
 var member = group['participants']
 var mem = []
 member.map( async adm => {
@@ -4317,12 +4317,12 @@ contextInfo: { mentionedJid: mem },
 quoted: selocont
 }
 
-dfg = await zero.chats.all()
+dfg = await xyrus.chats.all()
 if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-buff = await zero.downloadMediaMessage(encmedia)
+buff = await xyrus.downloadMediaMessage(encmedia)
 for (let _ of dfg) {
-zero.sendMessage(_.jid, buff, image, options, {caption: ``})
+xyrus.sendMessage(_.jid, buff, image, options, {caption: ``})
 }
 reply('Transmissão enviada com sucesso')
 } else {
@@ -4347,7 +4347,7 @@ mimetype: Mimetype.mp4Audio,
  ptt:true});
 await sleep(2000)
 await reply (`vazando...`)
-             await zero.groupLeave(from) 
+             await xyrus.groupLeave(from) 
               break
               
  case 'join': 
@@ -4358,7 +4358,7 @@ await reply (`vazando...`)
              if (!qy) return reply('quero o link')
              if (!isUrl(args[0]) && !args[0].includes('https://chat.whatsapp.com/')) return reply('O link é inválido')
              link = args[0].replace('https://chat.whatsapp.com/','')
-             fak = zero.query({ json: ['action', 'invite', link],
+             fak = xyrus.query({ json: ['action', 'invite', link],
              expect200: true })
              reply('Grupo inserido com sucesso')
              break			
@@ -4368,8 +4368,8 @@ case 'randoperfil': case 'randofoto':
  if (!isOwner) return reply(`${say.only.owner}`)
 const mathty = Math.floor(Math.random() * 12) + 1;
  medi = fs.readFileSync(`./edit/media/image/perfil/${mathty}.jpg`);
-await zero.updateProfilePicture(zero.user.jid, medi);
-zero.sendMessage(from, medi, image, {quoted:mek, caption: '✓ Foto de perfil alterada'})
+await xyrus.updateProfilePicture(xyrus.user.jid, medi);
+xyrus.sendMessage(from, medi, image, {quoted:mek, caption: '✓ Foto de perfil alterada'})
 console.log(`✓ PROFILE UPDATE`);
 break                           
              
@@ -4379,7 +4379,7 @@ if (!isOwner) return reply (`${say.only.owner}`);
 if(!isBotGroupAdmins) return reply(`${say.only.botAdmin}`);
 try {
 kkk = dono + '@s.whatsapp.net';
-await zero.groupMakeAdmin(from, [kkk]);
+await xyrus.groupMakeAdmin(from, [kkk]);
 await reply (`✓ claro, vc tem todo o direito de ser adm, mestre ｡◕‿◕｡`)
 } catch(e) {
 reoly(`${say.error}`)
@@ -4391,7 +4391,7 @@ if (!isOwner) return reply (`${say.only.owner}`);
 if(!isBotGroupAdmins) return reply(`${say.only.botAdmin}`);
 try {
 kkk = dono + '@s.whatsapp.net';
-await zero.groupDemoteAdmin(from, [kkk]);
+await xyrus.groupDemoteAdmin(from, [kkk]);
 await reply (`✓ como quiser.`)
 } catch(e) {
 reoly(`${say.error}`)
@@ -4409,7 +4409,7 @@ break
 						teks += `│「${no.toString()}」 @${prem.split('@')[0]}\n`
 					}
 					teks += `│ Total : ${whitelist.length}\n╰──────「 *${nomeBot}* 」`
-					zero.sendMessage(from, teks.trim(), extendedText, {quoted: selocont, contextInfo: {"mentionedJid": whitelist}})
+					xyrus.sendMessage(from, teks.trim(), extendedText, {quoted: selocont, contextInfo: {"mentionedJid": whitelist}})
 					
 break					
 
@@ -4462,19 +4462,19 @@ b.push(d)
 }
 }
 for (e of b){
-let ingfo = await zero.groupMetadata(e)
+let ingfo = await xyrus.groupMetadata(e)
 grup.push(ingfo)
 }
 return grup
 }  
 
 
-tdufg = await zero.chats.all()
+tdufg = await xyrus.chats.all()
 ingfoo = await getGroup(tdufg)
 teks1 = `*LISTA DE GRUPOS DO BOT*\n*Total de Grupos* : ${ingfoo.length}\n\n`
 for (let i = 0; i < ingfoo.length; i++){
 
-linkgc = await zero.groupInviteCode(`${ingfoo[i].id}`)
+linkgc = await xyrus.groupInviteCode(`${ingfoo[i].id}`)
 if (!linkgc) linkgp = 'Link indisponível';
 teks1 += `• *Nome do Grupo* : ${ingfoo[i].subject}\n• *Id do Grupo* : ${ingfoo[i].id}\n• *Link:* https://chat.whatsapp.com/${linkgc}\n• *Criado* : ${moment(`${ingfoo[i].creation}` * 1000).tz('America/Sao_Paulo').format('DD/MM/YYYY HH:mm:ss')}\n• *Total de Membros* : ${ingfoo[i].participants.length}\n\n`
 }
@@ -4516,7 +4516,7 @@ translate(`${qpp}`, {to: 'pt'}).then(res => {
 
 
 case 'help': case 'ajuda': case 'socorro':
-zero.sendMessage(from, `${help}`, text, {
+xyrus.sendMessage(from, `${help}`, text, {
 quoted:mek,
 });
 break		
@@ -4530,7 +4530,7 @@ if (argsMenorQue(1)) return reply (`${insiraAlgo}`);
 			try {
         	var aramas = await yts(cArgs);
    			} catch {
-        	return await zero.sendMessage(from, 'Error!', MessageType.text, dload)
+        	return await xyrus.sendMessage(from, 'Error!', MessageType.text, dload)
     		}
     		aramat = aramas.all 
     		var tbuff = await getBuffer(aramat[0].image)
@@ -4542,7 +4542,7 @@ if (argsMenorQue(1)) return reply (`${insiraAlgo}`);
             ytresult += '➢ Link: ' + video.url + '\n________________________\n\n'
     		});
     		ytresult += '◩ *zero*'
-    		await zero.sendMessage(from, tbuff, image, {quoted: selovid, caption: ytresult});
+    		await xyrus.sendMessage(from, tbuff, image, {quoted: selovid, caption: ytresult});
 			
 break 
 
@@ -4597,7 +4597,7 @@ try {
 				if (anu.error) return reply(anu.error)
 				///////buffer = await getBuffer(anu.result.thumbnail)
 				buffer1 = await getBuffer(anu.result.url_video)
-				zero.sendMessage(from, buffer1, video, {mimetype: 'video/mp4', filename: `${anu.result.video}.mp4`, quoted:selocont, caption: `${nomeBot}`})
+				xyrus.sendMessage(from, buffer1, video, {mimetype: 'video/mp4', filename: `${anu.result.video}.mp4`, quoted:selocont, caption: `${nomeBot}`})
 				        } catch(e) {
         reply (`O Player 1 faiou... tentando no player 2...`)
         console.log(e);
@@ -4610,7 +4610,7 @@ try {
 				anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
 				if (anu.error) return reply(anu.error)		
 				lagu = await getBuffer(anu.result.url_audio)
-				zero.sendMessage(from, lagu, document, {mimetype: 'audio/mp3', filename: `${play}.mp3`, quoted: seloaud});
+				xyrus.sendMessage(from, lagu, document, {mimetype: 'audio/mp3', filename: `${play}.mp3`, quoted: seloaud});
 				          } catch(e) {
         reply (`O Player 1 faiou... tentando no player 2...`)
         console.log(e);
@@ -4623,7 +4623,7 @@ try {
 				anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
 				if (anu.error) return reply(anu.error)		
 				lagu = await getBuffer(anu.result.url_audio)
-				zero.sendMessage(from, lagu, audio, {filename: `${play}.mp3`, quoted: seloaud});
+				xyrus.sendMessage(from, lagu, audio, {filename: `${play}.mp3`, quoted: seloaud});
 				        } catch(e) {
         reply (`O Player 1 faiou... tentando no player 2...`)
         console.log(e);
@@ -4649,7 +4649,7 @@ try {
               ? JSON.parse(JSON.stringify(mek).replace("quotedM", "m")).message
                   .extendedTextMessage.contextInfo
               : mek;
-          owgi = await zero.downloadMediaMessage(boij);
+          owgi = await xyrus.downloadMediaMessage(boij);
           res = await upload(owgi);
           reply(res);
         } else {
@@ -4673,7 +4673,7 @@ let textpo = `
 
 *link:* ${w.result.link}
 `
-await zero.sendMessage(from, imgUrl, image, {quoted: selocont, caption: textpo})
+await xyrus.sendMessage(from, imgUrl, image, {quoted: selocont, caption: textpo})
 
 break
 
@@ -4722,7 +4722,7 @@ addFilter(sender);
 				if (anu.error) return reply(anu.error)
 				///////buffer = await getBuffer(anu.result.thumbnail)
 				buffer1 = await getBuffer(anu.result.url_video)
-			zero.sendMessage(from, buffer1, video, {mimetype: 'video/mp4', filename: `${anu.result.video}.mp4`, quoted:mek, caption: `${nomeBot}`})
+			xyrus.sendMessage(from, buffer1, video, {mimetype: 'video/mp4', filename: `${anu.result.video}.mp4`, quoted:mek, caption: `${nomeBot}`})
 					break
 
 	case 'image':
@@ -4785,7 +4785,7 @@ ptexto = `
 
 *sinopse:* ${tradução}`
 
-zero.sendMessage(
+xyrus.sendMessage(
     from, 
     { url: data.cover }, 
     MessageType.image, 
@@ -4883,7 +4883,7 @@ texxto = `
 ⚬༚ ──▹ ༚⚬
 `
 
-zero.sendMessage(from, texxto, text, {quoted: selotempoonline })
+xyrus.sendMessage(from, texxto, text, {quoted: selotempoonline })
 break
 
 case 'delete': 
@@ -4891,7 +4891,7 @@ case 'del':
 case 'apagar':
 if (!isOwner) if (!isGroupAdmins)return reply(`${say.only.admin}`)
 try {
-zero.deleteMessage(from, {
+xyrus.deleteMessage(from, {
 id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true
 })
 reply (`✓`)
@@ -4922,7 +4922,7 @@ await mentions(D1, jds, true)
 jds.push(C2.jid)				  
 jds.push(C2.jid)
 await sleep(1000)
-await zero.groupRemove(from, [C2.jid])
+await xyrus.groupRemove(from, [C2.jid])
 } catch(e) {
 console.log(e)
 }
@@ -4933,7 +4933,7 @@ if (!isGroup) return reply(mess.only.group)
 if (!isOwner) if (!isGroupAdmins) return reply(`${say.only.admin}`)
 if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`);
 var value = body.slice(9)
-var group = await zero.groupMetadata(from)
+var group = await xyrus.groupMetadata(from)
 var member = group['participants']
 var mem = []
 member.map( async adm => {
@@ -4944,7 +4944,7 @@ text: value,
 contextInfo: { mentionedJid: mem },
 quoted: mek
 }
-zero.sendMessage(from, options, text)
+xyrus.sendMessage(from, options, text)
 break
 
 
@@ -4954,8 +4954,8 @@ break
               if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
               if (isQuotedImage) {
               let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-              let media = await zero.downloadMediaMessage(encmedia)
-              await zero.updateProfilePicture(from, media)
+              let media = await xyrus.downloadMediaMessage(encmedia)
+              await xyrus.updateProfilePicture(from, media)
              await reply (`${say.sucess}`)
               } else {
               reply(`Marque uma imagem com uma legenda${prefix}setpic`)
@@ -5001,7 +5001,7 @@ mentioned_jid.push(countMessage[ind].numbers[i].jid)
 mentions(boardi, mentioned_jid, true)
 } catch (err) {
 			console.log(err)
-await zero.sendMessage(from, `É necessário 3 jogadores para se construir um ranking`, text, {quoted: selocont})
+await xyrus.sendMessage(from, `É necessário 3 jogadores para se construir um ranking`, text, {quoted: selocont})
 }
 
 break
@@ -5024,7 +5024,7 @@ teks += ` ⋆⃟ۣۜ᭪➣ @${obj.jid.split('@')[0]}\n ⋆⃟ۣۜ᭪➣ Mensagen
 }
 mem.push(obj.jid)
 }
-zero.sendMessage(from, teks, extendedText, {quoted: selocont, thumbnail:null, contextInfo:{mentionedJid: mem}})
+xyrus.sendMessage(from, teks, extendedText, {quoted: selocont, thumbnail:null, contextInfo:{mentionedJid: mem}})
 } else return reply('*Nada foi encontrado*')
 } catch (e){
 console.log(e)
@@ -5037,8 +5037,8 @@ if (!isGroup) return reply(`${say.only.group}`)
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.admin}`)
 if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 qrt = args.join(" ")
-await zero.groupUpdateSubject(from, `${qrt}`)
-zero.sendMessage(from, 'Sucesso, alterado o nome do grupo', text, {quoted: selocont})
+await xyrus.groupUpdateSubject(from, `${qrt}`)
+xyrus.sendMessage(from, 'Sucesso, alterado o nome do grupo', text, {quoted: selocont})
 break
 
 case 'setdesc':
@@ -5046,18 +5046,18 @@ if (!isGroup) return reply(`${say.only.group}`)
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.admin}`)
 if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 qrt = args.join(" ")
-await zero.groupUpdateDescription(from, `${qrt}`)
-zero.sendMessage(from, 'Sucesso, alterado a descrição do grupo', text, {quoted: selocont})
+await xyrus.groupUpdateDescription(from, `${qrt}`)
+xyrus.sendMessage(from, 'Sucesso, alterado a descrição do grupo', text, {quoted: selocont})
 break
 
 case 'opengp':
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.owner}`)
-await zero.groupSettingChange(from, GroupSettingChange.messageSend, false)
+await xyrus.groupSettingChange(from, GroupSettingChange.messageSend, false)
 break
 
 case 'closegp':
 if (!isOwner) if (!isGroupAdmins) return reply (`${say.only.owner}`)
-await zero.groupSettingChange(from, GroupSettingChange.messageSend, true)
+await xyrus.groupSettingChange(from, GroupSettingChange.messageSend, true)
 break
 
 case 'opentime':
@@ -5072,21 +5072,21 @@ if (qb === 's') {
 let calc = parseInt(qa + '000')
 await reply (`O grupo será aberto em ${qa} segundos`)
 await sleep(calc);
-await zero.groupSettingChange(from, GroupSettingChange.messageSend, false)
+await xyrus.groupSettingChange(from, GroupSettingChange.messageSend, false)
 return reply (`O grupo foi aberto pelo administrador *${pushname}* após ${qa} segundos!`)
 }
 if (qb === 'm') {
 calc = parseInt(qa * 60 + '000')
 await reply (`O grupo será aberto em ${qa} minutos`)
 await sleep(calc);
-await zero.groupSettingChange(from, GroupSettingChange.messageSend, false)
+await xyrus.groupSettingChange(from, GroupSettingChange.messageSend, false)
 return reply (`O grupo foi aberto pelo administrador *${pushname}* após ${qa} minutos!`)
 }
 if (qb === 'h') {
 calc = parseInt(qa * 3600 + '000')
 await reply (`O grupo será aberto em ${qa} horas`)
 await sleep(calc);
-await zero.groupSettingChange(from, GroupSettingChange.messageSend, false)
+await xyrus.groupSettingChange(from, GroupSettingChange.messageSend, false)
 return reply (`O grupo foi aberto pelo administrador *${pushname}* após ${qa} horas!`)
 }
 else {
@@ -5106,21 +5106,21 @@ if (qbb === 's') {
 let calc = parseInt(qaa + '000')
 await reply (`O grupo será fechado em ${qaa} segundos`)
 await sleep(calc);
-await zero.groupSettingChange(from, GroupSettingChange.messageSend, true)
+await xyrus.groupSettingChange(from, GroupSettingChange.messageSend, true)
 return reply (`O grupo foi fechado pelo administrador *${pushname}* após ${qaa} segundos!`)
 }
 if (qbb === 'm') {
 calc = parseInt(qaa * 60 + '000')
 await reply (`O grupo será fechado em ${qaa} minutos`)
 await sleep(calc);
-await zero.groupSettingChange(from, GroupSettingChange.messageSend, true)
+await xyrus.groupSettingChange(from, GroupSettingChange.messageSend, true)
 return reply (`O grupo foi fechado pelo administrador *${pushname}* após ${qaa} minutos!`)
 }
 if (qbb === 'h') {
 calc = parseInt(qaa * 3600 + '000')
 await reply (`O grupo será fechado em ${qaa} horas`)
 await sleep(calc);
-await zero.groupSettingChange(from, GroupSettingChange.messageSend, true)
+await xyrus.groupSettingChange(from, GroupSettingChange.messageSend, true)
 return reply (`O grupo foi fechado pelo administrador *${pushname}* após ${qaa} horas!`)
 }
 else {
@@ -5135,9 +5135,9 @@ break
 case 'gpdesc': case 'descgp': case 'desc':
 if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 try {
-ppUrl = await zero.getProfilePicture(from)
+ppUrl = await xyrus.getProfilePicture(from)
 buffer = await getBuffer(ppUrl)
-return zero.sendMessage(from, buffer, image, {quoted: selocont, thumbnail:null, caption: `*NOME* : ${groupName}\n*MEMBROS* : ${groupMembers.length}\n*ADMIN* : ${groupAdmins.length}\n*DESCRIÇÃO* :\n\n ${groupDesc}`})
+return xyrus.sendMessage(from, buffer, image, {quoted: selocont, thumbnail:null, caption: `*NOME* : ${groupName}\n*MEMBROS* : ${groupMembers.length}\n*ADMIN* : ${groupAdmins.length}\n*DESCRIÇÃO* :\n\n ${groupDesc}`})
 } catch(e) {
 await sendMedia(from, goAudio + 'error.mp3', 'audio', {
 mimetype: Mimetype.mp4Audio,
@@ -5149,7 +5149,7 @@ break
 case 'linkgp':
 if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 try {
-linkgc = await zero.groupInviteCode(from)
+linkgc = await xyrus.groupInviteCode(from)
 return reply('https://chat.whatsapp.com/'+linkgc + `\n\n_${nomeBot}_`)
 } catch(e) {
 reply (`${say.error}`)
@@ -5170,18 +5170,18 @@ let kkk = mek.message.extendedTextMessage.contextInfo.participant
 await reply (`banido 😎`)
 await sleep(1000);
 if (kkk) {
-if (kkk === zero.user.jid) return reply (`Eu não vou me banir cara de cu`)
+if (kkk === xyrus.user.jid) return reply (`Eu não vou me banir cara de cu`)
 if (kkk === dono) return reply (`Eu não vou remover meu dono, idiota`)
-await zero.groupRemove(from, [kkk])
+await xyrus.groupRemove(from, [kkk])
 await sendMedia(from, goAudio + 'ban.mp3', 'audio', {
 quoted: mek,
 mimetype: Mimetype.mp4Audio,
 ptt: true,
 });
 } else if (!kkk) {
-if (cucu === zero.user.jid) return reply (`Eu não vou me banir cara de cu`)
+if (cucu === xyrus.user.jid) return reply (`Eu não vou me banir cara de cu`)
 if (cucu === dono) return reply (`Eu não vou remover meu dono, idiota`)
-await zero.groupRemove(from, [cucu])
+await xyrus.groupRemove(from, [cucu])
 await sendMedia(from, goAudio + 'removido.mp3', 'audio', {
 mimetype: Mimetype.mp4Audio,
  quoted: mek,
@@ -5201,13 +5201,13 @@ let cucu = body.slice(10) + '@s.whatsapp.net';
 let kkk = mek.message.extendedTextMessage.contextInfo.participant
 
 if (kkk) {
-await zero.groupMakeAdmin(from, [kkk])
+await xyrus.groupMakeAdmin(from, [kkk])
 await sendMedia(from, goAudio + 'promovido.mp3', 'audio', {
 mimetype: Mimetype.mp4Audio,
  ptt:true});
  await reply('adm adicionado com sucesso ✓')
 } else if (!kkk) {
-await zero.groupMakeAdmin(from, [cucu])
+await xyrus.groupMakeAdmin(from, [cucu])
 await sendMedia(from, goAudio + 'promovido.mp3', 'audio', {
 mimetype: Mimetype.mp4Audio,
  ptt:true});
@@ -5227,10 +5227,10 @@ let cucu = body.slice(9) + '@s.whatsapp.net';
 let kkk = mek.message.extendedTextMessage.contextInfo.participant
 
 if (kkk) {
-await zero.groupDemoteAdmin(from, [kkk])
+await xyrus.groupDemoteAdmin(from, [kkk])
 reply (`adm removido com sucesso ✓`)
 } else if (!kkk) {
-await zero.groupDemoteAdmin(from, [cucu])
+await xyrus.groupDemoteAdmin(from, [cucu])
 reply (`adm removido com sucesso ✓`)
 }
 
@@ -5252,7 +5252,7 @@ if (dl.length > 13)return reply(`Exemplo : ${prefix}add 5588997321488`)
 if (args[0].startsWith('08')) return reply('Use o código do país, man')
 try {
 num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
-zero.groupAdd(from, [num])
+xyrus.groupAdd(from, [num])
 } catch (e) {
 console.log('Error :', e)
 reply('Falha ao adicionar usuário,tente de outro jeito.')
@@ -5267,7 +5267,7 @@ if (!isBotGroupAdmins) return reply(`${say.only.botAdmin}`)
 try {
 let cucu = body.slice(5) + '@s.whatsapp.net';
 
-await zero.groupAdd(from, [cucu])
+await xyrus.groupAdd(from, [cucu])
 reply(`Bem vindo!`)
 } catch(e) {
 console.log(e)
@@ -5569,7 +5569,7 @@ let xuxa = 'momonga';
 let superaidol = await fetchJson('https://momonga-api.herokuapp.com/hentai/blowjob?apikey=' + xuxa);
 if (superaidol.error) return reply (superaidol.error);
 let pikachola = await getBuffer(superaidol.result);
-zero.sendMessage(from, pikachola, image, {
+xyrus.sendMessage(from, pikachola, image, {
 quoted: mek,
 thumbnail: null,
 caption: `hehe`
@@ -5731,17 +5731,17 @@ try {
 await sleep(2500)
 if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 const encmedia1 = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-const dlfile1 = await zero.downloadMediaMessage(encmedia1)
+const dlfile1 = await xyrus.downloadMediaMessage(encmedia1)
 const bas641 = `data:image/jpeg;base64,${dlfile1.toString('base64')}`
 anu = args.join(' ').split('|')
 satu = anu[0] !== '' ? anu[0] : `` //🔮 ${NomeDoBot}
 dua = typeof anu[1] !== 'undefined' ? anu[1] : ``//💎 @${pushname}._
 var mantap1 = await convertSticker(bas641, `${dua}`, `${satu}`)
 var st = new Buffer.from(mantap1, 'base64');
-zero.sendMessage(from, st, sticker, {quoted: mek})
+xyrus.sendMessage(from, st, sticker, {quoted: mek})
 } else if ((isMedia && mek.message.videoMessage.fileLength < 10000000 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.fileLength < 10000000)) {
 const encmedia2 = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-const media2 = await zero.downloadAndSaveMediaMessage(encmedia2, `./docs/src/sticker/${sender}`)
+const media2 = await xyrus.downloadAndSaveMediaMessage(encmedia2, `./docs/src/sticker/${sender}`)
 anu = args.join(' ').split('|')
 satu = anu[0] !== '' ? anu[0] : `${SeuNome}`
 dua = typeof anu[1] !== 'undefined' ? anu[1] : `${NomeDoBot}`
@@ -5786,10 +5786,10 @@ case 'togif': case 'agif':
 try {
 if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
 encmediaaa = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-mediaaa = await zero.downloadAndSaveMediaMessage(encmediaaa)
+mediaaa = await xyrus.downloadAndSaveMediaMessage(encmediaaa)
 a = await webp2gifFile(mediaaa)
 mp4 = await getBuffer(a.result)
-zero.sendMessage(from, mp4, video, {mimetype: 'video/gif', quoted: selocont, caption: `${nomeBot}`})
+xyrus.sendMessage(from, mp4, video, {mimetype: 'video/gif', quoted: selocont, caption: `${nomeBot}`})
 fs.unlinkSync(mediaaa)
 } else {
 reply(`formato errado`)
@@ -5804,14 +5804,14 @@ break
 				if (!isQuotedSticker) return reply('❬ 📍 ❭ Marque alguma figurinha...')
 				if (mek.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated === true){
 					const encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					const media = await zero.downloadAndSaveMediaMessage(encmedia)
+					const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
 					const uploadn = await uploadimg(media, Date.now() + '.webp')
 					const anjj = await axios.get(`http://nzcha-apii.herokuapp.com/webp-to-mp4?url=${uploadn.result.image}`)
 					await sendMediaURL(from, anjj.data.result, 'Pronto')
 					fs.unlinkSync(media)
 				} else {
 					const encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					const media = await zero.downloadAndSaveMediaMessage(encmedia)
+					const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.png')
 					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 						fs.unlinkSync(media)
@@ -5820,7 +5820,7 @@ break
 							fs.unlinkSync(ran)
 						} else {
 							buffer = fs.readFileSync(ran)
-							zero.sendMessage(from, buffer, image, { caption:`${nomeBot}`,quoted: selocont })
+							xyrus.sendMessage(from, buffer, image, { caption:`${nomeBot}`,quoted: selocont })
 							fs.unlinkSync(ran)
 						}
 					})
@@ -5836,7 +5836,7 @@ var namaPackss = argsSplit[0];
 var authorPackss = argsSplit[1];
 if (isSpecialCaracter(cArgs)) return reply('🤖⚠️ Não é permitido letras modificadas!!')
 stiker_wm = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-dlstiker_wm = await zero.downloadAndSaveMediaMessage(stiker_wm)
+dlstiker_wm = await xyrus.downloadAndSaveMediaMessage(stiker_wm)
 stickerpackid = "com.snowcorp.stickerly.android.stickercontentprovider b5e7275f-f1de-4137-961f-57becfad34f2"
 packname = namaPackss;
 author = authorPackss;
@@ -5868,7 +5868,7 @@ fs.writeFile(exif321, wm, function(err) {
 if (err) return console.log(err);
 exec(`webpmux -set exif ${exif321} undefined.webp -o ${exifst}`, (err) => {
 if (err) return console.log(err);
-zero.sendMessage(from, fs.readFileSync(exifst), sticker, {quoted: selocont})
+xyrus.sendMessage(from, fs.readFileSync(exifst), sticker, {quoted: selocont})
 fs.unlinkSync(exifst)
 fs.unlinkSync(exif321)
 //fs.unlinkSync('./docs/src/undefined.webp')
@@ -5889,11 +5889,11 @@ try {
 
                                         boij = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 
-                                        delb = await zero.downloadMediaMessage(boij)
+                                        delb = await xyrus.downloadMediaMessage(boij)
 
                                         await fs.writeFileSync(`stctagg.webp`, delb)
 
-                                        var group = await zero.groupMetadata(from)
+                                        var group = await xyrus.groupMetadata(from)
 
                                         var member = group['participants']
 
@@ -5931,7 +5931,7 @@ try {
 
 					result = fs.readFileSync(`stctagg.webp`)
 
-                                        zero.sendMessage(from, result, sticker, selepbot)
+                                        xyrus.sendMessage(from, result, sticker, selepbot)
 
 					await fs.unlinkSync(`stctagg.webp`)
 } catch(e) {
@@ -5945,7 +5945,7 @@ op = body.slice(6)
 if (!op) return await reply(`Cadê o texto, hum? Use assim:\n\n ${prefix}attp SEU TEXTO`)
 var txt = encodeURI(op)
 anu = await getBuffer(`https://api.xteam.xyz/attp?file&text=${op}`)
-await zero.sendMessage( from, anu, sticker, {quoted:mek, thumbnail:null})
+await xyrus.sendMessage( from, anu, sticker, {quoted:mek, thumbnail:null})
 break	  
 
 case 's': case 'f': case 'sticker': case 'st': case 'fig':
@@ -5957,7 +5957,7 @@ await sleep(6000)
 				 
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await zero.downloadAndSaveMediaMessage(encmedia)
+						const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
 						await ffmpeg(`./${media}`)
 							.input(media)
@@ -5973,7 +5973,7 @@ await sleep(6000)
 								console.log('Finish')
 								exec(`webpmux -set exif ${addMetadata(`${nomeBot}`, authorname)} ${ran} -o ${ran}`, async (error) => {
 								
-									zero.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: selocont})
+									xyrus.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: selocont})
 									fs.unlinkSync(media)	
 									fs.unlinkSync(ran)	
 								})
@@ -5984,7 +5984,7 @@ await sleep(6000)
 							.save(ran)
 					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await zero.downloadAndSaveMediaMessage(encmedia)
+						const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
 						
 						await ffmpeg(`./${media}`)
@@ -6002,7 +6002,7 @@ await sleep(6000)
 								console.log('Finish')
 								exec(`webpmux -set exif ${addMetadata(`${nomeBot}`, authorname)} ${ran} -o ${ran}`, async (error) => {
 									
-									zero.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: selocont})
+									xyrus.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: selocont})
 									fs.unlinkSync(media)
 									fs.unlinkSync(ran)
 								})
@@ -6013,7 +6013,7 @@ await sleep(6000)
 							.save(ran)
 					} else if ((isMedia || isQuotedImage) && args[0] == 'nobg') {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await zero.downloadAndSaveMediaMessage(encmedia)
+						const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
 						ranw = getRandom('.webp')
 						ranp = getRandom('.png')
 						reply(`⏳ *espere*`)
@@ -6029,7 +6029,7 @@ await sleep(6000)
 							
 								exec(`webpmux -set exif ${addMetadata(`${nomeBot}`, authorname)} ${ranw} -o ${ranw}`, async (error) => {
 								
-									await zero.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: selocont})
+									await xyrus.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: selocont})
 									fs.unlinkSync(ranw)
 								})
 								
@@ -6057,7 +6057,7 @@ await sleep(6000)
 try {
 if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-const media = await zero.downloadAndSaveMediaMessage(encmedia)
+const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
 ran = getRandom('.webp')
  
 await ffmpeg(`./${media}`)
@@ -6071,7 +6071,7 @@ fs.unlinkSync(media)
 .on('end', function() {
 exec(`webpmux -set exif ${addMetadata(`${nomeBot}`)} ${ran} -o ${ran}`, async(error) => {
 
-zero.sendMessage(from, fs.readFileSync(ran), sticker, {
+xyrus.sendMessage(from, fs.readFileSync(ran), sticker, {
 quoted: selocont
 })
 fs.unlinkSync(media)
@@ -6083,7 +6083,7 @@ fs.unlinkSync(ran)
 .save(ran)
 } else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
 const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-const media = await zero.downloadAndSaveMediaMessage(encmedia)
+const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
 ran = getRandom('.webp')
 await ffmpeg(`./${media}`)
 .inputFormat(media.split('.')[1])
@@ -6098,7 +6098,7 @@ reply(`A conversão de ${tipe} para o sticker falhou`)
 .on('end', function() {
 exec(`webpmux -set exif ${addMetadata(`${nomeBot}`)} ${ran} -o ${ran}`, async(error) => {
 
-zero.sendMessage(from, fs.readFileSync(ran), sticker, {
+xyrus.sendMessage(from, fs.readFileSync(ran), sticker, {
 quoted: selocont
 })
 fs.unlinkSync(media)
@@ -6131,7 +6131,7 @@ tsexto = `*[ avaliação ]*
 
 *nota:* ★☆☆☆☆
 `
-await zero.sendMessage(suporte, tsexto, text)
+await xyrus.sendMessage(suporte, tsexto, text)
 break
 
 case 'avruim':
@@ -6147,7 +6147,7 @@ kptexto = `*[ avaliação ]*
 
 *nota:* ★★☆☆☆
 `
-await zero.sendMessage(suporte, kptexto, text)
+await xyrus.sendMessage(suporte, kptexto, text)
 break
 
 case 'avbom':
@@ -6163,7 +6163,7 @@ kkktexto = `*[ avaliação ]*
 
 *nota:* ★★★☆☆
 `
-await zero.sendMessage(suporte, kkktexto, text)
+await xyrus.sendMessage(suporte, kkktexto, text)
 break
 
 case 'avmuitobom':
@@ -6179,7 +6179,7 @@ xxxtexto = `*[ avaliação ]*
 
 *nota:* ★★★★☆
 `
-await zero.sendMessage(suporte, xxxtexto, text)
+await xyrus.sendMessage(suporte, xxxtexto, text)
 break
 
 case 'avperfeito':
@@ -6195,7 +6195,7 @@ llltexto = `*[ avaliação ]*
 
 *nota:* ★★★★★
 `
-await zero.sendMessage(suporte, llltexto, text)
+await xyrus.sendMessage(suporte, llltexto, text)
 break
 
 
@@ -6553,15 +6553,15 @@ if (!Antidoc) return
 if (!botNumber) return
 if (isGroupAdmins) return reply(`hummmm documento`)     
 reply(`Não permitimos envio de documentos no grupo, por questões de segurança de travas e etc..., então por conta disso, terei que te remover, qualquer dúvida,entre em contato com algum adm.`)
-zero.groupSettingChange(from, GroupSettingChange.messageSend, true)		
+xyrus.groupSettingChange(from, GroupSettingChange.messageSend, true)		
 setTimeout(() =>{
-zero.groupRemove(from, [sender])
+xyrus.groupRemove(from, [sender])
 }, 1000)
 setTimeout( () => {
-zero.groupSettingChange(from, GroupSettingChange.messageSend, false)
+xyrus.groupSettingChange(from, GroupSettingChange.messageSend, false)
 }, 2000)
 clear = `🗑️\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🗑️\n❲❗❳ *Lɪᴍᴘᴇᴢᴀ ᴅᴇ Cʜᴀᴛ Cᴏɴᴄʟᴜɪ́ᴅᴀ* ✅`
-zero.sendMessage(from, clear , MessageType.text, {quoted: selo, contextInfo : { forwardingScore: 500, isForwarded:true}})
+xyrus.sendMessage(from, clear , MessageType.text, {quoted: selo, contextInfo : { forwardingScore: 500, isForwarded:true}})
 }
 
 if (isAntiPalavrão) if (budY.includes("piroca") ||(budY.includes("filho da puta") || (budY.includes("toma no cu") || (budY.includes("no seu cu") || (budY.includes("toma no seu cú") || (budY.includes("teu cú") ||  (budY.includes("teu cu") || (budY.includes("no seu cú") || (budY.includes("tmnc") || (budY.includes("arrombado") || (budY.includes("fudid") || (budY.includes(" gore") || (budY.includes("bosta") || (budY.includes("fdp") || (budY.includes("merda") || (budY.includes("buceta") || (budY.includes("do seu cu") || (budY.includes("do seu cú") || (budY.includes("puta")))))))))))))))))))){
@@ -6570,7 +6570,7 @@ return reply (`n vou banir você pelo palavrão :3`)
 }
 reply (`🛑 *palavra ofensiva detectada* 🛑`)
 await sleep(5000);
-await zero.groupRemove(from, [sender]);
+await xyrus.groupRemove(from, [sender]);
 }
 
 if (isAntiLink) if (budy.includes("https://") || (budy.includes("http://") || (budy.includes("//youtube") || (budy.includes("TED ou PIX") || (budy.includes("🤑🤑🤑") || (budy.includes(".com") || (budy.includes("s.kwai") || (budy.includes("www.") || (budy.includes("wa.me") )))))))))  {
@@ -6582,7 +6582,7 @@ if (isGroupAdmins) return reply (`Vc é admin, não vai levar ban`);
 try {
 await reply(`se fudeu kkkkk`)
 await sleep(500)
-await zero.groupRemove(from, [sender]);
+await xyrus.groupRemove(from, [sender]);
 reply(`vai tarde, baka`)
 } catch {
 reply(`Erro ao remover membro`)
@@ -6598,7 +6598,7 @@ if (isGroupAdmins) return reply (`Vc é admin, não vai levar ban`);
 try {
 await reply(`se fudeu kkkkk`)
 await sleep(500)
-await zero.groupRemove(from, [sender]);
+await xyrus.groupRemove(from, [sender]);
 reply(`vai tarde, baka`)
 } catch {
 reply(`Erro ao remover membro`)
@@ -6613,7 +6613,7 @@ if (isGroupAdmins) return reply (`Vc é admin, não vai levar ban`);
 try {
 await reply(`se fudeu kkkkk`)
 await sleep(500)
-await zero.groupRemove(from, [sender]);
+await xyrus.groupRemove(from, [sender]);
 reply(`vai tarde, baka`)
 } catch {
 reply(`Erro ao remover membro`)
@@ -6632,33 +6632,33 @@ reply(`Erro ao remover membro`)
 	
 
 	
-	zero.on('group-participants-update', async (anu) => {
+	xyrus.on('group-participants-update', async (anu) => {
 		
 	if (blacklist.includes(anu.participants[0])){
-	const mdata = await zero.groupMetadata(anu.jid)
+	const mdata = await xyrus.groupMetadata(anu.jid)
 	num = anu.participants[0]  
-await zero.sendMessage(mdata.id, 'removido por estar na lista negra', MessageType.text)
-return await zero.groupRemove(mdata.id, [num])			
+await xyrus.sendMessage(mdata.id, 'removido por estar na lista negra', MessageType.text)
+return await xyrus.groupRemove(mdata.id, [num])			
 }
 if(antifake.includes(anu.jid)) {
-	const mdata = await zero.groupMetadata(anu.jid)
+	const mdata = await xyrus.groupMetadata(anu.jid)
 			if (anu.action == 'add'){		
 				num = anu.participants[0]            		
 				try {
 if (whitelist.includes(anu.participants[0])){
-	const mdata = await zero.groupMetadata(anu.jid)
+	const mdata = await xyrus.groupMetadata(anu.jid)
 	num = anu.participants[0]  
-return await zero.sendMessage(mdata.id, '✓ salvo pela white list', MessageType.text)
+return await xyrus.sendMessage(mdata.id, '✓ salvo pela white list', MessageType.text)
 		
 }				
 				if(!num.split('@')[0].startsWith(55)){
-				if(num.includes(zero.user.jid)) return
+				if(num.includes(xyrus.user.jid)) return
 				if(num.includes(dono)) return
-						//if (!zero.user.jid) return
-				zero.sendMessage(mdata.id, '👮🏻‍♀️Números fake aqui não "amigo" 👮🏻‍♀️️', MessageType.text)							
+						//if (!xyrus.user.jid) return
+				xyrus.sendMessage(mdata.id, '👮🏻‍♀️Números fake aqui não "amigo" 👮🏻‍♀️️', MessageType.text)							
 				setTimeout(async function () {
 							console.log(color('[','white'), color('!','red'), color(']','white'), color('BANINDO O NÚMERO FAKE...','red'))
-			return zero.groupRemove(mdata.id, [num])
+			return xyrus.groupRemove(mdata.id, [num])
 					}, )
 				}
 		} catch(e) {
@@ -6666,22 +6666,22 @@ return await zero.sendMessage(mdata.id, '✓ salvo pela white list', MessageType
 		}	}
 		}
 		
-		zero.on('group-participants-update', async (anu) => { 
+		xyrus.on('group-participants-update', async (anu) => { 
 if (!vacilo.includes(anu.jid)) return
 try {
-const mdata = await zero.groupMetadata(anu.jid)
+const mdata = await xyrus.groupMetadata(anu.jid)
 num = anu.participants[0]
 console.log(anu)
 if (anu.action == 'promote') {
 k = `[ PROMOÇÃO DETECTADA]\n@${num.split("@")[0]} foi promovido a adm`
-zero.sendMessage(mdata.id, k, MessageType.text)
+xyrus.sendMessage(mdata.id, k, MessageType.text)
 console.log(color('[PROMOVIDO]', 'red')),(color(`${num.split('@')[0]} \nfoi promovido a adm`, 'blue'))
 } else if (anu.action == 'demote') {
 num = anu.participants[0]
-zero.sendMessage(mdata.id, `[REBAIXAMENTO DETECTADO]\n@${num.split("@")[0]} nao é mais adm kkkkk`, MessageType.text)
+xyrus.sendMessage(mdata.id, `[REBAIXAMENTO DETECTADO]\n@${num.split("@")[0]} nao é mais adm kkkkk`, MessageType.text)
 console.log(color('[DEMOTE]', 'red')), (color(`${num.split('@')[0]} foi rebaixado a membro comum kkkk`, 'blue'))
 } else if (anu.action == 'add') {
-const grupo = await zero.groupMetadata(anu.jid)
+const grupo = await xyrus.groupMetadata(anu.jid)
 num = anu.participants[0]
 console.log(color('[ADD] entraram via link ou foi adicionado', 'red'))
 await sendMedia(from, 
@@ -6691,22 +6691,22 @@ caption: 'Te dou as boas-vindas ${pushname}, leia as regras e seja feliz.',
 });
 } else if (anu.action == 'remove') {
 num = anu.participants[0]
-const grupo = await zero.groupMetadata(anu.jid)
-if(num === zero.user.jid)return console.log('fui add em gp')
-await zero.sendMessage(grupo.id, `tchau ${num.split("@")[0]}`, MessageType.text)
+const grupo = await xyrus.groupMetadata(anu.jid)
+if(num === xyrus.user.jid)return console.log('fui add em gp')
+await xyrus.sendMessage(grupo.id, `tchau ${num.split("@")[0]}`, MessageType.text)
 }}catch (e) { console.log('Erro : %s', color(e, 'red'))}})
 
 		if (!welkom.includes(anu.jid)) return;
 		try {
-			const mdata = await zero.groupMetadata(anu.jid);
+			const mdata = await xyrus.groupMetadata(anu.jid);
 			console.log(anu);
 			if (anu.action == 'add') {
-		//	if (zero.user.jid) return
+		//	if (xyrus.user.jid) return
 				num = anu.participants[0];
 		
 				/*
 				try {
-					ppimg = await zero.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`);
+					ppimg = await xyrus.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`);
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg';
 				}
@@ -6731,7 +6731,7 @@ mathHelp(29, 1);
                buttonText:{displayText: `📕 Regras`},type:1},
                ]
 
-               imageMsg = (await zero.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${mathResult}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
+               imageMsg = (await xyrus.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${mathResult}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
 
 const groupAdmins = getGroupAdmins(mdata.participants);
 
@@ -6742,11 +6742,11 @@ const groupAdmins = getGroupAdmins(mdata.participants);
                buttons: buttons,
                headerType: 4
 }
-prep = await zero.prepareMessageFromContent(mdata.id,{buttonsMessage},{quoted: selocont,
+prep = await xyrus.prepareMessageFromContent(mdata.id,{buttonsMessage},{quoted: selocont,
 contextInfo: {"mentionedJid": [num]},
 thumbnail:null
 })
-               zero.relayWAMessage(prep)             
+               xyrus.relayWAMessage(prep)             
 			
 			} else if (anu.action == 'remove') {
 			
@@ -6754,7 +6754,7 @@ thumbnail:null
 const selocont = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(mdata.id ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { "contactMessage": { "displayName": `ADEUS ${num.split("@")[0]}`, "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:XL; MEMBRO NOVO,;;;\nFN:'MEMBRO NOVO',\nitem1.TEL;waid=${num.split('@')[0]}:${num.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, "jpegThumbnail":fs.readFileSync(`./edit/media/image/selos/1.jpg`)
         }}}				/*			
 				try {
-					ppimg = await zero.getProfilePicture(`${num.split('@')[0]}@c.us`);
+					ppimg = await xyrus.getProfilePicture(`${num.split('@')[0]}@c.us`);
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg';
 				}*/
@@ -6769,7 +6769,7 @@ mathHelp(29, 1);
 {buttonId:`kkkkjjjjjkk`, 
                buttonText:{displayText: `Vai tarde 😎`},type:1},
                ]
-               imageMsg = (await zero.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${mathResult}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage				
+               imageMsg = (await xyrus.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${mathResult}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage				
 				
                buttonsMessage = {
 
@@ -6778,11 +6778,11 @@ mathHelp(29, 1);
                buttons: buttons,
                headerType: 4
 }
-prep = await zero.prepareMessageFromContent(mdata.id,{buttonsMessage},{quoted: selocont,
+prep = await xyrus.prepareMessageFromContent(mdata.id,{buttonsMessage},{quoted: selocont,
 contextInfo: {"mentionedJid": [num]},
 thumbnail:null
 })
-               zero.relayWAMessage(prep)
+               xyrus.relayWAMessage(prep)
                
 			}
 		} catch (e) {
@@ -6790,7 +6790,7 @@ thumbnail:null
 		}
 	})
 
-	zero.on('CB:Blocklist', json => {
+	xyrus.on('CB:Blocklist', json => {
             if (blocked.length > 2) return;
 	    for (let i of json[1].blocklist) {
 	    	blocked.push(i.replace('c.us','s.whatsapp.net'));
