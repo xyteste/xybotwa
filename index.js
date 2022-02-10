@@ -2894,7 +2894,7 @@ texttto = `
 *🥴 Nível de gostosura* : *${gostosurar}${gostosurar2}%*
 *🍼 Valor do programa* : *R$${programa}*
 `
-await xyrus.sendMessage(from, buffer, image, {caption: texttto, quoted: selocont})
+await xyrus.sendMessage(from, buffer, image, {caption: texttto, quoted: selofoto})
 break
 
 case 'gerarcpf': case 'crearcpf':
