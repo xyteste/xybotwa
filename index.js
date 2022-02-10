@@ -375,7 +375,7 @@ selostatus = selostt
 selostat = selostt
 
 // selp foto
-const selofoto = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg","caption": "Albedo_bot", 'jpegThumbnail': fs.readFileSync(`./edit/media/image/selos/${mathSelo}.jpg`)}}}
+const selofoto = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg","caption": "Aqui está!", 'jpegThumbnail': fs.readFileSync(`./edit/media/image/selos/${mathSelo}.jpg`)}}}
 seloimage = selofoto
 seloimg = selofoto;
 
@@ -4883,7 +4883,7 @@ texxto = `
 ⚬༚ ──▹ ༚⚬
 `
 
-xyrus.sendMessage(from, texxto, text, {quoted: selotempoonline })
+xyrus.sendMessage(from, texxto, text, {quoted: selostt })
 break
 
 case 'delete': 
