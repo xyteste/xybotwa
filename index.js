@@ -4883,7 +4883,7 @@ texxto = `
 ⚬༚ ──▹ ༚⚬
 `
 
-xyrus.sendMessage(from, texxto, text, {quoted: selostt })
+xyrus.sendMessage(from, texxto, text, {quoted: selotempoonline })
 break
 
 case 'delete': 
@@ -5952,7 +5952,6 @@ case 's': case 'f': case 'sticker': case 'st': case 'fig':
 if (!isOwner) if (isFiltered(sender)) return reply(`📍 *anti SPAM*\n _aguarde 15 segundos..._`);
 
 addFilter(sender);
-await sleep(6000)
 				try {
 				 
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
