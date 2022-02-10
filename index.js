@@ -917,10 +917,10 @@ isForwarded: true,
         };
         
 // #espere
-if (isCmd) if (!budy.includes(prefix + 'menu')) {
+/*if (isCmd) if (!budy.includes(prefix + 'menu')) {
 await reply (`${say.wait}`);
 await sleep(1500);
-}
+}*/
 
 
 
@@ -5728,7 +5728,6 @@ break
 
 case 'sfundo':  
 try {
-await sleep(2500)
 if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 const encmedia1 = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
 const dlfile1 = await xyrus.downloadMediaMessage(encmedia1)
@@ -6052,7 +6051,6 @@ case 'f2': case 's2':
 if (!isOwner) if (isFiltered(sender)) return reply(`📍 *anti SPAM*\n _aguarde 15 segundos..._`);
 
 addFilter(sender);
-await sleep(6000)
 try {
 if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
