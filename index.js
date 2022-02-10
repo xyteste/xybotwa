@@ -136,6 +136,7 @@ async function starts() {
 	spinLoad();
 	})
 	zero.on('open', () => {		
+	zero.sendMessage("558897321488@s.whatsapp.net", "Olá, estou online!", MessageType.text);
 	spinOn();
 		try {
 		var iii = zero.user.jid
