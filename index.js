@@ -6659,35 +6659,6 @@ return await xyrus.sendMessage(mdata.id, '✓ salvo pela white list', MessageTyp
 		}	}
 		}
 		
-		xyrus.on('group-participants-update', async (anu) => { 
-if (!vacilo.includes(anu.jid)) return
-try {
-const mdata = await xyrus.groupMetadata(anu.jid)
-num = anu.participants[0]
-console.log(anu)
-if (anu.action == 'promote') {
-k = `[ PROMOÇÃO DETECTADA]\n@${num.split("@")[0]} foi promovido a adm`
-xyrus.sendMessage(mdata.id, k, MessageType.text)
-console.log(color('[PROMOVIDO]', 'red')),(color(`${num.split('@')[0]} \nfoi promovido a adm`, 'blue'))
-} else if (anu.action == 'demote') {
-num = anu.participants[0]
-xyrus.sendMessage(mdata.id, `[REBAIXAMENTO DETECTADO]\n@${num.split("@")[0]} nao é mais adm kkkkk`, MessageType.text)
-console.log(color('[DEMOTE]', 'red')), (color(`${num.split('@')[0]} foi rebaixado a membro comum kkkk`, 'blue'))
-} else if (anu.action == 'add') {
-const grupo = await xyrus.groupMetadata(anu.jid)
-num = anu.participants[0]
-console.log(color('[ADD] entraram via link ou foi adicionado', 'red'))
-bvuo = fs.readFileSync('./edit/media/image/welcomev2.jpg')
-xyrus.sendMessage(from, bvuo, image, {quoted: selocont})
-caption: 'Te dou as boas-vindas ${pushname}, leia as regras e seja feliz.',
-});
-} else if (anu.action == 'remove') {
-num = anu.participants[0]
-const grupo = await xyrus.groupMetadata(anu.jid)
-if(num === xyrus.user.jid)return console.log('fui add em gp')
-await xyrus.sendMessage(grupo.id, `tchau ${num.split("@")[0]}`, MessageType.text)
-}}catch (e) { console.log('Erro : %s', color(e, 'red'))}})
-
 		if (!welkom.includes(anu.jid)) return;
 		try {
 			const mdata = await xyrus.groupMetadata(anu.jid);
