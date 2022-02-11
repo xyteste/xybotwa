@@ -4883,7 +4883,7 @@ texxto = `
 ⚬༚ ──▹ ༚⚬
 `
 
-xyrus.sendMessage(from, texxto, text, {quoted: Reply2 })
+xyrus.sendMessage(from, texxto, text, {quoted: selotempoonline })
 break
 
 case 'delete': 
