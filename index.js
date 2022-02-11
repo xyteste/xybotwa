@@ -528,7 +528,8 @@ await sleep(1000);
 
 mathHelp(29, 1);
 
-               imageMsg = (await xyrus.prepareMessageMedia(fs.readFileSync(`./edit/media/image/menu/${valorMath}.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
+               imageMsg = (await sendMedia(from, 
+goVideo + 'menuleveling.mp4', 'video', {thumbnail: fs.readFileSync(`./edit/media/image/momonga.jpeg`)})).imageMessage
 
                buttonsMessage = {
                contentText: `${readmore}
