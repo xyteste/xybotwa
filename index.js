@@ -5956,7 +5956,7 @@ addFilter(sender);
 				 
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
+						const media = await zero.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
 						await ffmpeg(`./${media}`)
 							.input(media)
@@ -5966,26 +5966,22 @@ addFilter(sender);
 							.on('error', function (err) {
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
-								
+								reply(`erro`)
 							})
 							.on('end', function () {
 								console.log('Finish')
-								exec(`webpmux -set exif ${addMetadata(`${nomeBot}`, authorname)} ${ran} -o ${ran}`, async (error) => {
-								
-									xyrus.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: selocont})
-									fs.unlinkSync(media)	
-									fs.unlinkSync(ran)	
-								})
-								
+								zero.sendMessage(from, fs.readFileSync(ran), sticker, {contextInfo :fotothumb, sendEphemeral: true})
+								fs.unlinkSync(media)
+								fs.unlinkSync(ran)
 							})
 							.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
 							.toFormat('webp')
 							.save(ran)
 					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
+						const media = await zero.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
-						
+						reply(mess.wait)
 						await ffmpeg(`./${media}`)
 							.inputFormat(media.split('.')[1])
 							.on('start', function (cmd) {
@@ -5995,56 +5991,41 @@ addFilter(sender);
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
 								tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-								reply(`❌ Gagal, pada saat mengkonversi ${tipe} ke stiker`)
+								reply(`тЭМ Falhou, no momento da convers├гo ${tipe} para o adesivo`)
 							})
 							.on('end', function () {
 								console.log('Finish')
-								exec(`webpmux -set exif ${addMetadata(`${nomeBot}`, authorname)} ${ran} -o ${ran}`, async (error) => {
-									
-									xyrus.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: selocont})
-									fs.unlinkSync(media)
-									fs.unlinkSync(ran)
-								})
-								
+								zero.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: selocont})
+								fs.unlinkSync(media)
+								fs.unlinkSync(ran)
 							})
 							.addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
 							.toFormat('webp')
 							.save(ran)
 					} else if ((isMedia || isQuotedImage) && args[0] == 'nobg') {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await xyrus.downloadAndSaveMediaMessage(encmedia)
+						const media = await zero.downloadAndSaveMediaMessage(encmedia)
 						ranw = getRandom('.webp')
 						ranp = getRandom('.png')
-						reply(`⏳ *espere*`)
+						reply(`aguarde`)
 						keyrmbg = 'Your-ApiKey'
-						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg, size: 'auto', type: 'auto', ranp}).then(res => {
+						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg.result, size: 'auto', type: 'auto', ranp}).then(res => {
 							fs.unlinkSync(media)
 							let buffer = Buffer.from(res.base64img, 'base64')
 							fs.writeFileSync(ranp, buffer, (err) => {
-								if (err) return reply('Gagal, Terjadi kesalahan, silahkan coba beberapa saat lagi.')
+								if (err) return reply('Falha, ocorreu um erro, tente novamente mais tarde.')
 							})
 							exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
 								fs.unlinkSync(ranp)
-							
-								exec(`webpmux -set exif ${addMetadata(`${nomeBot}`, authorname)} ${ranw} -o ${ranw}`, async (error) => {
-								
-									await xyrus.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: selocont})
-									fs.unlinkSync(ranw)
-								})
-								
+								if (err) return reply(mess.error.stick)
+								zero.sendMessage(from, fs.readFileSync(ranw), sticker, {contextInfo :fotothumb, sendEphemeral: true})
 							})
 						})
 					
 					} else {
-						reply(`Envie uma imagem com o autocolante legenda ou uma etiqueta de imagem já enviada`)
+						reply(`Voc├к precisa enviar ou marcar uma imagem ou v├нdeo com no m├бximo 10 segundos`)
 					}
-
-} catch(e) {
-console.log('erro : %s')
-return reply(`Erro inesperado. Tente novamente ou reveja a sua case`)
-}
-					
-					break		
+					break
 ///
 
 ///
