@@ -4883,7 +4883,7 @@ texxto = `
 ⚬༚ ──▹ ༚⚬
 `
 
-xyrus.sendMessage(from, texxto, text, {quoted: selotempoonline })
+xyrus.sendMessage(from, texxto, text, {quoted: Reply2 })
 break
 
 case 'delete': 
@@ -5242,7 +5242,7 @@ break
 
 
 
-case 'add': case 'añadir':
+case 'add':
 const qd = args.join(' ')
 if (!qd) return reply (`insira o número!`)
 if (!isGroup) return reply (`${say.only.group}`)
@@ -6285,11 +6285,11 @@ break
 				
 				default:
 if (isCmd) if (!isOwner) {
-mathHelp(11, 1);
+/*mathHelp(11, 1);
 await sendMedia(from, goSticker + 'baka' + valorMath + '.webp', 'sticker', {
 mimetype: Mimetype.sticker,
  quoted: mek,});
- await sleep(3000)
+ await sleep(3000)*/
 umdois = `esse comando não existe, digite ${prefix}menu para ver os comandos!`
 await xyrus.sendMessage(from, umdois, text, {quoted: mek});
  }
@@ -6416,7 +6416,7 @@ Antidoc ? t6 = ' ✓ ': t6 = ' X ';
 isAntiPalavrão? t7 = ' ✓ ': t7 = ' X ';
 
 reply (`
-┏━ ✈ *𝚂𝚃𝙰𝚃𝚄𝚂* ✈ ━┓
+┏━ ⌬ *𝚂𝚃𝙰𝚃𝚄𝚂* ⌬ ━┓
 ┣⌲𝑨𝒏𝒕𝒊-𝑳𝒊𝒏𝒌: ${t3}
 ┣⊰𝑨𝒏𝒕𝒊-𝑭𝒂𝒌𝒆: ${t4}
 ┣⌲𝑨𝒏𝒕𝒊-𝑶𝒇𝒆𝒏𝒔𝒂: ${t7}
