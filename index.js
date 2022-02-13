@@ -4304,7 +4304,7 @@ case 'plug':
 if(args.length < 1) return reply(`*❱❱ Modo certo: ${p + comando} sla ❰❰*`)
 blk = body.slice(6)
 if(args.length > 10) return reply(`*❱❱ Limite Ultrapassado = limit = 10 letras ❰❰*`)
-enviar(`*❱❱ Aguarde...Estou Criando. ❰❰*`)
+reply(`*❱❱ Aguarde...Estou Criando. ❰❰*`)
   buffer = await getBuffer(`https://blackzin.sirv.com/Plaq18/20220212_213215.jpg?text.0.text=${blk}&text.0.position.gravity=northwest&text.0.position.x=43%25&text.0.position.y=18%25&text.0.size=15&text.0.color=000000&text.0.opacity=57&text.0.font.family=Vollkorn&text.0.font.weight=800&text.0.font.style=italic&text.0.background.color=000000&text.0.outline.blur=32&text.0.outline.opacity=46&text.1.text=Sexo%3F&text.1.position.gravity=center&text.1.position.x=10%25&text.1.position.y=30%25&text.1.size=20&text.1.color=000000&text.1.opacity=59&text.1.font.family=Playball&text.1.font.weight=700&text.1.outline.opacity=0" width="718" height="1009" alt="" />`)
   xyrus.sendMessage(from, buffer, image, {quoted: mek ,caption: '©xy'})
   break
