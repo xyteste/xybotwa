@@ -3026,7 +3026,7 @@ if(args.length < 1) return reply(`*❱❱ Modo certo: ${prefix}plaq12 xyx ❰❰
 blk = body.slice(6)
 if(args.length > 10) return reply(`*❱❱ Limite Ultrapassado = limit = 10 letras ❰❰*`)
 reply(`*❱❱ Aguarde...Estou Criando. ❰❰*`)
-  buffer = await getBuffer(`https://costeste.sirv.com/images%20(1).jpeg?text.0.text=${blk}&text.0.position.x=-58%25&text.0.position.y=-18%25&text.0.size=28&text.0.color=000000&text.0.font.style=italic" width="557" height="550" alt="" />`)
+  buffer = await getBuffer(`https://xyruss.sirv.com/images%20(1).jpeg?text.0.text=${blk}&text.0.position.x=-58%25&text.0.position.y=-18%25&text.0.size=28&text.0.color=000000&text.0.font.style=italic" width="557" height="550" alt="" />`)
   xyrus.sendMessage(from,buffer,image,{quoted:mek,caption:'uiui'})
   break
 
