@@ -5,51 +5,49 @@ const readmore = "͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏
 
 exports.help = `
 ◑ ━━━━━ ▣ ━━━━━ ◐
-        𝐻 𝐸 𝐿 𝑃
+    𝐌𝐄𝐍𝐔 𝐃𝐄 𝐀𝐉𝐔𝐃𝐀
 ◑ ━━━━━ ▣ ━━━━━ ◐
 ${readmore}
 _______________
 🅐🅓🅜🅘🅝🅢
 _____________________
-São comandos para os administradores do grupo.
-obs: o dono do bot consegue usar qualquer comando administrativo, mesmo não sendo adm
 
 ➟ ${prefix}add 
-• adiciona uma pessoa no grupo.
-use assim: ${prefix}add 5500991919191
+• 𝒔𝒆𝒓𝒗𝒆 𝒑𝒂𝒓𝒂 𝒂𝒅𝒊𝒄𝒊𝒐𝒏𝒂𝒓 𝒖𝒎𝒂 𝒑𝒆𝒔𝒔𝒐𝒂 𝒂𝒐 𝒈𝒓𝒖𝒑𝒐.
+𝒆𝒙𝒆𝒎𝒑𝒍𝒐 𝒅𝒆 𝒄𝒐𝒎𝒐 𝒖𝒕𝒊𝒍𝒊𝒛𝒂𝒓: ${prefix}add 551040028922
 
 ➟ ${prefix}ban 
-• bane uma pessoa do grupo.
-use assim: ${prefix}ban 5500991919191
+• 𝒔𝒆𝒓𝒗𝒆 𝒑𝒂𝒓𝒂 𝒓𝒆𝒎𝒐𝒗𝒆𝒓 𝒖𝒎𝒂 𝒑𝒆𝒔𝒔𝒐𝒂 𝒅𝒐 𝒈𝒓𝒖𝒑𝒐.
+𝒆𝒙𝒆𝒎𝒑𝒍𝒐 𝒅𝒆 𝒄𝒐𝒎𝒐 𝒖𝒕𝒊𝒍𝒊𝒛𝒂𝒓: ${prefix}ban 551040028922
 
 ➟ ${prefix}antifake 
-• quando ativo, números que não são do Brasil são banidos imediatamente ao entrar.
-use assim: ${prefix}antifake (aperte o botão)
+• 𝒔𝒆 𝒆𝒍𝒆 𝒆𝒔𝒕𝒊𝒗𝒆𝒓 𝒂𝒕𝒊𝒗𝒐, 𝒔𝒐𝒎𝒆𝒏𝒕𝒆 𝒏𝒖𝒎𝒆𝒓𝒐𝒔 𝒄𝒐𝒎 +55 𝒔𝒆𝒓𝒂𝒐 𝒑𝒆𝒓𝒎𝒊𝒕𝒊𝒅𝒐𝒔 𝒏𝒐 𝒈𝒓𝒖𝒑𝒐.
+𝒆𝒙𝒆𝒎𝒑𝒍𝒐 𝒅𝒆 𝒄𝒐𝒎𝒐 𝒖𝒕𝒊𝒍𝒊𝒛𝒂𝒓: ${prefix}antifake (aperte o botão)
 
 ➟ ${prefix}antilink 
-• quando ativo, pessoas que mandarem links serão banidas imediatamente.
-use assim: ${prefix}antilink (aperte o botão)
+• 𝒔𝒆 𝒆𝒍𝒆 𝒆𝒔𝒕𝒊𝒗𝒆𝒓 𝒂𝒕𝒊𝒗𝒐, 𝒔𝒐𝒎𝒆𝒏𝒕𝒆 𝒐𝒔 𝒂𝒅𝒎𝒊𝒏𝒊𝒔𝒕𝒓𝒂𝒅𝒐𝒓𝒆𝒔 𝒑𝒐𝒅𝒆𝒎 𝒆𝒏𝒗𝒊𝒂𝒓 𝒍𝒊𝒏𝒌𝒔.
+𝒆𝒙𝒆𝒎𝒑𝒍𝒐 𝒅𝒆 𝒄𝒐𝒎𝒐 𝒖𝒕𝒊𝒍𝒊𝒛𝒂𝒓: ${prefix}antilink (aperte o botão)
 
 ➟ ${prefix}nsfw 
-• quando ativo, os comandos +18 são desbloqueados.
-use assim: ${prefix}nsfw (aperte o botão)
+• 𝒔𝒆 𝒆𝒍𝒆 𝒆𝒔𝒕𝒊𝒗𝒆𝒓 𝒂𝒕𝒊𝒗𝒐, 𝒐𝒔 𝒄𝒐𝒎𝒂𝒏𝒅𝒐𝒔 +18 𝒔𝒆𝒓𝒂𝒐 𝒑𝒆𝒓𝒎𝒊𝒕𝒊𝒅𝒐𝒔. 
+𝒆𝒙𝒆𝒎𝒑𝒍𝒐 𝒅𝒆 𝒄𝒐𝒎𝒐 𝒖𝒕𝒊𝒍𝒊𝒛𝒂𝒓: ${prefix}nsfw (aperte o botão)
 
 ➟ ${prefix}welkom  
-• quando ativo, manda uma mensagem de boas vindas.
-use assim: ${prefix}welkom (aperte o botão)
+• 𝒔𝒆 𝒆𝒍𝒆 𝒆𝒔𝒕𝒊𝒗𝒆𝒓 𝒂𝒕𝒊𝒗𝒐, 𝒔𝒆𝒓𝒂𝒐 𝒆𝒏𝒗𝒊𝒂𝒅𝒂𝒔 𝒎𝒆𝒏𝒔𝒂𝒈𝒆𝒏𝒔 𝒅𝒆 𝒃𝒐𝒂𝒔-𝒗𝒊𝒏𝒅𝒂𝒔 𝒒𝒖𝒂𝒏𝒅𝒐 𝒂𝒍𝒈𝒖𝒆𝒎 𝒆𝒏𝒕𝒓𝒂𝒓 𝒏𝒐 𝒈𝒓𝒖𝒑𝒐. 
+𝒆𝒙𝒆𝒎𝒑𝒍𝒐 𝒅𝒆 𝒄𝒐𝒎𝒐 𝒖𝒕𝒊𝒍𝒊𝒛𝒂𝒓: ${prefix}welkom (aperte o botão)
 
 ➟ ${prefix}antipalavrão
-• quando ativo, qualquer pessoa que xingar é banida
+• 𝒔𝒆 𝒆𝒍𝒆 𝒆𝒔𝒕𝒊𝒗𝒆𝒓 𝒂𝒕𝒊𝒗𝒐, 𝒎𝒆𝒎𝒃𝒓𝒐𝒔 𝒒𝒖𝒆 𝒙𝒊𝒏𝒈𝒂𝒓𝒆𝒎 𝒔𝒆𝒓𝒂𝒐 𝒃𝒂𝒏𝒊𝒅𝒐𝒔.
 
 ➟ ${prefix}contador 
-• mostra a quantidade de mensagens e comandos dados por cada pessoa no grupo.
+• 𝒎𝒐𝒔𝒕𝒓𝒂 𝒂 𝒒𝒖𝒂𝒏𝒕𝒊𝒅𝒂𝒅𝒆 𝒅𝒆 𝒎𝒆𝒏𝒔𝒂𝒈𝒆𝒏𝒔 𝒆 𝒄𝒐𝒎𝒂𝒏𝒅𝒐𝒔 𝒅𝒂𝒅𝒐𝒔 𝒑𝒐𝒓 𝒄𝒂𝒅𝒂 𝒑𝒆𝒔𝒔𝒐𝒂 𝒏𝒐 𝒈𝒓𝒖𝒑𝒐.
 
 ➟ ${prefix}checkativo 
-• checa a quantidade de mensagens e comandos de uma determinada pessoa.
-use assim: ${prefix}checkativo @tag
+• 𝒄𝒉𝒆𝒄𝒂 𝒂 𝒒𝒖𝒂𝒏𝒕𝒊𝒅𝒂𝒅𝒆 𝒅𝒆 𝒎𝒆𝒏𝒔𝒂𝒈𝒆𝒏𝒔 𝒆 𝒄𝒐𝒎𝒂𝒏𝒅𝒐𝒔 𝒅𝒆 𝒖𝒎𝒂 𝒅𝒆𝒕𝒆𝒓𝒎𝒊𝒏𝒂𝒅𝒂 𝒑𝒆𝒔𝒔𝒐𝒂.
+𝒆𝒙𝒆𝒎𝒑𝒍𝒐 𝒅𝒆 𝒄𝒐𝒎𝒐 𝒖𝒕𝒊𝒍𝒊𝒛𝒂𝒓: ${prefix}checkativo @tag
 
 ➟ ${prefix}topativos 
-• mostra um ranking com os membros mais ativos
+• 𝒎𝒐𝒔𝒕𝒓𝒂 𝒖𝒎 𝒓𝒂𝒏𝒌 𝒄𝒐𝒎 𝒐𝒔 𝒎𝒆𝒎𝒃𝒓𝒐𝒔 𝒎𝒂𝒊𝒔 𝒂𝒕𝒊𝒗𝒐𝒔.
 
 ➟ ${prefix}opentime 
 • abre o grupo depois de um tempo pré estabelecido, podendo ser em segundos, minutos, ou horas.
