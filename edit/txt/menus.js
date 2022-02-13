@@ -293,7 +293,7 @@ exports.allmenu = `┏━━━━━━━━━━━━━━━━━━━�
 ┃║⛇ *${prefix}gay*
 ┃║⛇ *${prefix}caracoroa*
 ┃║⛇ *${prefix}dado*
-┃║⛇ *${prefix}plaq(até a 10)* <text>
+┃║⛇ *${prefix}plaq(até a 11)* <text>
 ┃║⛇ *${prefix}death*
 ┃║⛇ *${prefix}gostosa*
 ┃║⛇ *${prefix}gostosa2*

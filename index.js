@@ -2997,6 +2997,39 @@ buffer = await getBuffer(`https://umethroo.sirv.com/peito1.jpg?text.0.text=${tek
 await xyrus.sendMessage(from, buffer, image, {sendEphemeral: true, quoted: selocont, thumbnail: null, caption: ' *Plaquinha feita.* '})
 break
 
+case 'rola':
+try {
+if (!cArgs){
+let rolaX = await fetchJson ('http://momonga-api.herokuapp.com/plaq/rola?apikey=momonga');
+var rolaY = await getBuffer (rolaX.result);
+} else if (cArgs) {
+let rolaXk = await fetchJson ('http://momonga-api.herokuapp.com/plaq/rola?apikey=momonga&&text=' + 'A rola do ' + cArgs)
+var rolaY = await getBuffer (rolaXk.result);
+}
+} catch(e) {
+console.log(e); reply(e)
+}
+xyrus.sendMessage(from, rolaY, image)
+break
+
+case 'komi':
+let kom = await fetchJson ('http://momonga-api.herokuapp.com/plaq/komi?apikey=momonga&&text=' + cArgs)
+let komi = await getBuffer (kom.result);
+xyrus.sendMessage(from, komi, image, {
+quoted: mek,
+caption: cArgs + '?',
+})
+break
+
+case 'plaq12':
+if(blk.length < 1) return reply(`*❱❱ Modo certo: ${prefix}plaq12 xyx ❰❰*`)
+blk = body.slice(6)
+if(blk.length > 10) return reply(`*❱❱ Limite Ultrapassado = limit = 10 letras ❰❰*`)
+reply(`*❱❱ Aguarde...Estou Criando. ❰❰*`)
+  buffer = await getBuffer(`https://costeste.sirv.com/images%20(1).jpeg?text.0.text=${blk}&text.0.position.x=-58%25&text.0.position.y=-18%25&text.0.size=28&text.0.color=000000&text.0.font.style=italic" width="557" height="550" alt="" />`)
+  xyrus.sendMessage(from,buffer,image,{quoted:mek,caption:'uiui'})
+  break
+
 case 'morte':
 case 'death':
                 if (!isGroup) return reply(ind.groupo())
@@ -4300,11 +4333,11 @@ membr.push(paus5.jid)
 mentions(pdr, membr, true)
 break 
 
-case 'plug':
-if(args.length < 1) return reply(`*❱❱ Modo certo: ${p + comando} sla ❰❰*`)
+case 'plaq11': //blackzin
+if(args.length < 1) return reply(`* Utilize assim: ${prefix}plaq11 xyx*`)
 blk = body.slice(6)
-if(args.length > 10) return reply(`*❱❱ Limite Ultrapassado = limit = 10 letras ❰❰*`)
-reply(`*❱❱ Aguarde...Estou Criando. ❰❰*`)
+if(args.length > 10) return reply(`*Limite Ultrapassado = limit = 10 letras*`)
+reply(`*Aguarde...Estou Criando.*`)
   buffer = await getBuffer(`https://blackzin.sirv.com/Plaq18/20220212_213215.jpg?text.0.text=${blk}&text.0.position.gravity=northwest&text.0.position.x=43%25&text.0.position.y=18%25&text.0.size=15&text.0.color=000000&text.0.opacity=57&text.0.font.family=Vollkorn&text.0.font.weight=800&text.0.font.style=italic&text.0.background.color=000000&text.0.outline.blur=32&text.0.outline.opacity=46&text.1.text=Sexo%3F&text.1.position.gravity=center&text.1.position.x=10%25&text.1.position.y=30%25&text.1.size=20&text.1.color=000000&text.1.opacity=59&text.1.font.family=Playball&text.1.font.weight=700&text.1.outline.opacity=0" width="718" height="1009" alt="" />`)
   xyrus.sendMessage(from, buffer, image, {quoted: mek ,caption: '©xy'})
   break
